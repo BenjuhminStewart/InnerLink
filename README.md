@@ -1,4 +1,3 @@
 # InnerLink
 
-
-<img title="InnerLink" alt="InnerLink logo" src="/Benjamin/Pictures/InnerLinkLogo.png">
+![InnerLink Logo](/Pictures/InnerLinkLogo2.png "Title")
