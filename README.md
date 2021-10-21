@@ -1,4 +1,4 @@
 # InnerLink
 
 
-<img title="InnerLink" alt="InnerLink logo" src="./Pictures/InnerLinkLogo.png">
+<img title="InnerLink" alt="InnerLink logo" src="/Benjamin/Pictures/InnerLinkLogo.png">
