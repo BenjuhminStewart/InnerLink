@@ -1,3 +1,3 @@
 # InnerLink
 
-![InnerLink Logo](/Downloads/InnerLinkLogo2.png "Title")
+![InnerLink Logo](/logo/InnerLinkLogo2.png "Title")
