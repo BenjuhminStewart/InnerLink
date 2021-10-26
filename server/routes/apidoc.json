@@ -1,0 +1,8 @@
+{
+  "name": "TCSS 450 Lab Web Service",
+  "version": "0.1.0",
+  "description": "The TCSS 450 Lab Web Service API Documentation",
+  "title": "Lab API Doc",
+  "url": "https://stewaben-tcss450-labs.herokuapp.com/",
+  "order": ["Hello", "Params", "Wait", "DemoSql", "Auth", "Phish"]
+}
