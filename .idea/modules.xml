@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Team-3-TCSS-450-Client.iml" filepath="$PROJECT_DIR$/.idea/Team-3-TCSS-450-Client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Lab_3_-_Authentication.iml" filepath="$PROJECT_DIR$/.idea/modules/Lab_3_-_Authentication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Lab_3_-_Authentication.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Lab_3_-_Authentication.app.iml" />
     </modules>
   </component>
 </project>
