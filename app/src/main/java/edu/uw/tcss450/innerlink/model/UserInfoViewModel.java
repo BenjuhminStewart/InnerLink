@@ -1,4 +1,4 @@
-package edu.uw.tcss450.lab3_authentication.model;
+package edu.uw.tcss450.innerlink.model;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

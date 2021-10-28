@@ -1,6 +1,6 @@
-package edu.uw.tcss450.lab3_authentication.ui.auth.signin;
+package edu.uw.tcss450.innerlink.ui.auth.signin;
 
-import static edu.uw.tcss450.lab3_authentication.utils.PasswordValidator.*;
+import static edu.uw.tcss450.innerlink.utils.PasswordValidator.*;
 
 import android.os.Bundle;
 
@@ -18,8 +18,8 @@ import android.view.ViewGroup;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.uw.tcss450.lab3_authentication.databinding.FragmentSignInBinding;
-import edu.uw.tcss450.lab3_authentication.utils.PasswordValidator;
+import edu.uw.tcss450.innerlink.databinding.FragmentSignInBinding;
+import edu.uw.tcss450.innerlink.utils.PasswordValidator;
 
 /**
  * A simple {@link Fragment} subclass.

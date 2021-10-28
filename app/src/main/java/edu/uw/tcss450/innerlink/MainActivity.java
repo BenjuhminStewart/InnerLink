@@ -1,11 +1,11 @@
-package edu.uw.tcss450.lab3_authentication;
+package edu.uw.tcss450.innerlink;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
-import edu.uw.tcss450.lab3_authentication.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
 public class MainActivity extends AppCompatActivity {
 

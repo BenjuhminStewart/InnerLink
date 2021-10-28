@@ -7,7 +7,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="edu.uw.tcss450.lab3_authentication.ui.HomeFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/forecastFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment"
+        android:label="fragment_forecast"
+        tools:layout="@layout/fragment_forecast" />
 </navigation>
