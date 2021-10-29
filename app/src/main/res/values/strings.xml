@@ -10,6 +10,10 @@
     <string name="action_register_short">Register</string>
     <string name="display_header_title">Phish Shows Welcomes:</string>
     <string name="image_description_logo">The Phish Logo</string>
+    <string name="forecast_label">Forecasts</string>
+    <string name="notification_label">Notifications</string>
+    <string name="chat_label">Chats</string>
+    <string name="home_label">Home</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
