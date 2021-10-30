@@ -38,6 +38,8 @@ public class RegisterFragment extends Fragment {
             .and(checkExcludeWhiteSpace())
             .and(checkPwdSpecialChar("@"));
 
+    private PasswordValidator mUsernameValidator = checkPwdLength(1);
+
     private PasswordValidator mPassWordValidator =
             checkClientPredicate(pwd -> pwd.equals(binding.editPassword2.getText().toString()))
                     .and(checkPwdLength(7))
@@ -94,8 +96,15 @@ public class RegisterFragment extends Fragment {
     private void validateEmail() {
         mEmailValidator.processResult(
                 mEmailValidator.apply(binding.editEmail.getText().toString().trim()),
-                this::validatePasswordsMatch,
+                this::validateUsername,
                 result -> binding.editEmail.setError("Please enter a valid Email address."));
+    }
+
+    private void validateUsername() {
+        mNameValidator.processResult(
+                mNameValidator.apply(binding.editUsername.getText().toString().trim()),
+                this::validatePasswordsMatch,
+                result -> binding.editFirst.setError("Please enter a first name."));
     }
 
     private void validatePasswordsMatch() {
@@ -121,7 +130,7 @@ public class RegisterFragment extends Fragment {
         mRegisterModel.connect(
                 binding.editFirst.getText().toString(),
                 binding.editLast.getText().toString(),
-                binding.editEmail.getText().toString(), binding.editPassword1.getText().toString());
+                binding.editEmail.getText().toString(), binding.editUsername.getText().toString(), binding.editPassword1.getText().toString());
         //This is an Asynchronous call. No statements after should rely on the
         //result of connect().
 
