@@ -30,6 +30,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:id="@+id/edit_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="@string/hint_username"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edit_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
+
+    <EditText
         android:id="@+id/edit_last"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -39,7 +54,7 @@
         android:ems="10"
         android:hint="@string/hint_last"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edit_email"
+        app:layout_constraintBottom_toTopOf="@+id/edit_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="" />
