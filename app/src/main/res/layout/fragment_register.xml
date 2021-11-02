@@ -21,10 +21,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:autofillHints=""
+
         android:ems="10"
         android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
+        android:textColorHighlight="@color/colorNavBar"
         app:layout_constraintBottom_toTopOf="@+id/edit_password_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -39,10 +40,11 @@
         android:ems="10"
         android:hint="@string/hint_username"
         android:inputType="textPersonName"
+        android:textColorHighlight="@color/colorNavBar"
         app:layout_constraintBottom_toTopOf="@+id/edit_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+         />
 
     <EditText
         android:id="@+id/edit_last"
@@ -54,10 +56,11 @@
         android:ems="10"
         android:hint="@string/hint_last"
         android:inputType="textPersonName"
+        android:textColorHighlight="@color/colorNavBar"
         app:layout_constraintBottom_toTopOf="@+id/edit_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+         />
 
     <EditText
         android:id="@+id/edit_first"
@@ -69,10 +72,11 @@
         android:ems="10"
         android:hint="@string/hint_first"
         android:inputType="textPersonName"
+        android:textColorHighlight="@color/colorNavBar"
         app:layout_constraintBottom_toTopOf="@+id/edit_last"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+         />
 
     <EditText
         android:id="@+id/edit_password_1"
@@ -84,10 +88,11 @@
         android:ems="10"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
+        android:textColorHighlight="@color/colorNavBar"
         app:layout_constraintBottom_toTopOf="@+id/guideline_fifty"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+         />
 
     <EditText
         android:id="@+id/edit_password_2"
@@ -99,18 +104,21 @@
         android:ems="10"
         android:hint="@string/hint_password_again"
         android:inputType="textPassword"
+        android:textColorHighlight="@color/colorNavBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_fifty"
-        android:autofillHints="" />
+         />
 
     <Button
         android:id="@+id/button_register"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/action_register_short"
+        android:textColor="@color/colorNavBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_password_2" />
 
