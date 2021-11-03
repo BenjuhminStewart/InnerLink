@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_notification"
-        android:name="edu.uw.tcss450.innerlink.ui.Notification.NotificationFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment"
         android:label="fragment_notification"
-        tools:layout="@layout/fragment_notification" />
+        tools:layout="@layout/fragment_notification_list" />
     <fragment
         android:id="@+id/navigation_chats"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment"

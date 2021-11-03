@@ -21,4 +21,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_link">Full Chat</string>
     <string name="description">Description</string>
+    <string name="go_to">Go To</string>
 </resources>
