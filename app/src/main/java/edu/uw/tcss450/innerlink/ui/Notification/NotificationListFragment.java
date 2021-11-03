@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.uw.tcss450.innerlink.R;
-import edu.uw.tcss450.innerlink.ui.Chat.ChatGenerator;
-import edu.uw.tcss450.innerlink.ui.Chat.ChatRecyclerViewAdapter;
 
 public class NotificationListFragment extends Fragment {
 

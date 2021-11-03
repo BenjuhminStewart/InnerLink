@@ -18,12 +18,8 @@
     <fragment
         android:id="@+id/navigation_chats"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment"
-        android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat_list" >
-        <action
-            android:id="@+id/action_navigation_chats_to_chatFragment"
-            app:destination="@id/chatFragment" />
-    </fragment>
+        android:label="@string/chat_label"
+        tools:layout="@layout/fragment_chat_list"/>
     <fragment
         android:id="@+id/navigation_forecast"
         android:name="edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment"
