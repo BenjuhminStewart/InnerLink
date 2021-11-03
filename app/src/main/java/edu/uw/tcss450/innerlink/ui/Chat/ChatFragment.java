@@ -25,7 +25,9 @@ public class ChatFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ChatFragmentArgs args = ChatFragmentArgs.fromBundle(getArguments());
+
         FragmentChatBinding binding = FragmentChatBinding.bind(requireView());
+
         binding.textSender.setText(args.getChat().getSender());
         binding.textPreview.setText(args.getChat().getMessage());
     }
