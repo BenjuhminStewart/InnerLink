@@ -14,7 +14,7 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
 import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
-import edu.uw.tcss450.innerlink.ui.Notification.NotificationFragment;
+import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 HomeFragment homeFragment = null;
-                NotificationFragment notificationFragment = null;
+                NotificationListFragment notificationListFragment = null;
                 ChatListFragment chatListFragment = null;
                 ForecastFragment forecastFragment = null;
                 switch (menuItem.getItemId()){
@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.navigation_notification:
-                        notificationFragment = new NotificationFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, notificationFragment).commit();
+                        notificationListFragment = new NotificationListFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, notificationListFragment).commit();
                         break;
 
                     case R.id.navigation_forecast:
