@@ -7,20 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.register.RegisterFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="299dp"
-        android:layout_height="244dp"
-        android:src="@drawable/innerlink"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +20,17 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="299dp"
+                android:layout_height="244dp"
+                android:layout_marginStart="337dp"
+                android:layout_marginEnd="337dp"
+                android:src="@drawable/innerlink"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_fifty"
@@ -104,7 +106,8 @@
                 android:textColorHighlight="@color/colorNavBar"
                 app:layout_constraintBottom_toTopOf="@+id/edit_last"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <EditText
                 android:id="@+id/edit_password_1"
