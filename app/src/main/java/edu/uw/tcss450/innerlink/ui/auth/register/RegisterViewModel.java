@@ -62,18 +62,16 @@ public class RegisterViewModel extends AndroidViewModel {
 
     public void connect(final String first,
                         final String last,
-                        final String email,
                         final String username,
+                        final String email,
                         final String password) {
-        // HERE IS WHERE WE WILL UPDATE URL TO CHANGE TO OURS I THINK.
-        // HENCE WE NEED TO BUILD AN '/auth' ENDPOINT SOON.
         String urlAuth = "https://tcss450-innerlink.herokuapp.com/auth";
         JSONObject body = new JSONObject();
         try {
             body.put("first", first);
             body.put("last", last);
-            body.put("email", email);
             body.put("username", username);
+            body.put("email", email);
             body.put("password", password);
         } catch (JSONException e) {
             e.printStackTrace();

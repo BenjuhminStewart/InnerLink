@@ -38,7 +38,7 @@ public class RegisterFragment extends Fragment {
             .and(checkExcludeWhiteSpace())
             .and(checkPwdSpecialChar("@"));
 
-    private PasswordValidator mUsernameValidator = checkPwdLength(1);
+    private PasswordValidator mUsernameValidator = checkPwdLength(1).and(checkExcludeWhiteSpace());
 
     private PasswordValidator mPassWordValidator =
             checkClientPredicate(pwd -> pwd.equals(binding.editPassword2.getText().toString()))
@@ -101,10 +101,10 @@ public class RegisterFragment extends Fragment {
     }
 
     private void validateUsername() {
-        mNameValidator.processResult(
-                mNameValidator.apply(binding.editUsername.getText().toString().trim()),
+        mUsernameValidator.processResult(
+                mUsernameValidator.apply(binding.editUsername.getText().toString().trim()),
                 this::validatePasswordsMatch,
-                result -> binding.editFirst.setError("Please enter a first name."));
+                result -> binding.editUsername.setError("Please enter a Username."));
     }
 
     private void validatePasswordsMatch() {
@@ -130,7 +130,8 @@ public class RegisterFragment extends Fragment {
         mRegisterModel.connect(
                 binding.editFirst.getText().toString(),
                 binding.editLast.getText().toString(),
-                binding.editEmail.getText().toString(), binding.editUsername.getText().toString(), binding.editPassword1.getText().toString());
+                binding.editUsername.getText().toString(),
+                binding.editEmail.getText().toString(),  binding.editPassword1.getText().toString());
         //This is an Asynchronous call. No statements after should rely on the
         //result of connect().
 
@@ -156,11 +157,19 @@ public class RegisterFragment extends Fragment {
     private void observeResponse(final JSONObject response) {
 
         if (response.length() > 0) {
+
             if (response.has("code")) {
                 try {
-                    binding.editEmail.setError(
-                            "Error Authenticating: " +
-                                    response.getJSONObject("data").getString("message"));
+                    String responseType = response.getJSONObject("data").getString("message");
+                    if(responseType.contains("Username")) {
+                        binding.editUsername.setError(
+                                "Error Authenticating: " + responseType);
+
+                    } else {
+                        binding.editEmail.setError(
+                                "Error Authenticating: " + responseType);
+                    }
+
                 } catch (JSONException e) {
                     Log.e("JSON Parse Error", e.getMessage());
                 }
