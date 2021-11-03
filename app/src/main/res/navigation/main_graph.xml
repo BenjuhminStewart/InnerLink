@@ -3,26 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/navigation_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.innerlink.ui.Home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/notificationFragment"
+        android:id="@+id/navigation_notification"
         android:name="edu.uw.tcss450.innerlink.ui.Notification.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
-        android:id="@+id/chatFragment"
-        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatFragment"
+        android:id="@+id/navigation_chats"
+        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat_list" >
+        <action
+            android:id="@+id/action_navigation_chats_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/forecastFragment"
+        android:id="@+id/navigation_forecast"
         android:name="edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment"
         android:label="fragment_forecast"
         tools:layout="@layout/fragment_forecast" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatFragment"
+        android:label="@string/chat_label"
+        tools:layout="@layout/fragment_chat">
+        <argument
+            android:name="chat"
+            app:argType="edu.uw.tcss450.innerlink.ui.Chat.Chat" />
+    </fragment>
 </navigation>
