@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="lightGrey">#4A7C7C7C</color>
-    <color name="colorPrimary">#E68161</color>
+    <color name="colorNavBar">#ff8248</color>
+    <color name="lightGrey">#79515151</color>
+    <color name="colorPrimary">#ff8248</color>
+    <color name="colorSelector">#FFD740</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccent">#ffa949</color>
+    <color name="lightWhite">#92FFFFFF</color>
+    <color name="opaqueBlack">#80000000</color>
+    <color name="colorWhite">#FFFFFF</color>
 
 
 
