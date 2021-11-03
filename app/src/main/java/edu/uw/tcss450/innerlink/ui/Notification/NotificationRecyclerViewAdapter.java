@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -55,9 +54,8 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
 
         void setNotification(final Notification notification) {
             mNotification = notification;
+            // TODO: LINK TO APPROPRIATE SCREEN DEPENDING ON NOTIFICATION
 //            binding.buttonFullNotification.setOnClickListener(view -> {
-//                Navigation.findNavController(mView).navigate(
-//                        ChatListFragmentDirections.actionNavigationChatsToChatFragment(notification));
 //            });
             binding.textNotificationType.setText(mNotification.getType());
             binding.textDate.setText(mNotification.getDate());

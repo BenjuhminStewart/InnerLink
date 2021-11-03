@@ -1,21 +1,15 @@
 package edu.uw.tcss450.innerlink.ui.Chat;
 
-import android.graphics.drawable.Icon;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import edu.uw.tcss450.innerlink.R;
-import edu.uw.tcss450.innerlink.databinding.FragmentChatBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatCardBinding;
 
 public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerViewAdapter.ChatViewHolder> {
@@ -60,10 +54,11 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
 
         void setChat(final Chat chat) {
             mChat = chat;
-            binding.buttonFullChat.setOnClickListener(view -> {
-                Navigation.findNavController(mView).navigate(
-                        ChatListFragmentDirections.actionNavigationChatsToChatFragment(chat));
-            });
+            // TODO: APP LOGS OUT ON SELECTION
+//            binding.buttonFullChat.setOnClickListener(view -> {
+//                Navigation.findNavController(mView).navigate(
+//                        ChatListFragmentDirections.actionNavigationChatsToChatFragment(chat));
+//            });
             binding.textSender.setText(mChat.getSender());
             binding.textDate.setText(mChat.getDate());
             binding.textPreview.setText(mChat.getMessage());
