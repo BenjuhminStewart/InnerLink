@@ -2,6 +2,9 @@ package edu.uw.tcss450.innerlink.ui.Notification;
 
 import java.io.Serializable;
 
+/**
+ * Represents a user Notification.
+ */
 public class Notification implements Serializable {
     private final String mType;
     private final String mMessage;

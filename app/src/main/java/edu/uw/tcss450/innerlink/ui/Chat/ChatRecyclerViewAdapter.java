@@ -12,6 +12,9 @@ import java.util.List;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatCardBinding;
 
+/**
+ * Allows the user to cycle/scroll through the list of active Chats on the Chat screen.
+ */
 public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerViewAdapter.ChatViewHolder> {
     //Store all of the blogs to present
     private final List<Chat> mChats;
@@ -39,7 +42,8 @@ public class ChatRecyclerViewAdapter extends RecyclerView.Adapter<ChatRecyclerVi
     }
 
     /**
-     * Objects from this class represent an Individual row View from the List * of rows in the Blog Recycler View.
+     * Objects from this class represent an Individual row View from the List
+     * of rows in the Chat Recycler View.
      */
     public class ChatViewHolder extends RecyclerView.ViewHolder {
         public final View mView;

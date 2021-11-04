@@ -3,6 +3,9 @@ package edu.uw.tcss450.innerlink.ui.Notification;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Generates a list of Notifications.
+ */
 public class NotificationGenerator {
     private static final Notification[] NOTIFICATIONS;
     private static final int COUNT = 20;

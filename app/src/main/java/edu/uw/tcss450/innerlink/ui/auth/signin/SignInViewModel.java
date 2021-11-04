@@ -9,6 +9,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -25,6 +26,10 @@ import java.util.Objects;
 
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
+/**
+ * A {@link ViewModel} subclass.
+ * Validates that user sign in information matches those that are in the database.
+ */
 public class SignInViewModel extends AndroidViewModel {
 
     private MutableLiveData<JSONObject> mResponse;

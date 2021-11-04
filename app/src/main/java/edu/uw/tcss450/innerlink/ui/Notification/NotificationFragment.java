@@ -14,6 +14,14 @@ import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatBinding;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatFragmentArgs;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Represents the Notification screen.
+ *
+ * NOTE: Class may be modified in future versions. When a user selects a Notification, they are
+ * navigated directly to the appropriate screen (i.e. New Connection -> Connections, New Message ->
+ * Messages)
+ */
 public class NotificationFragment extends Fragment {
 
     @Override

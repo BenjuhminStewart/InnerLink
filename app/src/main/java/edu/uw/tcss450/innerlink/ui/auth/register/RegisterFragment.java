@@ -25,6 +25,9 @@ import edu.uw.tcss450.innerlink.utils.PasswordValidator;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Represents the Registration screen where a user can enter their information such as email,
+ * username, and password.
+ * Validates that input information is of the correct/desired form.
  */
 public class RegisterFragment extends Fragment {
 
@@ -126,12 +129,12 @@ public class RegisterFragment extends Fragment {
     }
 
     private void verifyAuthWithServer() {
-
         mRegisterModel.connect(
                 binding.editFirst.getText().toString(),
                 binding.editLast.getText().toString(),
                 binding.editUsername.getText().toString(),
-                binding.editEmail.getText().toString(),  binding.editPassword1.getText().toString());
+                binding.editEmail.getText().toString(),
+                binding.editPassword1.getText().toString());
         //This is an Asynchronous call. No statements after should rely on the
         //result of connect().
 

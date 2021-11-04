@@ -23,6 +23,9 @@ import edu.uw.tcss450.innerlink.utils.PasswordValidator;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Represents the Sign In screen.
+ * User must be registered and verified to sign into the app.
+ * User must enter the correct email and password.
  */
 public class SignInFragment extends Fragment {
 

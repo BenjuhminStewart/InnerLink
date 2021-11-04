@@ -12,6 +12,9 @@ import java.util.List;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentNotificationCardBinding;
 
+/**
+ * Allows the user to cycle/scroll through the list of active Notifications on the Notification screen.
+ */
 public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<NotificationRecyclerViewAdapter.NotificationViewHolder> {
     //Store all of the blogs to present
     private final List<Notification> mNotifications;
@@ -39,7 +42,8 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
     }
 
     /**
-     * Objects from this class represent an Individual row View from the List * of rows in the Blog Recycler View.
+     * Objects from this class represent an Individual row View from the List
+     * of rows in the Notification Recycler View.
      */
     public class NotificationViewHolder extends RecyclerView.ViewHolder {
         public final View mView;

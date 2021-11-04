@@ -12,7 +12,10 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.innerlink.R;
 
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Represents the Chat screen where all of a user's active Chats are listed and displayed.
+ */
 public class ChatListFragment extends Fragment {
 
     public ChatListFragment() {

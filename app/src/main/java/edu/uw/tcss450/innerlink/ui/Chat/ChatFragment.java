@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatBinding;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Represents a Chat (Room) between the user and one or more other members.
+ */
 public class ChatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -4,6 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+/**
+ * A {@link ViewModel} subclass.
+ * Stores the user email and JWT to be used while the user is using the app/hitting different
+ * endpoints.
+ */
 public class UserInfoViewModel extends ViewModel {
 
     private final String mEmail;
