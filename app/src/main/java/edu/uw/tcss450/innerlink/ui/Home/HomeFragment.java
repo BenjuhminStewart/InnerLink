@@ -17,6 +17,7 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Represents the Home screen.
  */
 public class HomeFragment extends Fragment {
 

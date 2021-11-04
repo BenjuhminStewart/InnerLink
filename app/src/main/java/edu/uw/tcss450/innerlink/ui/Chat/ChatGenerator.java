@@ -3,6 +3,9 @@ package edu.uw.tcss450.innerlink.ui.Chat;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Generates a list of Chats.
+ */
 public class ChatGenerator {
     private static final Chat[] CHATS;
     private static final int COUNT = 20;

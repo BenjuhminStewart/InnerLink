@@ -2,6 +2,9 @@ package edu.uw.tcss450.innerlink.ui.Chat;
 
 import java.io.Serializable;
 
+/**
+ * Represents a Chat (Room) between the user and one or more other members.
+ */
 public class Chat implements Serializable {
     private final String mSender;
     private final String mMessage;

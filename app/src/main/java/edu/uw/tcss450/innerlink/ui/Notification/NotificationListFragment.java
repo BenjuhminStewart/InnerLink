@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.innerlink.R;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Represents the Notifications screen where all of a user's active Notifications are listed and displayed.
+ */
 public class NotificationListFragment extends Fragment {
 
     public NotificationListFragment() {

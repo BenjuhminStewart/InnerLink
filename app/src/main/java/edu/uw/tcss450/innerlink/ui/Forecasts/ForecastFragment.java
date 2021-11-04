@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.innerlink.R;
 
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Represents the Forecast screen.
+ */
 public class ForecastFragment extends Fragment {
 
     public ForecastFragment() {

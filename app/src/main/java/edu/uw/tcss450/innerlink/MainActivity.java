@@ -18,7 +18,17 @@ import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
 import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
 
-
+/**
+ * Represents user navigation through the app.
+ * Users navigate through the bottom navigation or other on-screen links.
+ *
+ * @author Satchit Dahal
+ * @author Alec Paule
+ * @author Alex Perez
+ * @author Benjamin Stewart
+ *
+ * @version 1 (Sprint 1R)
+ */
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
