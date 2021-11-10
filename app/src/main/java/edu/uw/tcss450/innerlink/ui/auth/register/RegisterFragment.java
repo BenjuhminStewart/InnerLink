@@ -92,21 +92,21 @@ public class RegisterFragment extends Fragment {
     private void validateLast() {
         mNameValidator.processResult(
                 mNameValidator.apply(binding.editLast.getText().toString().trim()),
-                this::validateEmail,
+                this::validateUsername,
                 result -> binding.editLast.setError("Please enter a last name."));
     }
 
     private void validateEmail() {
         mEmailValidator.processResult(
                 mEmailValidator.apply(binding.editEmail.getText().toString().trim()),
-                this::validateUsername,
+                this::validatePasswordsMatch,
                 result -> binding.editEmail.setError("Please enter a valid Email address."));
     }
 
     private void validateUsername() {
         mUsernameValidator.processResult(
                 mUsernameValidator.apply(binding.editUsername.getText().toString().trim()),
-                this::validatePasswordsMatch,
+                this::validateEmail,
                 result -> binding.editUsername.setError("Please enter a Username."));
     }
 
@@ -125,7 +125,12 @@ public class RegisterFragment extends Fragment {
         mPassWordValidator.processResult(
                 mPassWordValidator.apply(binding.editPassword1.getText().toString()),
                 this::verifyAuthWithServer,
-                result -> binding.editPassword1.setError("Please enter a valid Password."));
+                result -> binding.editPassword1.setError("Please enter a valid Password." +
+                                                             "\nA valid password must have:\n" +
+                                                             "  -At least 7 characters\n" +
+                                                             "  -At least one capital letter\n" +
+                                                             "  -At least one number\n" +
+                                                             "  -At least one special character\n   (@#$%&*!?)"));
     }
 
     private void verifyAuthWithServer() {
@@ -148,7 +153,6 @@ public class RegisterFragment extends Fragment {
         directions.setPassword(binding.editPassword1.getText().toString());
 
         Navigation.findNavController(getView()).navigate(directions);
-
     }
 
     /**
@@ -182,7 +186,5 @@ public class RegisterFragment extends Fragment {
         } else {
             Log.d("JSON Response", "No Response");
         }
-
-
     }
 }
