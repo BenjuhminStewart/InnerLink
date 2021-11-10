@@ -182,9 +182,15 @@ public class RegisterFragment extends Fragment {
                 }
             } else {
                 navigateToLogin();
+                openDialog();
             }
         } else {
             Log.d("JSON Response", "No Response");
         }
+    }
+
+    public void openDialog() {
+        RegisterDialog registerDialog = new RegisterDialog();
+        registerDialog.show(getActivity().getSupportFragmentManager(), "Validate Email Dialog");
     }
 }
