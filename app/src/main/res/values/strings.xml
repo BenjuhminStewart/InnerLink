@@ -22,4 +22,19 @@
     <string name="action_link">Full Chat</string>
     <string name="description">Description</string>
     <string name="go_to">Go To</string>
+
+    <!-- Preference Titles -->
+    <string name="account_header">Account Settings</string>
+    <string name="theme_header">Themes</string>
+
+    <!-- Account Preferences -->
+    <string name="username_title">Your username</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Theme Preferences -->
+    <string name="dark_theme_title">Set dark theme</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>

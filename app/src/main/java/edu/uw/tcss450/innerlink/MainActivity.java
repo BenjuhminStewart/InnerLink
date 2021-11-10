@@ -3,20 +3,26 @@ package edu.uw.tcss450.innerlink;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
 import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
+import edu.uw.tcss450.innerlink.ui.settings.SettingsFragment;
 
 /**
  * Represents user navigation through the app.
@@ -45,13 +51,21 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        FloatingActionButton settingButton =(FloatingActionButton) findViewById(R.id.settings_button);
+        settingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
         navigationView = findViewById(R.id.nav_view);
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
         navigationView.setSelectedItemId(R.id.navigation_home);
-
 
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -85,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     @Override
