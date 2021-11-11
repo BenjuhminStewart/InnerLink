@@ -17,6 +17,8 @@
     <string name="home_label">Home</string>
     <string name="register_final">Register</string>
 
+    <string name="base_url">https://tcss450-innerlink.herokuapp.com/</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_link">Full Chat</string>
