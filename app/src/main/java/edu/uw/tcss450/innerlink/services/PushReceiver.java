@@ -24,6 +24,7 @@
 // * Serves as the background service listening for push messages from the
 // * Pushy server.
 // */
+// // TODO: TO BE UNCOMMENTED WHEN IMPLEMENTING RECEIVING MESSAGES
 //public class PushReceiver extends BroadcastReceiver {
 //
 //    public static final String RECEIVED_NEW_MESSAGE = "new message from pushy";
