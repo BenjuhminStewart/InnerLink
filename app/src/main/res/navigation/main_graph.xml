@@ -27,11 +27,11 @@
         tools:layout="@layout/fragment_forecast" />
     <fragment
         android:id="@+id/chatFragment"
-        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
         android:label="@string/chat_label"
-        tools:layout="@layout/fragment_chat">
+        tools:layout="@layout/fragment_chat_room">
         <argument
-            android:name="chat"
+            android:name="chatMessage"
             app:argType="edu.uw.tcss450.innerlink.ui.Chat.Chat" />
     </fragment>
 </navigation>

@@ -17,7 +17,6 @@ import edu.uw.tcss450.innerlink.R;
  * Represents the Chat screen where all of a user's active Chats are listed and displayed.
  */
 public class ChatListFragment extends Fragment {
-
     public ChatListFragment() {
         // Required empty public constructor
     }
@@ -29,7 +28,7 @@ public class ChatListFragment extends Fragment {
         if (view instanceof RecyclerView) {
             ((RecyclerView) view).setLayoutManager(new GridLayoutManager(getContext(), 1));
             ((RecyclerView) view).setAdapter(
-                    new ChatRecyclerViewAdapter(ChatGenerator.getChatList()));
+                    new ChatRoomRecyclerViewAdapter(ChatGenerator.getChatList()));
         }
 
         return view;
