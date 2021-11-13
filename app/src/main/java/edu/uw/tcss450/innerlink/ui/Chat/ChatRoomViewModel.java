@@ -28,7 +28,7 @@ import java.util.Objects;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
-public class ChatViewModel extends AndroidViewModel {
+public class ChatRoomViewModel extends AndroidViewModel {
 
     /**
      * A Map of Lists of Chat Messages.
@@ -37,7 +37,7 @@ public class ChatViewModel extends AndroidViewModel {
      */
     private Map<Integer, MutableLiveData<List<ChatMessage>>> mMessages;
 
-    public ChatViewModel(@NonNull Application application) {
+    public ChatRoomViewModel(@NonNull Application application) {
         super(application);
         mMessages = new HashMap<>();
     }
@@ -69,6 +69,11 @@ public class ChatViewModel extends AndroidViewModel {
         return getOrCreateMapEntry(chatId).getValue();
     }
 
+    // TODO: GET THE LIST OF CHAT ROOMS ASSOCIATED WITH THIS USER EMAIL
+    public List<ChatRoom> getChatRoomListByEmail(final String email) {
+        return getOrCreateMapEntry(email).getValue();
+    }
+
     private MutableLiveData<List<ChatMessage>> getOrCreateMapEntry(final int chatId) {
         if(!mMessages.containsKey(chatId)) {
             mMessages.put(chatId, new MutableLiveData<>(new ArrayList<>()));
@@ -95,7 +100,7 @@ public class ChatViewModel extends AndroidViewModel {
                 Request.Method.GET,
                 url,
                 null, //no body for this get request
-                this::handelSuccess,
+                this::handleSuccess,
                 this::handleError) {
 
             @Override
@@ -141,7 +146,7 @@ public class ChatViewModel extends AndroidViewModel {
                 Request.Method.GET,
                 url,
                 null, //no body for this get request
-                this::handelSuccess,
+                this::handleSuccess,
                 this::handleError) {
 
             @Override
@@ -176,10 +181,10 @@ public class ChatViewModel extends AndroidViewModel {
         getOrCreateMapEntry(chatId).setValue(list);
     }
 
-    private void handelSuccess(final JSONObject response) {
+    private void handleSuccess(final JSONObject response) {
         List<ChatMessage> list;
         if (!response.has("chatId")) {
-            throw new IllegalStateException("Unexpected response in ChatViewModel: " + response);
+            throw new IllegalStateException("Unexpected response in ChatRoomViewModel: " + response);
         }
         try {
             list = getMessageListByChatId(response.getInt("chatId"));
@@ -206,7 +211,7 @@ public class ChatViewModel extends AndroidViewModel {
             //inform observers of the change (setValue)
             getOrCreateMapEntry(response.getInt("chatId")).setValue(list);
         }catch (JSONException e) {
-            Log.e("JSON PARSE ERROR", "Found in handle Success ChatViewModel");
+            Log.e("JSON PARSE ERROR", "Found in handle Success ChatRoomViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
     }

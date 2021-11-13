@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
-import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
+import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomListFragment;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
 import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 HomeFragment homeFragment = null;
                 NotificationListFragment notificationListFragment = null;
-                ChatListFragment chatListFragment = null;
+                ChatRoomListFragment chatRoomListFragment = null;
                 ForecastFragment forecastFragment = null;
                 switch (menuItem.getItemId()){
                     case R.id.navigation_home:
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.navigation_chats:
-                        chatListFragment = new ChatListFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, chatListFragment).commit();
+                        chatRoomListFragment = new ChatRoomListFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, chatRoomListFragment).commit();
                         break;
 
                     case R.id.navigation_notification:

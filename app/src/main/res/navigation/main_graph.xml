@@ -17,9 +17,9 @@
         tools:layout="@layout/fragment_notification_list" />
     <fragment
         android:id="@+id/navigation_chats"
-        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomListFragment"
         android:label="@string/chat_label"
-        tools:layout="@layout/fragment_chat_list"/>
+        tools:layout="@layout/fragment_chat_room_list"/>
     <fragment
         android:id="@+id/navigation_forecast"
         android:name="edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment"

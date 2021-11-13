@@ -12,7 +12,6 @@ import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.shape.CornerFamily;
 
 import java.util.List;
 
@@ -20,14 +19,12 @@ import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatMessageBinding;
 
 public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMessageRecyclerViewAdapter.MessageViewHolder>{
-
     private final List<ChatMessage> mMessages;
     private final String mEmail;
     public ChatMessageRecyclerViewAdapter(List<ChatMessage> messages, String email) {
         this.mMessages = messages;
         mEmail = email;
     }
-
 
     @NonNull
     @Override
@@ -77,29 +74,20 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.primaryLightColor, null),
+                                res.getColor(R.color.colorPrimary, null),
                                 16));
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.secondaryTextColorFade, null));
+                        res.getColor(R.color.colorPrimaryDark, null));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
-                        res.getColor(R.color.primaryLightColor, null),
+                        res.getColor(R.color.colorAccent, null),
                         200));
-
-                //Round the corners on the left side
-                card.setShapeAppearanceModel(
-                        card.getShapeAppearanceModel()
-                                .toBuilder()
-                                .setTopLeftCorner(CornerFamily.ROUNDED,standard * 2)
-                                .setBottomLeftCorner(CornerFamily.ROUNDED,standard * 2)
-                                .setBottomRightCornerSize(0)
-                                .setTopRightCornerSize(0)
-                                .build());
 
                 card.requestLayout();
             } else {
                 //This message is from another user. Format it as such
+                // TODO: DO NOT INCLUDE SENDER IN MESSAGE... USE ANOTHER METHOD TO DISPLAY SENDER
                 binding.textMessage.setText(message.getSender() +
                         ": " + message.getMessage());
                 ViewGroup.MarginLayoutParams layoutParams =
@@ -113,26 +101,17 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.secondaryLightColor, null),
+                                res.getColor(R.color.colorAccent, null),
                                 16));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
-                        res.getColor(R.color.secondaryLightColor, null),
+                        res.getColor(R.color.colorAccent, null),
                         200));
 
                 binding.textMessage.setTextColor(
-                        res.getColor(R.color.secondaryTextColorFade, null));
+                        res.getColor(R.color.colorPrimaryDark, null));
 
-                //Round the corners on the right side
-                card.setShapeAppearanceModel(
-                        card.getShapeAppearanceModel()
-                                .toBuilder()
-                                .setTopRightCorner(CornerFamily.ROUNDED,standard * 2)
-                                .setBottomRightCorner(CornerFamily.ROUNDED,standard * 2)
-                                .setBottomLeftCornerSize(0)
-                                .setTopLeftCornerSize(0)
-                                .build());
                 card.requestLayout();
             }
         }

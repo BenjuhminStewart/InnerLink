@@ -13,7 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.uw.tcss450.innerlink.R;
-import edu.uw.tcss450.innerlink.databinding.FragmentChatBinding;
+import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomBinding;
+import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +26,7 @@ public class ChatRoomFragment extends Fragment {
     //The chat ID for "global" chat
     private static final int HARD_CODED_CHAT_ID = 1;
 
-    private ChatViewModel mChatModel;
+    private ChatRoomViewModel mChatModel;
     private UserInfoViewModel mUserModel;
 
     public ChatRoomFragment() {
@@ -37,7 +38,7 @@ public class ChatRoomFragment extends Fragment {
         super.onCreate(savedInstanceState);
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
-        mChatModel = provider.get(ChatViewModel.class);
+        mChatModel = provider.get(ChatRoomViewModel.class);
         mChatModel.getFirstMessages(HARD_CODED_CHAT_ID, mUserModel.getmJwt());
         mSendModel = provider.get(ChatSendViewModel.class);
     }
@@ -53,7 +54,7 @@ public class ChatRoomFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FragmentChatBinding binding = FragmentChatBinding.bind(getView());
+        FragmentChatRoomBinding binding = FragmentChatRoomBinding.bind(getView());
 
         //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
         binding.swipeContainer.setRefreshing(true);
@@ -61,9 +62,9 @@ public class ChatRoomFragment extends Fragment {
         final RecyclerView rv = binding.recyclerMessages;
         //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
         //holds.
+        // TODO: GET THE LIST OF CHAT ROOMS ASSOCIATED WITH THIS USER EMAIL
         rv.setAdapter(new ChatRoomRecyclerViewAdapter(
-                mChatModel.getMessageListByChatId(HARD_CODED_CHAT_ID),
-                mUserModel.getEmail()));
+                mChatModel.getMessageListByChatId(HARD_CODED_CHAT_ID)));
 
 
         //When the user scrolls to the top of the RV, the swiper list will "refresh"
