@@ -41,6 +41,9 @@
         <entry key="app/src/main/res/drawable/ic_less_grey_24dp.xml" value="0.48333333333333334" />
         <entry key="app/src/main/res/drawable/ic_more_grey_24dp.xml" value="0.48333333333333334" />
         <entry key="app/src/main/res/drawable/round_corner.xml" value="0.48333333333333334" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.14479166666666668" />
+        <entry key="app/src/main/res/layout-land/fragment_register.xml" value="0.27291666666666664" />
+        <entry key="app/src/main/res/layout-land/fragment_sign_in.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_blog_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.5" />
@@ -52,6 +55,7 @@
         <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/fragment_notification_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_notification_list.xml" value="0.2296195652173913" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.48518518518518516" />
       </map>
     </option>
   </component>

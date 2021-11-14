@@ -56,7 +56,7 @@ public class ChatRoomViewModel extends AndroidViewModel {
     }
 
     /**
-     * Return a reference to the List<> associated with the chat room. If the View Model does
+     * Return a reference to the List<> of messages associated with the chat room. If the View Model does
      * not have a mapping for this chatID, it will be created.
      *
      * WARNING: While this method returns a reference to a mutable list, it should not be
@@ -68,16 +68,6 @@ public class ChatRoomViewModel extends AndroidViewModel {
      */
     public List<ChatMessage> getMessageListByChatId(final int chatId) {
         return getOrCreateMapEntry(chatId).getValue();
-    }
-
-    /**
-     * Return a reference to the List<> of Chat Rooms associated with this email.
-     *
-     * @param email
-     * @return a reference to the list of chat rooms (chatIds)
-     */
-    public List<Integer> getChatRoomListByEmail(final String email) {
-        return new ArrayList<>(mMessages.keySet());
     }
 
     private MutableLiveData<List<ChatMessage>> getOrCreateMapEntry(final int chatId) {

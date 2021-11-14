@@ -48,6 +48,11 @@ public class ChatRoomListViewModel extends AndroidViewModel {
         throw new IllegalStateException(error.getMessage());
     }
 
+    /**
+     * Adds a Chat Room to the list if it is not already present
+     *
+     * @param result
+     */
     private void handleResult(final JSONObject result) {
         IntFunction<String> getString =
                 getApplication().getResources()::getString;
@@ -81,9 +86,13 @@ public class ChatRoomListViewModel extends AndroidViewModel {
         mChatRoomList.setValue(mChatRoomList.getValue());
     }
 
-    // TODO: AUTHORIZATION?? URL??
+    /**
+     * Makes a request to the web service to get the list of Chat Rooms (chatIds) associated
+     * with this user email.
+     */
     public void connectGet() {
-        String url = getApplication().getResources().getString(R.string.base_url) + "chatId";
+        // TODO: RN THERES AN ENDPOINT TO GET THE LIST OF USERS IN A CHAT - NEED ANOTHER "GET" FOR THE LIST OF CHATS
+        String url = getApplication().getResources().getString(R.string.base_url) + "get";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,

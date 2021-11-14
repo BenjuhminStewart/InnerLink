@@ -77,8 +77,6 @@ public class ChatSendViewModel extends AndroidViewModel {
                 .addToRequestQueue(request);
     }
 
-
-
     private void handleError(final VolleyError error) {
         if (Objects.isNull(error.networkResponse)) {
             Log.e("NETWORK ERROR", error.getMessage());
