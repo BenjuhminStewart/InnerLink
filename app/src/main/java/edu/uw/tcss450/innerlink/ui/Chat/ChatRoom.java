@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Encapsulates the Chat Room details
  */
-public class ChatRoom implements Serializable{
+public class ChatRoom implements Serializable {
     private final int mChatId;
 
     public ChatRoom(int chatId) {

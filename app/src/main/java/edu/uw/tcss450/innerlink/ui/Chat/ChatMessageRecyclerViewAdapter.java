@@ -18,9 +18,13 @@ import java.util.List;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatMessageBinding;
 
+/**
+ * Allows the user to scroll through messages in a Chat Room,
+ */
 public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMessageRecyclerViewAdapter.MessageViewHolder>{
     private final List<ChatMessage> mMessages;
     private final String mEmail;
+
     public ChatMessageRecyclerViewAdapter(List<ChatMessage> messages, String email) {
         this.mMessages = messages;
         mEmail = email;

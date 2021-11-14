@@ -8,12 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Set;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
 
 /**
- * Allows the user to cycle/scroll through the list of active Chats on the Chat screen.
+ * Allows the user to cycle/scroll through the list of active Chat Rooms on the Chat screen.
  */
 public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRecyclerViewAdapter.ChatRoomViewHolder> {
     //Store all of the Chat Rooms (Lists of ChatMessages) to present

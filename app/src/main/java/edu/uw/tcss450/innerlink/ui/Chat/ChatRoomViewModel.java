@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
@@ -69,9 +70,14 @@ public class ChatRoomViewModel extends AndroidViewModel {
         return getOrCreateMapEntry(chatId).getValue();
     }
 
-    // TODO: GET THE LIST OF CHAT ROOMS ASSOCIATED WITH THIS USER EMAIL
-    public List<ChatRoom> getChatRoomListByEmail(final String email) {
-        return getOrCreateMapEntry(email).getValue();
+    /**
+     * Return a reference to the List<> of Chat Rooms associated with this email.
+     *
+     * @param email
+     * @return a reference to the list of chat rooms (chatIds)
+     */
+    public List<Integer> getChatRoomListByEmail(final String email) {
+        return new ArrayList<>(mMessages.keySet());
     }
 
     private MutableLiveData<List<ChatMessage>> getOrCreateMapEntry(final int chatId) {

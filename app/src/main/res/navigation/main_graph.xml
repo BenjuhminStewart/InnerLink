@@ -29,9 +29,5 @@
         android:id="@+id/chatFragment"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
         android:label="@string/chat_label"
-        tools:layout="@layout/fragment_chat_room">
-        <argument
-            android:name="chatMessage"
-            app:argType="edu.uw.tcss450.innerlink.ui.Chat.Chat" />
-    </fragment>
+        tools:layout="@layout/fragment_chat_room"/>
 </navigation>

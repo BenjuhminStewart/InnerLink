@@ -18,7 +18,8 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
- * Represents a Chat (Room) between the user and one or more other members.
+ * Represents a Chat Room between the user and one or more other members.
+ * Displays the list of messages.
  */
 public class ChatRoomFragment extends Fragment {
     private ChatSendViewModel mSendModel;
@@ -62,9 +63,9 @@ public class ChatRoomFragment extends Fragment {
         final RecyclerView rv = binding.recyclerMessages;
         //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel
         //holds.
-        // TODO: GET THE LIST OF CHAT ROOMS ASSOCIATED WITH THIS USER EMAIL
-        rv.setAdapter(new ChatRoomRecyclerViewAdapter(
-                mChatModel.getMessageListByChatId(HARD_CODED_CHAT_ID)));
+        rv.setAdapter(new ChatMessageRecyclerViewAdapter(
+                mChatModel.getMessageListByChatId(HARD_CODED_CHAT_ID),
+                mUserModel.getEmail()));
 
 
         //When the user scrolls to the top of the RV, the swiper list will "refresh"
