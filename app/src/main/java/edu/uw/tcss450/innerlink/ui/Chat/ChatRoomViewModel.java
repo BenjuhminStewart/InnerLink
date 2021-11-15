@@ -29,8 +29,10 @@ import java.util.Set;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
+/**
+ * Retains a list of ChatRooms and their respective list of messages
+ */
 public class ChatRoomViewModel extends AndroidViewModel {
-
     /**
      * A Map of Lists of Chat Messages.
      * The Key represents the Chat ID

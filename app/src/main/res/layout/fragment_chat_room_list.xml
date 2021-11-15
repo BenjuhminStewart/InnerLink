@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_root"
-    android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatFragment"
+    android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"

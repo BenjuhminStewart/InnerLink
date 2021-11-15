@@ -25,6 +25,9 @@ import java.util.Objects;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
+/**
+ * Posts/adds a message to the ChatRoom
+ */
 public class ChatSendViewModel extends AndroidViewModel {
 
     private final MutableLiveData<JSONObject> mResponse;

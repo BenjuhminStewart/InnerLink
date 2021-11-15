@@ -26,8 +26,8 @@
         android:label="fragment_forecast"
         tools:layout="@layout/fragment_forecast" />
     <fragment
-        android:id="@+id/chatFragment"
+        android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
-        android:label="@string/chat_label"
-        tools:layout="@layout/fragment_chat_room"/>
+        android:label="fragment_chat_room"
+        tools:layout="@layout/fragment_chat_room" />
 </navigation>

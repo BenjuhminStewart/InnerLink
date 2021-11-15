@@ -19,10 +19,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.IntFunction;
 
 import edu.uw.tcss450.innerlink.R;
@@ -42,10 +44,16 @@ public class ChatRoomListViewModel extends AndroidViewModel {
     }
 
     private void handleError(final VolleyError error) {
-        //you should add much better error handling in a production release.
-        //i.e. YOUR PROJECT
-        Log.e("CONNECTION ERROR", error.getLocalizedMessage());
-        throw new IllegalStateException(error.getMessage());
+        if (Objects.isNull(error.networkResponse)) {
+            Log.e("NETWORK ERROR", error.getMessage());
+        }
+        else {
+            String data = new String(error.networkResponse.data, Charset.defaultCharset());
+            Log.e("CLIENT ERROR",
+                    error.networkResponse.statusCode +
+                            " " +
+                            data);
+        }
     }
 
     /**
@@ -58,17 +66,21 @@ public class ChatRoomListViewModel extends AndroidViewModel {
                 getApplication().getResources()::getString;
         try {
             JSONObject root = result;
+            // if the result has a response
             if (root.has(getString.apply(R.string.keys_json_response))) {
                 JSONObject response = root.getJSONObject(getString.apply(
                         R.string.keys_json_response));
+                // if the result has data
                 if (response.has(getString.apply(R.string.keys_json_data))) {
                     JSONArray data = response.getJSONArray(
                             getString.apply(R.string.keys_json_data));
+                    // create a new Chat Room for each jsonChat Room in the response array
                     for(int i = 0; i < data.length(); i++) {
                         JSONObject jsonChatRoom = data.getJSONObject(i);
                         ChatRoom chatRoom = new ChatRoom(jsonChatRoom.getInt(
                                 getString.apply(R.string.keys_json_chatId)
                         ));
+                        // if this ChatRoomList doesn't already have the ChatRoom value, add it to the list
                         if (!mChatRoomList.getValue().contains(chatRoom)) {
                             mChatRoomList.getValue().add(chatRoom);
                         }
@@ -91,7 +103,7 @@ public class ChatRoomListViewModel extends AndroidViewModel {
      * with this user email.
      */
     public void connectGet() {
-        // TODO: RN THERES AN ENDPOINT TO GET THE LIST OF USERS IN A CHAT - NEED ANOTHER "GET" FOR THE LIST OF CHATS
+        // TODO: RN THERES AN ENDPOINT TO GET THE LIST OF USERS IN A CHAT - NEED ANOTHER "GET" FOR THE LIST OF CHATS - THROWS NULLPOINTEREXCEPTION
         String url = getApplication().getResources().getString(R.string.base_url) + "get";
         Request request = new JsonObjectRequest(
                 Request.Method.GET,

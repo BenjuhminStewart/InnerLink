@@ -62,7 +62,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             // TODO: APP LOGS OUT ON SELECTION, NAVIGATE TO CHAT ROOM
 //            binding.buttonFullChat.setOnClickListener(view -> {
 //                Navigation.findNavController(mView).navigate(
-//                        ChatListFragmentDirections.actionNavigationChatsToChatFragment(chat));
+//                        ChatRoomListFragmentDirections.actionNavigationChatsToChatFragment(chatRoom));
 //            });
             // TODO: GET SENDER FROM CHATID...
             binding.textSender.setText(mChatRoom.getChatId());
