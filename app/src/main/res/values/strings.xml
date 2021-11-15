@@ -32,9 +32,9 @@
     <string name="reply_title">Default reply action</string>
 
     <!-- Theme Preferences -->
-    <string name="dark_theme_title">Set dark theme</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="theme">Select Theme</string>
+    <string name="light_theme_title">Light theme</string>
+    <string name="dark_theme_title">Dark theme</string>
+    <string name="theme_def_value">Light Theme</string>
+
 </resources>

@@ -2,13 +2,17 @@ package edu.uw.tcss450.innerlink;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,6 +20,8 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Set;
 
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
@@ -41,27 +47,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PreferenceManager.getDefaultSharedPreferences(this);
+        setAppTheme();
+
         super.onCreate(savedInstanceState);
 
         MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
 
         new ViewModelProvider(this,
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
-                ).get(UserInfoViewModel.class);
+        ).get(UserInfoViewModel.class);
 
         setContentView(R.layout.activity_main);
 
-        FloatingActionButton settingButton =(FloatingActionButton) findViewById(R.id.settings_button);
+        FloatingActionButton settingButton = (FloatingActionButton) findViewById(R.id.settings_button);
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
         });
 
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
 
         navigationView = findViewById(R.id.nav_view);
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
@@ -74,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 NotificationListFragment notificationListFragment = null;
                 ChatListFragment chatListFragment = null;
                 ForecastFragment forecastFragment = null;
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.navigation_home:
                         homeFragment = new HomeFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
@@ -104,10 +112,34 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Log.i("Orientation Change", "landscape");
-        }else if(newConfig.orientation==Configuration.ORIENTATION_PORTRAIT){
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             Log.i("Orientation Change", "portrait");
+        }
+    }
+
+    public void setAppTheme() {
+        final String[] themeValues = getResources().getStringArray(R.array.theme_values);
+        // The apps theme is decided depending upon the saved preferences on app startup
+        String pref = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), getString(R.string.theme_def_value));
+        // Comparing to see which preference is selected and applying those theme settings
+        if (pref.equals(themeValues[0])) {
+            setTheme(R.style.AppTheme);
+        }
+        if (pref.equals(themeValues[1])) {
+            setTheme(R.style.DarkAppTheme);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (prefs.getBoolean("theme_changed", false)) {
+            prefs.edit().remove("theme_changed").apply();
+            recreate();
         }
     }
 }
