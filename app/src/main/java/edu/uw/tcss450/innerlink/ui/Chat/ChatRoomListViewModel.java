@@ -29,8 +29,11 @@ import java.util.function.IntFunction;
 
 import edu.uw.tcss450.innerlink.R;
 
+/**
+ * Retains a list of Chat Rooms (chatIds) that the user is active in
+ */
 public class ChatRoomListViewModel extends AndroidViewModel {
-    private MutableLiveData<List<ChatRoom>> mChatRoomList;
+    private MutableLiveData<List<Integer>> mChatRoomList;
 
     public ChatRoomListViewModel (@NonNull Application application) {
         super(application);
@@ -39,7 +42,7 @@ public class ChatRoomListViewModel extends AndroidViewModel {
     }
 
     public void addChatRoomListObserver(@NonNull LifecycleOwner owner,
-                                        @NonNull Observer<? super List<ChatRoom>> observer) {
+                                        @NonNull Observer<? super List<Integer>> observer) {
         mChatRoomList.observe(owner, observer);
     }
 
@@ -77,9 +80,9 @@ public class ChatRoomListViewModel extends AndroidViewModel {
                     // create a new Chat Room for each jsonChat Room in the response array
                     for(int i = 0; i < data.length(); i++) {
                         JSONObject jsonChatRoom = data.getJSONObject(i);
-                        ChatRoom chatRoom = new ChatRoom(jsonChatRoom.getInt(
+                        int chatRoom = jsonChatRoom.getInt(
                                 getString.apply(R.string.keys_json_chatId)
-                        ));
+                        );
                         // if this ChatRoomList doesn't already have the ChatRoom value, add it to the list
                         if (!mChatRoomList.getValue().contains(chatRoom)) {
                             mChatRoomList.getValue().add(chatRoom);

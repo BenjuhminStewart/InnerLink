@@ -17,10 +17,10 @@ import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
  * Allows the user to cycle/scroll through the list of active Chat Rooms on the Chat screen.
  */
 public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRecyclerViewAdapter.ChatRoomViewHolder> {
-    //Store all of the Chat Rooms (Lists of ChatMessages) to present
-    private final List<ChatRoom> mChatRooms;
+    //Store all of the Chat Rooms (List of chatIds) to present
+    private final List<Integer> mChatRooms;
 
-    public ChatRoomRecyclerViewAdapter(List<ChatRoom> chatRooms) {
+    public ChatRoomRecyclerViewAdapter(List<Integer> chatRooms) {
         this.mChatRooms = chatRooms;
     }
 
@@ -49,7 +49,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
     public class ChatRoomViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public FragmentChatRoomCardBinding binding;
-        private ChatRoom mChatRoom;
+        private int mChatRoom;
 
         public ChatRoomViewHolder(View view) {
             super(view);
@@ -57,7 +57,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             binding = FragmentChatRoomCardBinding.bind(view);
         }
 
-        void setChatRoom(final ChatRoom chatRoom) {
+        void setChatRoom(final int chatRoom) {
             mChatRoom = chatRoom;
             // TODO: APP LOGS OUT ON SELECTION, NAVIGATE TO CHAT ROOM
 //            binding.buttonFullChat.setOnClickListener(view -> {
@@ -65,7 +65,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
 //                        ChatRoomListFragmentDirections.actionNavigationChatsToChatFragment(chatRoom));
 //            });
             // TODO: GET SENDER FROM CHATID...
-            binding.textSender.setText(mChatRoom.getChatId());
+            binding.textSender.setText(mChatRoom);
         }
     }
 }
