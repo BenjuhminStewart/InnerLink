@@ -7,8 +7,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
@@ -17,11 +18,11 @@ import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
  * Allows the user to cycle/scroll through the list of active Chat Rooms on the Chat screen.
  */
 public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRecyclerViewAdapter.ChatRoomViewHolder> {
-    //Store all of the Chat Rooms (List of chatIds) to present
-    private final List<Integer> mChatRooms;
+    //Store all of the Chat Rooms to present
+    private final List<Integer> mChatIds;
 
-    public ChatRoomRecyclerViewAdapter(List<Integer> chatRooms) {
-        this.mChatRooms = chatRooms;
+    public ChatRoomRecyclerViewAdapter(List<Integer> chatIds) {
+        mChatIds = chatIds;
     }
 
     @NonNull
@@ -34,12 +35,12 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
 
     @Override
     public void onBindViewHolder(@NonNull ChatRoomViewHolder holder, int position) {
-        holder.setChatRoom(mChatRooms.get(position));
+        holder.setChatRoom(mChatIds.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mChatRooms.size();
+        return mChatIds.size();
     }
 
     /**
@@ -49,7 +50,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
     public class ChatRoomViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public FragmentChatRoomCardBinding binding;
-        private int mChatRoom;
+        private int mChatId;
 
         public ChatRoomViewHolder(View view) {
             super(view);
@@ -57,15 +58,15 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             binding = FragmentChatRoomCardBinding.bind(view);
         }
 
-        void setChatRoom(final int chatRoom) {
-            mChatRoom = chatRoom;
-            // TODO: APP LOGS OUT ON SELECTION, NAVIGATE TO CHAT ROOM
+        void setChatRoom(final int chatId) {
+            mChatId = chatId;
+            // TODO: App logs out on selection when navigating to ChatRoomFragment - onSupportUpNav in MainActivity
 //            binding.buttonFullChat.setOnClickListener(view -> {
 //                Navigation.findNavController(mView).navigate(
 //                        ChatRoomListFragmentDirections.actionNavigationChatsToChatFragment(chatRoom));
 //            });
-            // TODO: GET SENDER FROM CHATID...
-            binding.textSender.setText(mChatRoom);
+            // TODO: Get sender from chatID
+            binding.textSender.setText("sender xyz");
         }
     }
 }

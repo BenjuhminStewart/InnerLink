@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
@@ -40,9 +39,17 @@ public class ChatRoomViewModel extends AndroidViewModel {
      */
     private Map<Integer, MutableLiveData<List<ChatMessage>>> mMessages;
 
+    /**
+     * A List of Chat IDs.
+     * Represents all of the Chat Rooms that the user is in.
+     */
+    private MutableLiveData<List<Integer>> mChatRoomList;
+
     public ChatRoomViewModel(@NonNull Application application) {
         super(application);
         mMessages = new HashMap<>();
+        mChatRoomList = new MutableLiveData<>();
+        mChatRoomList.setValue(new ArrayList<>());
     }
 
     /**
@@ -58,8 +65,20 @@ public class ChatRoomViewModel extends AndroidViewModel {
     }
 
     /**
-     * Return a reference to the List<> of messages associated with the chat room. If the View Model does
-     * not have a mapping for this chatID, it will be created.
+     * Register as an observer to listen for when new chat rooms are added (new chatIDs)
+     * @param owner
+     * @param observer
+     */
+    public void addChatRoomListObserver(@NonNull LifecycleOwner owner,
+                                        @NonNull Observer<? super List<Integer>> observer) {
+        mChatRoomList.observe(owner, observer);
+    }
+
+    /**
+     * Return a reference to the List<> of messages associated with the chat room.
+     *
+     * If the View Model does not have a mapping for this chatID, it will be created.
+     * New chatIDs will also be added to the list of chatIDs.
      *
      * WARNING: While this method returns a reference to a mutable list, it should not be
      * mutated externally in client code. Use public methods available in this class as
@@ -75,6 +94,7 @@ public class ChatRoomViewModel extends AndroidViewModel {
     private MutableLiveData<List<ChatMessage>> getOrCreateMapEntry(final int chatId) {
         if(!mMessages.containsKey(chatId)) {
             mMessages.put(chatId, new MutableLiveData<>(new ArrayList<>()));
+            mChatRoomList.getValue().add(chatId);
         }
         return mMessages.get(chatId);
     }
@@ -226,4 +246,6 @@ public class ChatRoomViewModel extends AndroidViewModel {
                             data);
         }
     }
+
+    // TODO: Add connectGet() endpoint to get a chat room's users with a chatID?
 }
