@@ -45,10 +45,15 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView navigationView;
 
+    String theme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         PreferenceManager.getDefaultSharedPreferences(this);
         setAppTheme();
+
+        theme = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), getString(R.string.theme_def_value));
 
         super.onCreate(savedInstanceState);
 
@@ -118,13 +123,12 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Orientation Change", "portrait");
         }
     }
-
     public void setAppTheme() {
         final String[] themeValues = getResources().getStringArray(R.array.theme_values);
         // The apps theme is decided depending upon the saved preferences on app startup
         String pref = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.theme), getString(R.string.theme_def_value));
-        // Comparing to see which preference is selected and applying those theme settings
+        // Compares values for either Light or Dark
         if (pref.equals(themeValues[0])) {
             setTheme(R.style.AppTheme);
         }
@@ -137,9 +141,10 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getBoolean("theme_changed", false)) {
-            prefs.edit().remove("theme_changed").apply();
-            recreate();
+        if (!theme.equals(prefs.getString(getString(R.string.theme), "none"))) {
+            finish();
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
         }
     }
 }

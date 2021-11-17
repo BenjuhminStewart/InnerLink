@@ -23,14 +23,35 @@ import edu.uw.tcss450.innerlink.ui.settings.SettingsFragment;
  */
 public class SettingsActivity extends AppCompatActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener {
+    String theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PreferenceManager.getDefaultSharedPreferences(this);
+        setAppTheme();
+        theme = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), getString(R.string.theme_def_value));
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
 
         PreferenceManager.getDefaultSharedPreferences(this)
                 .registerOnSharedPreferenceChangeListener(this);
+
+        setContentView(R.layout.activity_settings);
+    }
+
+    public void setAppTheme() {
+        final String[] themeValues = getResources().getStringArray(R.array.theme_values);
+        // The apps theme is decided depending upon the saved preferences on app startup
+        String pref = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), getString(R.string.theme_def_value));
+        // Compares values for either Light or Dark
+        if (pref.equals(themeValues[0])) {
+            setTheme(R.style.AppTheme);
+        }
+        if (pref.equals(themeValues[1])) {
+            setTheme(R.style.DarkAppTheme);
+        }
     }
 
     @Override
@@ -38,30 +59,14 @@ public class SettingsActivity extends AppCompatActivity
         String themeString = getString(R.string.theme);
         if (key != null && sharedPreferences != null)
             if (key.equals(themeString)) {
-                final String[] themeValues = getResources().getStringArray(R.array.theme_values);
-                // Current App theme that is selected
-                String pref = PreferenceManager.getDefaultSharedPreferences(this)
-                        .getString(getString(R.string.theme), getString(R.string.theme_def_value));
-                // Checking which theme is selected
-                if (pref.equals(themeValues[0])) {
-                    setTheme(R.style.DarkAppTheme);
-                    finish();
-                    startActivity(getIntent());
-                    overridePendingTransition(0, 0);
-                    PreferenceManager.getDefaultSharedPreferences(this)
-                            .edit()
-                            .putBoolean("theme_changed", true)
-                            .apply();
-                }
-                if (pref.equals(themeValues[1])) {
-                    setTheme(R.style.DarkAppTheme);
-                    finish();
-                    startActivity(getIntent());
-                    overridePendingTransition(0, 0);
-                    PreferenceManager.getDefaultSharedPreferences(this)
-                            .edit()
-                            .putBoolean("theme_changed", true)
-                            .apply();
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                if (!theme.equals(prefs.getString(getString(R.string.theme), "none"))) {
+                    recreate();
+                    // Below replaced with recreate() makes the transition animation seamless, but
+                    // results in bug where the SettingsActivity has multiple without deleting the last Activity.
+                    // finish();
+                    // startActivity(getIntent());
+                    // overridePendingTransition(0, 0);
                 }
             }
     }

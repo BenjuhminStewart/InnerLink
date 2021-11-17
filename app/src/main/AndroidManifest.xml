@@ -23,8 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="edu.uw.tcss450.innerlink.SettingsActivity"
-            android:parentActivityName=".MainActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden">
+            android:excludeFromRecents="true">
         </activity>
     </application>
 </manifest>
