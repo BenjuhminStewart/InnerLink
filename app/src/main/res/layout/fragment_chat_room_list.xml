@@ -6,9 +6,7 @@
     android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
     android:orientation="vertical"
+    app:layoutManager="LinearLayoutManager"
     tools:context="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomListFragment"
-    tools:listitem="@layout/fragment_chat_room_card"/>
+    tools:listitem="@layout/fragment_chat_room_card" />

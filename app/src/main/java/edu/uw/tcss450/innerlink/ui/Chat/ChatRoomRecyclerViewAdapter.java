@@ -1,10 +1,13 @@
 package edu.uw.tcss450.innerlink.ui.Chat;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -36,6 +39,18 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
     @Override
     public void onBindViewHolder(@NonNull ChatRoomViewHolder holder, int position) {
         holder.setChatRoom(mChatIds.get(position));
+
+        // Click anywhere on the card to navigate to the Chat Room fragment
+        holder.itemView.setOnClickListener(v -> {
+            // TODO: App logs out on selection when navigating to ChatRoomFragment - onSupportUpNav in MainActivity
+            // TODO: Pass in this Chat Room/chatId as an argument to ChatRoomFragment
+//            Navigation.findNavController(holder.itemView).navigate(
+//                    ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment()
+//            );
+
+            // Test onClick
+            Log.e("CARD CLICKED", "You clicked card number " + mChatIds.get(position));
+        });
     }
 
     @Override
@@ -60,13 +75,9 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
 
         void setChatRoom(final int chatId) {
             mChatId = chatId;
-            // TODO: App logs out on selection when navigating to ChatRoomFragment - onSupportUpNav in MainActivity
-//            binding.buttonFullChat.setOnClickListener(view -> {
-//                Navigation.findNavController(mView).navigate(
-//                        ChatRoomListFragmentDirections.actionNavigationChatsToChatFragment(chatRoom));
-//            });
             // TODO: Get sender from chatID
-            binding.textSender.setText("sender xyz");
+            binding.textSender.setText("Sender X, Y, Z");
+            binding.textDate.setText("11/16/21");
         }
     }
 }

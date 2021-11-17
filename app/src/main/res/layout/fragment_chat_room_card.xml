@@ -11,45 +11,64 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_inner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="125dp"
         app:layout_constraintBottom_toTopOf="@+id/text_sender"
         app:layout_constraintTop_toTopOf="@+id/text_sender">
 
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="13dp"
+            android:contentDescription="@string/description"
+            android:paddingLeft="4dp"
+            android:src="@drawable/ic_user_icon_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/text_preview"
+            app:layout_constraintEnd_toStartOf="@+id/text_sender"
+            app:layout_constraintHorizontal_bias="0.941"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.176"
+            tools:ignore="ImageContrastCheck" />
+
         <TextView
             android:id="@+id/text_sender"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:layout_width="233dp"
+            android:layout_height="39dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorWhite"
             android:paddingStart="12dp"
             android:paddingTop="8dp"
             android:paddingEnd="8dp"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/text_date"
+            app:layout_constraintHorizontal_bias="0.871"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_date"
-            android:layout_width="340dp"
+            android:layout_width="92dp"
             android:layout_height="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="24dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingBottom="8dp"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.983"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_sender" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_preview"
-            android:layout_width="340dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="309dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="12dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingBottom="8dp"
@@ -57,19 +76,8 @@
             android:textColor="@color/colorPrimaryDark"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_date" />
-
-        <Button
-            android:id="@+id/button_full_chat"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="@string/action_link"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_preview"
-            tools:visibility="visible" />
+            app:layout_constraintTop_toBottomOf="@+id/text_sender" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
