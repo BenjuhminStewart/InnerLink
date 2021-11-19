@@ -19,8 +19,6 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
  * A simple {@link Fragment} subclass.
  * Represents the Chat screen where all of a user's active Chat Rooms are listed and displayed.
  */
-// TODO: "E/RecyclerView: No adapter attached; skipping layout" when first entering ChatRoomFragment
-// TODO: "E/Chat message already received: Or duplicate..."
 public class ChatRoomListFragment extends Fragment {
     private ChatRoomViewModel mChatRoomModel;
     private UserInfoViewModel mUserModel;
@@ -40,7 +38,9 @@ public class ChatRoomListFragment extends Fragment {
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         mChatRoomModel = provider.get(ChatRoomViewModel.class);
-        mChatRoomModel.getFirstMessages(HARD_CODED_CHAT_ID, mUserModel.getmJwt());
+
+        // TODO Get all chat rooms/messages
+        mChatRoomModel.getMessageListByChatId(HARD_CODED_CHAT_ID);
     }
 
     @Override

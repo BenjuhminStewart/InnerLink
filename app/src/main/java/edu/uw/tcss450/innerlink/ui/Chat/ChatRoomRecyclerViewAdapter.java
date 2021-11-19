@@ -40,16 +40,12 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
     public void onBindViewHolder(@NonNull ChatRoomViewHolder holder, int position) {
         holder.setChatRoom(mChatIds.get(position));
 
-        // Click anywhere on the card to navigate to the Chat Room fragment
+//        // Click anywhere on the card to navigate to the Chat Room fragment
         holder.itemView.setOnClickListener(v -> {
-            // TODO: App logs out on selection when navigating to ChatRoomFragment - onSupportUpNav in MainActivity
-            // TODO: Pass in this Chat Room/chatId as an argument to ChatRoomFragment
-//            Navigation.findNavController(holder.itemView).navigate(
-//                    ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment()
-//            );
+            Navigation.findNavController(holder.mView).navigate(
+                    ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment()
+            );
 
-            // Test onClick
-            Log.e("CARD CLICKED", "You clicked card number " + mChatIds.get(position));
         });
     }
 
