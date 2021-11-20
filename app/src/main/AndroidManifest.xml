@@ -20,10 +20,10 @@
         android:roundIcon="@drawable/innerlink_lgo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="edu.uw.tcss450.innerlink.MainActivity"
+        <activity android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden">
         </activity>
-        <activity android:name="edu.uw.tcss450.innerlink.AuthActivity"
+        <activity android:name=".AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

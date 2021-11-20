@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.innerlink.ui.Home.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/home_label"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_notification"
         android:name="edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment"
-        android:label="fragment_notification"
+        android:label="@string/notification_label"
         tools:layout="@layout/fragment_notification_list" />
     <fragment
         android:id="@+id/navigation_chats"
@@ -27,11 +27,11 @@
     <fragment
         android:id="@+id/navigation_forecast"
         android:name="edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment"
-        android:label="fragment_forecast"
+        android:label="@string/forecast_label"
         tools:layout="@layout/fragment_forecast" />
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
-        android:label="fragment_chat_room"
+        android:label="@string/chat_room_label"
         tools:layout="@layout/fragment_chat_room" />
 </navigation>
