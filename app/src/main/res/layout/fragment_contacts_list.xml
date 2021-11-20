@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_root"
+    android:id="@+id/layout_root_contacts"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Home.HomeFragment">
+    tools:context=".ui.Contacts.ContactsFragment">
 
     <TextView
         android:layout_width="207dp"
@@ -57,7 +57,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layoutManager="LinearLayoutManager"
-        tools:context="edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragment"
-        tools:listitem="@layout/fragment_contacts" />
+        app:layoutManager="LinearLayoutManager" />
 </androidx.constraintlayout.widget.ConstraintLayout>
