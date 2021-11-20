@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.IntFunction;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
@@ -78,7 +79,6 @@ public class ChatRoomViewModel extends AndroidViewModel {
      * Return a reference to the List<> of messages associated with the chat room.
      *
      * If the View Model does not have a mapping for this chatID, it will be created.
-     * New chatIDs will also be added to the list of chatIDs.
      *
      * WARNING: While this method returns a reference to a mutable list, it should not be
      * mutated externally in client code. Use public methods available in this class as
@@ -97,6 +97,42 @@ public class ChatRoomViewModel extends AndroidViewModel {
             mChatRoomList.getValue().add(chatId);
         }
         return mMessages.get(chatId);
+    }
+
+    /**
+     * Makes a request to the web service to get the list of chat IDs that the user is in.
+     *
+     * @param email to get the chat IDs of the chat rooms the user is in
+     */
+    public void getChatIds(final String email, final String jwt) {
+        String url = getApplication().getResources().getString(R.string.base_url) +
+                "chats/" + email;
+
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, //no body for this get request
+                this::handleGetChatIdsResult,
+                this::handleError) {
+
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                // add headers <key,value>
+                headers.put("Authorization", jwt);
+                return headers;
+            }
+        };
+
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
+
+        //code here will run
     }
 
     /**
@@ -234,6 +270,48 @@ public class ChatRoomViewModel extends AndroidViewModel {
         }
     }
 
+    /**
+     * Adds a chat room (chat ID) to the list of chat rooms if it is not already present.
+     *
+     * @param result
+     */
+    private void handleGetChatIdsResult(final JSONObject result) {
+        IntFunction<String> getString =
+                getApplication().getResources()::getString;
+        try {
+            JSONObject root = result;
+            // if the result has a response
+            if (root.has(getString.apply(R.string.keys_json_response))) {
+                JSONObject response = root.getJSONObject(getString.apply(
+                        R.string.keys_json_response));
+                // if the result has data
+                if (response.has(getString.apply(R.string.keys_json_data))) {
+                    JSONArray data = response.getJSONArray(
+                            getString.apply(R.string.keys_json_data));
+                    // create a new Chat Room for each jsonChat Room in the response array
+                    for(int i = 0; i < data.length(); i++) {
+                        JSONObject jsonChatRoom = data.getJSONObject(i);
+                        int chatRoom = jsonChatRoom.getInt(
+                                getString.apply(R.string.keys_json_chatId)
+                        );
+                        // if this ChatRoomList doesn't already have the ChatRoom value, add it to the list
+                        if (!mChatRoomList.getValue().contains(chatRoom)) {
+                            mChatRoomList.getValue().add(chatRoom);
+                        }
+                    }
+                } else {
+                    Log.e("ERROR!", "No data array");
+                }
+            } else {
+                Log.e("ERROR!", "No response");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e("ERROR!", e.getMessage());
+        }
+        mChatRoomList.setValue(mChatRoomList.getValue());
+    }
+
     private void handleError(final VolleyError error) {
         if (Objects.isNull(error.networkResponse)) {
             Log.e("NETWORK ERROR", error.getMessage());
@@ -246,6 +324,4 @@ public class ChatRoomViewModel extends AndroidViewModel {
                             data);
         }
     }
-
-    // TODO: Add connectGet() endpoint to get a chat room's users with a chatID?
 }

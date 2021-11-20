@@ -52,22 +52,7 @@ public class ChatRoomListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_chat_room_list, container, false);
-
-        rootView.setTag("RecyclerViewFragment");
-        RecyclerView recycler = (RecyclerView) rootView.findViewById(R.id.list_root);
-
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recycler.setLayoutManager(layoutManager);
-        // TODO: "E/Populate chatIds list with actual chatId values that the user has.
-        List chatIds = new ArrayList<>();
-        chatIds.add(HARD_CODED_CHAT_ID);
-
-        ChatRoomRecyclerViewAdapter adapter = new ChatRoomRecyclerViewAdapter(chatIds);;
-        recycler.setAdapter(adapter);
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_chat_room_list, container, false);
     }
 
     @Override
