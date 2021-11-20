@@ -1,5 +1,6 @@
 package edu.uw.tcss450.innerlink.ui.Notification;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import edu.uw.tcss450.innerlink.databinding.FragmentNotificationCardBinding;
  * Allows the user to cycle/scroll through the list of active Notifications on the Notification screen.
  */
 public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<NotificationRecyclerViewAdapter.NotificationViewHolder> {
-    //Store all of the blogs to present
+    //Store all of the notifications to present
     private final List<Notification> mNotifications;
 
     public NotificationRecyclerViewAdapter(List<Notification> items) {
@@ -34,6 +35,14 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         holder.setNotification(mNotifications.get(position));
+
+        // Click anywhere on the card to navigate to the notification location
+        holder.itemView.setOnClickListener(v -> {
+            // TODO: Navigate to notification location
+
+            // Test onClick
+            Log.e("CARD CLICKED", "You clicked card number " + mNotifications.get(position));
+        });
     }
 
     @Override
@@ -58,9 +67,6 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
 
         void setNotification(final Notification notification) {
             mNotification = notification;
-            // TODO: LINK TO APPROPRIATE SCREEN DEPENDING ON NOTIFICATION
-//            binding.buttonFullNotification.setOnClickListener(view -> {
-//            });
             binding.textNotificationType.setText(mNotification.getType());
             binding.textDate.setText(mNotification.getDate());
             binding.textNotificationMessage.setText(mNotification.getMessage());

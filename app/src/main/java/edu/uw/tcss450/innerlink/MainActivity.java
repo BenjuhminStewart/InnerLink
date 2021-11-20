@@ -3,20 +3,19 @@ package edu.uw.tcss450.innerlink;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
-import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
-import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
-import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
-import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
 
 /**
  * Represents user navigation through the app.
@@ -30,8 +29,7 @@ import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
  * @version 1 (Sprint 1R)
  */
 public class MainActivity extends AppCompatActivity {
-
-    BottomNavigationView navigationView;
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,53 +37,30 @@ public class MainActivity extends AppCompatActivity {
 
         MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
 
-        new ViewModelProvider(this,
-                new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt())
-                ).get(UserInfoViewModel.class);
+
+        new ViewModelProvider(
+                this,
+                new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt()))
+                .get(UserInfoViewModel.class);
 
         setContentView(R.layout.activity_main);
 
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        // Passing each menu ID as a set of IDs because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_home, R.id.navigation_notification, R.id.navigation_chats, R.id.navigation_forecast)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navView, navController);
+    }
 
-
-        navigationView = findViewById(R.id.nav_view);
-        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
-        navigationView.setSelectedItemId(R.id.navigation_home);
-
-
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                HomeFragment homeFragment = null;
-                NotificationListFragment notificationListFragment = null;
-                ChatListFragment chatListFragment = null;
-                ForecastFragment forecastFragment = null;
-                switch (menuItem.getItemId()){
-                    case R.id.navigation_home:
-                        homeFragment = new HomeFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, homeFragment).commit();
-                        break;
-
-                    case R.id.navigation_chats:
-                        chatListFragment = new ChatListFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, chatListFragment).commit();
-                        break;
-
-                    case R.id.navigation_notification:
-                        notificationListFragment = new NotificationListFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, notificationListFragment).commit();
-                        break;
-
-                    case R.id.navigation_forecast:
-                        forecastFragment = new ForecastFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.body_container, forecastFragment).commit();
-                        break;
-                }
-
-                return true;
-            }
-        });
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     @Override
