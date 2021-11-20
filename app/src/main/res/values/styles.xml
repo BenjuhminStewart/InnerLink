@@ -13,11 +13,12 @@
     <!-- Dark application theme. -->
     <style name="DarkAppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:statusBarColor">@color/DarkThemecolorNavBar</item>
+        <item name="android:statusBarColor">@color/colorNavBar</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowBackground">@color/DarkThemecolorNavBar</item>
-        <item name="colorPrimary">@color/DarkThemecolorNavBar</item>
-        <item name="colorPrimaryDark">@color/DarkThemecolorNavBar</item>
-        <item name="colorAccent">@color/DarkThemecolorNavBar</item>
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorNavBar</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 </resources>

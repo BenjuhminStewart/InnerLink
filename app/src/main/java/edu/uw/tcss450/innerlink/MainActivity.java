@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
@@ -64,15 +64,6 @@ public class MainActivity extends AppCompatActivity {
         ).get(UserInfoViewModel.class);
 
         setContentView(R.layout.activity_main);
-
-        FloatingActionButton settingButton = (FloatingActionButton) findViewById(R.id.settings_button);
-        settingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
