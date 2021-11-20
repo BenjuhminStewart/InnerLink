@@ -47,6 +47,5 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.5'
     apply plugin: "androidx.navigation.safeargs"
     implementation 'com.android.volley:volley:1.2.1'
-
-
+    implementation 'me.pushy:sdk:1.0.54'
 }
