@@ -15,6 +15,7 @@
     <string name="chat_room_label">Chat Room</string>
     <string name="home_label">Home</string>
     <string name="register_final">Register</string>
+    <string name="contacts_label">Contacts</string>
 
     <string name="base_url">https://tcss450-innerlink.herokuapp.com/</string>
 

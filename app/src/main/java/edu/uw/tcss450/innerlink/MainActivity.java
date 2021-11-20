@@ -31,7 +31,6 @@ import java.util.Set;
 
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
-import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
 import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
@@ -72,14 +71,16 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        // TODO Make a button to navigate to notifications
+        // TODO navigation_notification changed to navigation_contacts for now
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of IDs because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_notification, R.id.navigation_chats, R.id.navigation_forecast)
+                R.id.navigation_home, R.id.navigation_contacts, R.id.navigation_chats, R.id.navigation_forecast)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        //NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
 

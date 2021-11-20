@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_settings"
             app:destination="@id/navigation_settings" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
     </fragment>
     <fragment
         android:id="@+id/navigation_notification"
@@ -46,4 +49,9 @@
             android:id="@+id/action_navigation_settings_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragment"
+        android:label="@string/contacts_label"
+        tools:layout="@layout/fragment_contacts_list" />
 </navigation>

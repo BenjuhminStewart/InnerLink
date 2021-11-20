@@ -12,7 +12,7 @@
         android:layout_height="58dp"
         android:background="@drawable/round_corner_current_page"
         android:gravity="center_vertical|center_horizontal"
-        android:text="@string/home_label"
+        android:text="@string/contacts_label"
         android:textColor="@android:color/black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -47,4 +47,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_notifications_24"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/list_contacts_root"
+        android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragment"
+        tools:listitem="@layout/fragment_contacts" />
 </androidx.constraintlayout.widget.ConstraintLayout>
