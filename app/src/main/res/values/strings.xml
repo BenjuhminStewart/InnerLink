@@ -21,4 +21,20 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description">Description</string>
+    <string name="go_to">Go To</string>
+
+    <!-- Preference Titles -->
+    <string name="account_header">Account Settings</string>
+    <string name="theme_header">Themes</string>
+
+    <!-- Account Preferences -->
+    <string name="username_title">Your username</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Theme Preferences -->
+    <string name="theme">Select Theme</string>
+    <string name="light_theme_title">Light theme</string>
+    <string name="dark_theme_title">Dark theme</string>
+    <string name="theme_def_value">Light Theme</string>
+
 </resources>
