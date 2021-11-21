@@ -64,7 +64,7 @@ public class ChatRoomListFragment extends Fragment {
         List chatIds = new ArrayList<>();
         chatIds.add(HARD_CODED_CHAT_ID);
 
-        ChatRoomRecyclerViewAdapter adapter = new ChatRoomRecyclerViewAdapter(chatIds);;
+        ChatRoomRecyclerViewAdapter adapter = new ChatRoomRecyclerViewAdapter(chatIds);
         recycler.setAdapter(adapter);
 
         return rootView;
