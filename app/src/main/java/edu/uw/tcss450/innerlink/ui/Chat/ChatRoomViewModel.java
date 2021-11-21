@@ -24,7 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.function.IntFunction;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
@@ -102,17 +101,16 @@ public class ChatRoomViewModel extends AndroidViewModel {
     /**
      * Makes a request to the web service to get the list of chat IDs that the user is in.
      *
-     * @param email to get the chat IDs of the chat rooms the user is in
      */
-    public void getChatIds(final String email, final String jwt) {
+    public void getChatRoomList(final String jwt) {
         String url = getApplication().getResources().getString(R.string.base_url) +
-                "chats/" + email;
+                "chats/";
 
         Request request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
-                null, //no body for this get request
-                this::handleGetChatIdsResult,
+                null,
+                this::handleGetChatRoomListResponse,
                 this::handleError) {
 
             @Override
@@ -133,6 +131,31 @@ public class ChatRoomViewModel extends AndroidViewModel {
                 .addToRequestQueue(request);
 
         //code here will run
+    }
+
+    /**
+     * Adds a chat room (chat ID) to the list of chat rooms if it is not already present.
+     *
+     * @param response
+     */
+    private void handleGetChatRoomListResponse(final JSONObject response) {
+        if(!response.has("chats")) {
+            throw new IllegalStateException("Unexpected response in ChatViewModel: " + response);
+        }
+        try {
+            JSONArray chatRooms = response.getJSONArray("chats");
+
+            for(int i = 0; i < chatRooms.length(); i++) {
+                Integer chatRoom = chatRooms.getInt(i);
+
+                if (!mChatRoomList.getValue().contains(chatRoom)) {
+                    mChatRoomList.getValue().add(chatRoom);
+                }
+            }
+        } catch (JSONException e) {
+            Log.e("JSON PARSE ERROR", "Found in handle Success ChatViewModel");
+            Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
+        }
     }
 
     /**
@@ -268,48 +291,6 @@ public class ChatRoomViewModel extends AndroidViewModel {
             Log.e("JSON PARSE ERROR", "Found in handle Success ChatRoomViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
-    }
-
-    /**
-     * Adds a chat room (chat ID) to the list of chat rooms if it is not already present.
-     *
-     * @param result
-     */
-    private void handleGetChatIdsResult(final JSONObject result) {
-        IntFunction<String> getString =
-                getApplication().getResources()::getString;
-        try {
-            JSONObject root = result;
-            // if the result has a response
-            if (root.has(getString.apply(R.string.keys_json_response))) {
-                JSONObject response = root.getJSONObject(getString.apply(
-                        R.string.keys_json_response));
-                // if the result has data
-                if (response.has(getString.apply(R.string.keys_json_data))) {
-                    JSONArray data = response.getJSONArray(
-                            getString.apply(R.string.keys_json_data));
-                    // create a new Chat Room for each jsonChat Room in the response array
-                    for(int i = 0; i < data.length(); i++) {
-                        JSONObject jsonChatRoom = data.getJSONObject(i);
-                        int chatRoom = jsonChatRoom.getInt(
-                                getString.apply(R.string.keys_json_chatId)
-                        );
-                        // if this ChatRoomList doesn't already have the ChatRoom value, add it to the list
-                        if (!mChatRoomList.getValue().contains(chatRoom)) {
-                            mChatRoomList.getValue().add(chatRoom);
-                        }
-                    }
-                } else {
-                    Log.e("ERROR!", "No data array");
-                }
-            } else {
-                Log.e("ERROR!", "No response");
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.e("ERROR!", e.getMessage());
-        }
-        mChatRoomList.setValue(mChatRoomList.getValue());
     }
 
     private void handleError(final VolleyError error) {

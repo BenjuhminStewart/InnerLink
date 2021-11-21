@@ -36,7 +36,6 @@
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_home.xml" value="0.215625" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_register.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_sign_in.xml" value="1.3333333333333333" />
-        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/layout_dialog.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/ic_chat_notification.xml" value="0.18796296296296297" />
@@ -57,7 +56,7 @@
         <entry key="app/src/main/res/layout/fragment_chat_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_chat_message.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_chat_room_card.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_chat_room_list.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_chat_room_list.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_forecast.xml" value="0.256838905775076" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.2296195652173913" />
