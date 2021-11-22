@@ -75,7 +75,7 @@
         <entry key="app/src/main/res/layout/fragment_chat_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_chat_message.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_chat_room_card.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_chat_room_list.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_chat_room_list.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_forecast.xml" value="0.256838905775076" />
         <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/fragment_notification_card.xml" value="0.5" />
