@@ -16,6 +16,7 @@
     <string name="home_label">Home</string>
     <string name="register_final">Register</string>
     <string name="contacts_label">Contacts</string>
+    <string name="settings_label">Settings</string>
 
     <string name="base_url">https://tcss450-innerlink.herokuapp.com/</string>
 
