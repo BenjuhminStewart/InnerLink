@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.innerlink.ui.Home.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/home_label"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_navigation_settings"
@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/navigation_settings"
         android:name="edu.uw.tcss450.innerlink.ui.settings.SettingsFragment"
-        android:label="fragment_settings" >
+        android:label="@string/settings_label" >
         <action
             android:id="@+id/action_navigation_settings_to_navigation_home"
             app:destination="@id/navigation_home" />
@@ -69,6 +69,10 @@
     <fragment
         android:id="@+id/navigation_contact"
         android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsFragment"
-        android:label="fragment_contacts"
-        tools:layout="@layout/fragment_contacts" />
+        android:label="@string/contacts_label"
+        tools:layout="@layout/fragment_contacts">
+        <argument
+            android:name="ContactsFragment"
+            app:argType="edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel" />
+    </fragment>
 </navigation>

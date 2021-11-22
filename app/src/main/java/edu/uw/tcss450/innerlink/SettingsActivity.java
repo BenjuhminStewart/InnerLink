@@ -11,6 +11,10 @@ import android.widget.Button;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceManager;
 
@@ -30,7 +34,7 @@ import edu.uw.tcss450.innerlink.ui.settings.SettingsFragment;
 public class SettingsActivity extends AppCompatActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener {
     String theme;
-
+    private AppBarConfiguration mAppBarConfiguration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         PreferenceManager.getDefaultSharedPreferences(this);
@@ -52,8 +56,18 @@ public class SettingsActivity extends AppCompatActivity
                 signOut();
             }
         });
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_settings)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     public void signOut() {
         SharedPreferences prefs =
