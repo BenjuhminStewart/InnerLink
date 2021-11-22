@@ -195,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-}
 
     public void setAppTheme() {
         final String[] themeValues = getResources().getStringArray(R.array.theme_values);
