@@ -45,7 +45,6 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             Navigation.findNavController(holder.mView).navigate(
                     ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment()
             );
-
         });
     }
 

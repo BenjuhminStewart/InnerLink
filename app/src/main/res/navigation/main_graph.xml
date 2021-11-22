@@ -53,5 +53,15 @@
         android:id="@+id/navigation_contacts"
         android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragment"
         android:label="@string/contacts_label"
-        tools:layout="@layout/fragment_contacts_list" />
+        tools:layout="@layout/fragment_contacts_list" >
+        <action
+            android:id="@+id/action_navigation_contacts_to_navigation_contact"
+            app:destination="@id/navigation_contact" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contact"
+        android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsFragment"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" />
 </navigation>

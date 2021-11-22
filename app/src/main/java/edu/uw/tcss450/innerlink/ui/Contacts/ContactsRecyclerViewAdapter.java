@@ -1,19 +1,26 @@
 package edu.uw.tcss450.innerlink.ui.Contacts;
 
+import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactCardBinding;
+import edu.uw.tcss450.innerlink.databinding.FragmentContactsBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentNotificationCardBinding;
+import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomListFragmentDirections;
 import edu.uw.tcss450.innerlink.ui.Notification.Notification;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationRecyclerViewAdapter;
 
@@ -35,15 +42,16 @@ public class ContactsRecyclerViewAdapter extends
     public ContactsRecyclerViewAdapter.ContactsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new ContactsRecyclerViewAdapter.ContactsViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.fragment_contacts, parent, false));
+                .inflate(R.layout.fragment_contact_card, parent, false));
     }
     @Override
     public void onBindViewHolder(@NonNull ContactsRecyclerViewAdapter.ContactsViewHolder holder, int position) {
         holder.setContactsModel(mContactsModel.get(position));
         // Click anywhere on the card to navigate to the notification location
         holder.itemView.setOnClickListener(v -> {
-
-            Log.e("CARD CLICKED", "You clicked contact number " + mContactsModel.get(position));
+            Navigation.findNavController(holder.mView).navigate(
+                    ContactsListFragmentDirections.actionNavigationContactsToNavigationContact()
+            );
         });
     }
 
@@ -69,10 +77,7 @@ public class ContactsRecyclerViewAdapter extends
 
         void setContactsModel(final ContactsModel contactsModel) {
             mContactsModel = contactsModel;
-            binding.textEmail.setText(mContactsModel.getmEmail());
-            binding.textFirstName.setText(mContactsModel.getmFirstName());
             binding.textUsername.setText(mContactsModel.getmUsername());
-            binding.textLastName.setText(mContactsModel.getmLastName());
         }
     }
 }

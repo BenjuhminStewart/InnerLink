@@ -124,4 +124,8 @@ public class MainActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
         }
     }
+
+    public UserInfoViewModel getUserInfoViewModel() {
+        return this.getUserInfoViewModel();
+    }
 }
