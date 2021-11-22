@@ -36,12 +36,12 @@ public class ChatRoomListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Returns an existing instance of the ViewModel if it exists, otherwise creates
-        // a new one.
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         mChatRoomListModel = provider.get(ChatRoomListViewModel.class);
         mChatRoomListModel.connectGet(mUserModel.getmJwt());
+
+        // TODO: Get first messages for all chat rooms HERE rather than in ChatRoomFragment
     }
 
     @Override
@@ -55,10 +55,10 @@ public class ChatRoomListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         FragmentChatRoomListBinding binding = FragmentChatRoomListBinding.bind(getView());
         mChatRoomListModel.addChatRoomListObserver(getViewLifecycleOwner(), chatRoomList -> {
-            if (!chatRoomList.isEmpty()) {
+//            if (!chatRoomList.isEmpty()) {
                 binding.listRoot.setAdapter(
                         new ChatRoomRecyclerViewAdapter(chatRoomList));
-            }
+//            }
         });
     }
 }

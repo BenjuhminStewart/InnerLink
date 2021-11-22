@@ -67,7 +67,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
         void setChatRoom(final ChatRoom chatRoom) {
             mChatRoom = chatRoom;
             binding.textChatRoomName.setText(chatRoom.getChatRoomName());
-            binding.textLastMessage.setText(chatRoom.getLastSender() + ": " + chatRoom.getLastMessage());
+            binding.textLastMessage.setText(chatRoom.getLastMessage());
             binding.textTimestamp.setText(chatRoom.getTimeStamp());
         }
     }
