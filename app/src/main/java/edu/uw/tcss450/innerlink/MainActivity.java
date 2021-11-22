@@ -43,7 +43,7 @@ import edu.uw.tcss450.innerlink.services.PushReceiver;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatMessage;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomViewModel;
 
-import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
+import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomListFragment;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
 import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
