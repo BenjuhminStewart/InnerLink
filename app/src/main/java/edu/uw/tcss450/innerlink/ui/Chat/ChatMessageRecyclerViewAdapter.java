@@ -78,7 +78,7 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.colorPrimary, null),
+                                res.getColor(R.color.flame, null),
                                 16));
                 binding.textMessage.setTextColor(
                         res.getColor(R.color.colorPrimaryDark, null));
@@ -91,9 +91,8 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
                 card.requestLayout();
             } else {
                 //This message is from another user. Format it as such
-                // TODO: DO NOT INCLUDE SENDER IN MESSAGE... USE ANOTHER METHOD TO DISPLAY SENDER
-                binding.textMessage.setText(message.getSender() +
-                        ": " + message.getMessage());
+                // TODO: Display sender in group chat
+                binding.textMessage.setText(message.getMessage());
                 ViewGroup.MarginLayoutParams layoutParams =
                         (ViewGroup.MarginLayoutParams) card.getLayoutParams();
 
@@ -105,12 +104,12 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
 
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
-                                res.getColor(R.color.colorAccent, null),
+                                res.getColor(R.color.colorSelector, null),
                                 16));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
-                        res.getColor(R.color.colorAccent, null),
+                        res.getColor(R.color.lightGrey, null),
                         200));
 
                 binding.textMessage.setTextColor(

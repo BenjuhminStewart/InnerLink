@@ -1,18 +1,14 @@
 package edu.uw.tcss450.innerlink.ui.Chat;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
@@ -22,10 +18,10 @@ import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
  */
 public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRecyclerViewAdapter.ChatRoomViewHolder> {
     //Store all of the Chat Rooms to present
-    private final List<Integer> mChatIds;
+    private final List<ChatRoom> mChatRooms;
 
-    public ChatRoomRecyclerViewAdapter(List<Integer> chatIds) {
-        mChatIds = chatIds;
+    public ChatRoomRecyclerViewAdapter(List<ChatRoom> chatRooms) {
+        mChatRooms = chatRooms;
     }
 
     @NonNull
@@ -38,12 +34,11 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
 
     @Override
     public void onBindViewHolder(@NonNull ChatRoomViewHolder holder, int position) {
-        holder.setChatRoom(mChatIds.get(position));
+        holder.setChatRoom(mChatRooms.get(position));
 
-//        // Click anywhere on the card to navigate to the Chat Room fragment
         holder.itemView.setOnClickListener(v -> {
             Navigation.findNavController(holder.mView).navigate(
-                    ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment()
+                    ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment(holder.mChatRoom)
             );
 
         });
@@ -51,7 +46,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
 
     @Override
     public int getItemCount() {
-        return mChatIds.size();
+        return mChatRooms.size();
     }
 
     /**
@@ -61,7 +56,7 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
     public class ChatRoomViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public FragmentChatRoomCardBinding binding;
-        private int mChatId;
+        private ChatRoom mChatRoom;
 
         public ChatRoomViewHolder(View view) {
             super(view);
@@ -69,11 +64,11 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             binding = FragmentChatRoomCardBinding.bind(view);
         }
 
-        void setChatRoom(final int chatId) {
-            mChatId = chatId;
-            // TODO: Get sender from chatID
-            binding.textSender.setText("Sender X, Y, Z");
-            binding.textDate.setText("11/16/21");
+        void setChatRoom(final ChatRoom chatRoom) {
+            mChatRoom = chatRoom;
+            binding.textChatRoomName.setText(chatRoom.getChatRoomName());
+            binding.textLastMessage.setText(chatRoom.getLastMessage());
+            binding.textTimestamp.setText(chatRoom.getTimeStamp());
         }
     }
 }

@@ -37,7 +37,10 @@
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
         android:label="@string/chat_room_label"
-        tools:layout="@layout/fragment_chat_room" />
+        tools:layout="@layout/fragment_chat_room" >
+        <argument
+            android:name="chatRoom"
+            app:argType="edu.uw.tcss450.innerlink.ui.Chat.ChatRoom" />
     <fragment
         android:id="@+id/navigation_settings"
         android:name="edu.uw.tcss450.innerlink.ui.settings.SettingsFragment"
