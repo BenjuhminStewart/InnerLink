@@ -39,17 +39,9 @@ public class ChatRoomViewModel extends AndroidViewModel {
      */
     private Map<Integer, MutableLiveData<List<ChatMessage>>> mMessages;
 
-    /**
-     * A List of Chat IDs.
-     * Represents all of the Chat Rooms that the user is in.
-     */
-    private MutableLiveData<List<Integer>> mChatRoomList;
-
     public ChatRoomViewModel(@NonNull Application application) {
         super(application);
         mMessages = new HashMap<>();
-        mChatRoomList = new MutableLiveData<>();
-        mChatRoomList.setValue(new ArrayList<>());
     }
 
     /**
@@ -62,16 +54,6 @@ public class ChatRoomViewModel extends AndroidViewModel {
                                    @NonNull LifecycleOwner owner,
                                    @NonNull Observer<? super List<ChatMessage>> observer) {
         getOrCreateMapEntry(chatId).observe(owner, observer);
-    }
-
-    /**
-     * Register as an observer to listen for when new chat rooms are added (new chatIDs)
-     * @param owner
-     * @param observer
-     */
-    public void addChatRoomListObserver(@NonNull LifecycleOwner owner,
-                                        @NonNull Observer<? super List<Integer>> observer) {
-        mChatRoomList.observe(owner, observer);
     }
 
     /**
@@ -93,69 +75,8 @@ public class ChatRoomViewModel extends AndroidViewModel {
     private MutableLiveData<List<ChatMessage>> getOrCreateMapEntry(final int chatId) {
         if(!mMessages.containsKey(chatId)) {
             mMessages.put(chatId, new MutableLiveData<>(new ArrayList<>()));
-            mChatRoomList.getValue().add(chatId);
         }
         return mMessages.get(chatId);
-    }
-
-    /**
-     * Makes a request to the web service to get the list of chat IDs that the user is in.
-     *
-     */
-    public void getChatRoomList(final String jwt) {
-        String url = getApplication().getResources().getString(R.string.base_url) +
-                "chats/";
-
-        Request request = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                this::handleGetChatRoomListResponse,
-                this::handleError) {
-
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String, String> headers = new HashMap<>();
-                // add headers <key,value>
-                headers.put("Authorization", jwt);
-                return headers;
-            }
-        };
-
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
-                .addToRequestQueue(request);
-
-        //code here will run
-    }
-
-    /**
-     * Adds a chat room (chat ID) to the list of chat rooms if it is not already present.
-     *
-     * @param response
-     */
-    private void handleGetChatRoomListResponse(final JSONObject response) {
-        if(!response.has("chats")) {
-            throw new IllegalStateException("Unexpected response in ChatViewModel: " + response);
-        }
-        try {
-            JSONArray chatRooms = response.getJSONArray("chats");
-
-            for(int i = 0; i < chatRooms.length(); i++) {
-                Integer chatRoom = chatRooms.getInt(i);
-
-                if (!mChatRoomList.getValue().contains(chatRoom)) {
-                    mChatRoomList.getValue().add(chatRoom);
-                }
-            }
-        } catch (JSONException e) {
-            Log.e("JSON PARSE ERROR", "Found in handle Success ChatViewModel");
-            Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
-        }
     }
 
     /**

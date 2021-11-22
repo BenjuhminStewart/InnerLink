@@ -26,11 +26,8 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
  * Represents the Chat screen where all of a user's active Chat Rooms are listed and displayed.
  */
 public class ChatRoomListFragment extends Fragment {
-    private ChatRoomViewModel mChatRoomModel;
+    private ChatRoomListViewModel mChatRoomListModel;
     private UserInfoViewModel mUserModel;
-
-    // The chat ID for "global" chat
-    private static final int HARD_CODED_CHAT_ID = 1;
 
     public ChatRoomListFragment() {
         // Required empty public constructor
@@ -43,10 +40,8 @@ public class ChatRoomListFragment extends Fragment {
         // a new one.
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
-        mChatRoomModel = provider.get(ChatRoomViewModel.class);
-
-        // TODO Get all chat rooms/messages
-        mChatRoomModel.getMessageListByChatId(HARD_CODED_CHAT_ID);
+        mChatRoomListModel = provider.get(ChatRoomListViewModel.class);
+        mChatRoomListModel.connectGet(mUserModel.getmJwt());
     }
 
     @Override
@@ -59,7 +54,7 @@ public class ChatRoomListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         FragmentChatRoomListBinding binding = FragmentChatRoomListBinding.bind(getView());
-        mChatRoomModel.addChatRoomListObserver(getViewLifecycleOwner(), chatRoomList -> {
+        mChatRoomListModel.addChatRoomListObserver(getViewLifecycleOwner(), chatRoomList -> {
             if (!chatRoomList.isEmpty()) {
                 binding.listRoot.setAdapter(
                         new ChatRoomRecyclerViewAdapter(chatRoomList));
