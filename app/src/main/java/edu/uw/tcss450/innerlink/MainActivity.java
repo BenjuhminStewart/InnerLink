@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -42,6 +43,7 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.services.PushReceiver;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatMessage;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomViewModel;
+
 
 import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomListFragment;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
@@ -88,14 +90,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // TODO Make a button to navigate to notifications
+        // TODO navigation_notification changed to navigation_contacts for now
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of IDs because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_notification, R.id.navigation_chats, R.id.navigation_forecast)
+                R.id.navigation_home, R.id.navigation_contacts, R.id.navigation_chats, R.id.navigation_forecast)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        // NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
         // Gain access to the message count ViewModel
@@ -209,4 +213,8 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.DarkAppTheme);
         }
     }
+    public UserInfoViewModel getUserInfoViewModel() {
+        return this.getUserInfoViewModel();
+    }
 }
+

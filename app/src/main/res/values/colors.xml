@@ -16,7 +16,7 @@
 
     <!-- Dark Theme colors -->
     <color name="DarkThemecolorNavBar">#92FFFFFF</color>
-    <color name="DarkThemecolorPrimary">#000000</color>
+    <color name="DarkThemecolorPrimary">#3E2723</color>
     <color name ="DarkThemecolorPrimaryLight">#000000</color>
     <color name="DarkThemecolorAccent">#000000</color>
 

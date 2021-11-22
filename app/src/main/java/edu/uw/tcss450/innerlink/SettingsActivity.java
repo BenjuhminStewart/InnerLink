@@ -1,7 +1,13 @@
 package edu.uw.tcss450.innerlink;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.MessageQueue;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,8 +44,30 @@ public class SettingsActivity extends AppCompatActivity
                 .registerOnSharedPreferenceChangeListener(this);
 
         setContentView(R.layout.activity_settings);
+
+        Button action_sign_out = (Button) findViewById(R.id.action_sign_out);
+        action_sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
     }
 
+
+    public void signOut() {
+        SharedPreferences prefs =
+                getSharedPreferences(
+                        getString(R.string.keys_shared_prefs),
+                        Context.MODE_PRIVATE);
+
+        prefs.edit().remove(getString(R.string.keys_prefs_jwt)).apply();
+        //End the app completely
+        Intent intent = new Intent(this, AuthActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        // finishAndRemoveTask();
+    }
     public void setAppTheme() {
         final String[] themeValues = getResources().getStringArray(R.array.theme_values);
         // The apps theme is decided depending upon the saved preferences on app startup
@@ -67,6 +95,7 @@ public class SettingsActivity extends AppCompatActivity
                     // finish();
                     // startActivity(getIntent());
                     // overridePendingTransition(0, 0);
+                    recreate();
                 }
             }
     }
