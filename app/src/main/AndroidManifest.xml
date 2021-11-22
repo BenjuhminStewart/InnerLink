@@ -31,6 +31,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="edu.uw.tcss450.innerlink.SettingsActivity"
+            android:excludeFromRecents="true">
+        </activity>
 
         <!-- Pushy Declarations -->
 
@@ -72,5 +75,4 @@
 
         <!-- End Pushy Declarations -->
     </application>
-
 </manifest>

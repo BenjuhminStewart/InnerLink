@@ -2,7 +2,9 @@ package edu.uw.tcss450.innerlink;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.lifecycle.ViewModelProvider;
+
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
@@ -15,12 +17,24 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.google.android.material.badge.BadgeDrawable;
+import android.util.TypedValue;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Set;
 
 import edu.uw.tcss450.innerlink.databinding.ActivityMainBinding;
 import edu.uw.tcss450.innerlink.model.NewMessageCountViewModel;
@@ -28,6 +42,12 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.services.PushReceiver;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatMessage;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomViewModel;
+
+import edu.uw.tcss450.innerlink.ui.Chat.ChatListFragment;
+import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment;
+import edu.uw.tcss450.innerlink.ui.Home.HomeFragment;
+import edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment;
+import edu.uw.tcss450.innerlink.ui.settings.SettingsFragment;
 
 /**
  * Represents user navigation through the app.
@@ -46,12 +66,19 @@ public class MainActivity extends AppCompatActivity {
     private MainPushMessageReceiver mPushMessageReceiver;
     private NewMessageCountViewModel mNewMessageModel;
 
+    String theme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PreferenceManager.getDefaultSharedPreferences(this);
+        setAppTheme();
+
+        theme = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), getString(R.string.theme_def_value));
+
         super.onCreate(savedInstanceState);
 
         MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
-
 
         new ViewModelProvider(
                 this,
@@ -109,9 +136,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Log.i("Orientation Change", "landscape");
-        }else if(newConfig.orientation==Configuration.ORIENTATION_PORTRAIT){
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             Log.i("Orientation Change", "portrait");
         }
     }
@@ -124,6 +151,12 @@ public class MainActivity extends AppCompatActivity {
         }
         IntentFilter iFilter = new IntentFilter(PushReceiver.RECEIVED_NEW_MESSAGE);
         registerReceiver(mPushMessageReceiver, iFilter);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!theme.equals(prefs.getString(getString(R.string.theme), "none"))) {
+            finish();
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
+        }
     }
 
     @Override
@@ -160,6 +193,21 @@ public class MainActivity extends AppCompatActivity {
                 //message.
                 mModel.addMessage(intent.getIntExtra("chatid", -1), cm);
             }
+        }
+    }
+}
+
+    public void setAppTheme() {
+        final String[] themeValues = getResources().getStringArray(R.array.theme_values);
+        // The apps theme is decided depending upon the saved preferences on app startup
+        String pref = PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.theme), getString(R.string.theme_def_value));
+        // Compares values for either Light or Dark
+        if (pref.equals(themeValues[0])) {
+            setTheme(R.style.AppTheme);
+        }
+        if (pref.equals(themeValues[1])) {
+            setTheme(R.style.DarkAppTheme);
         }
     }
 }

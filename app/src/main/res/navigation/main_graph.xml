@@ -8,8 +8,12 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.innerlink.ui.Home.HomeFragment"
-        android:label="@string/home_label"
-        tools:layout="@layout/fragment_home" />
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_notification"
         android:name="edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment"
@@ -37,5 +41,12 @@
         <argument
             android:name="chatRoom"
             app:argType="edu.uw.tcss450.innerlink.ui.Chat.ChatRoom" />
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="edu.uw.tcss450.innerlink.ui.settings.SettingsFragment"
+        android:label="fragment_settings" >
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>
