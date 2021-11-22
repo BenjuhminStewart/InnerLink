@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.innerlink.ui.Home.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/home_label"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_navigation_settings"

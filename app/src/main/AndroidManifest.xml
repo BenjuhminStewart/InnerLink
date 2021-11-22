@@ -23,8 +23,10 @@
         <activity android:name=".MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".AuthActivity"
-            android:exported="true">å
+        <activity
+            android:theme="@style/AppThemeAuth"
+            android:name=".AuthActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
