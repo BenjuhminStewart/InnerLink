@@ -18,7 +18,7 @@
     <string name="contacts_label">Contacts</string>
     <string name="conditions_label">Current Conditions</string>
     <string name="hourly_label">24 Hour</string>
-    <string name="daily_label">5 day / 3 Hour</string>
+    <string name="daily_label">5 day</string>
 
     <string name="settings_label">Settings</string>
 
