@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="colorNavBar">#ff8248</color>
     <color name="lightGrey">#79515151</color>
     <color name="colorPrimary">#ff8248</color>
     <color name="colorSelector">#FFD740</color>
     <color name="colorPrimaryDark">#000000</color>
+    <color name="messageOutline">#000000</color>
     <color name="colorAccent">#ffa949</color>
     <color name="lightWhite">#92FFFFFF</color>
     <color name="opaqueBlack">#80000000</color>
@@ -13,11 +13,14 @@
     <color name="marigold">#F0A202</color>
     <color name="tangerine">#F18805</color>
     <color name="flame">#D95D39</color>
-
+    <color name="mainTextColor">#000000</color>
+    <color name="darkGrey">#222222</color>
     <!-- Dark Theme colors -->
     <color name="DarkThemecolorNavBar">#92FFFFFF</color>
-    <color name="DarkThemecolorPrimary">#3E2723</color>
+    <color name="DarkThemecolorPrimary">#D7404040</color>
     <color name ="DarkThemecolorPrimaryLight">#000000</color>
     <color name="DarkThemecolorAccent">#000000</color>
+    <color name="DarkThemeTextColor">#FFFFFF</color>
+    <color name="DarkThemeMessageOutline">#FFFFFF</color>
 
 </resources>
