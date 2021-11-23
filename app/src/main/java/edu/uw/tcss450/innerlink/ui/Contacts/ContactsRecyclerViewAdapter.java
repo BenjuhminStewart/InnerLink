@@ -50,7 +50,7 @@ public class ContactsRecyclerViewAdapter extends
         // Click anywhere on the card to navigate to the notification location
         holder.itemView.setOnClickListener(v -> {
             Navigation.findNavController(holder.mView).navigate(
-                    ContactsListFragmentDirections.actionNavigationContactsToNavigationContact()
+                    ContactsListFragmentDirections.actionNavigationContactsToNavigationContact(mContactsModel.get(position))
             );
         });
     }

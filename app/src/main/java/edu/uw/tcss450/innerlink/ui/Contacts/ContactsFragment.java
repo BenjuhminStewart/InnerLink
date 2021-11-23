@@ -31,9 +31,11 @@ public class ContactsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ContactsFragmentArgs args = ContactsFragmentArgs.fromBundle(getArguments());
         FragmentContactsBinding binding = FragmentContactsBinding.bind(getView());
-//        binding.textFirstName.setText(mContactsModel.getmFirstName());
-//        binding.textLastName.setText(mContactsModel.getmLastName());
-//        binding.textUsername.setText(mContactsModel.getmUsername());
+        binding.textEmail.setText(args.getContactsFragment().getmEmail());
+        binding.textFirstName.setText(args.getContactsFragment().getmFirstName());
+        binding.textLastName.setText(args.getContactsFragment().getmLastName());
+        binding.textUsername.setText(args.getContactsFragment().getmUsername());
     }
 }

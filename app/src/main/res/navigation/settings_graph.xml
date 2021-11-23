@@ -3,19 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/settings_graph"
+    android:label="@string/settings_label"
     app:startDestination="@id/SettingsPageFragment">
 
     <fragment
         android:id="@+id/SettingsFragment"
         android:name="edu.uw.tcss450.innerlink.ui.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/activity_settings">
-    </fragment>
+        tools:layout="@layout/activity_settings"></fragment>
 
     <fragment
         android:id="@+id/SettingsPageFragment"
         android:name="edu.uw.tcss450.innerlink.ui.settings.SettingsPageFragment"
-        android:label="fragment_settings_page"
-        tools:layout="@layout/activity_settings">
-    </fragment>
+        android:label="@string/settings_label"
+        tools:layout="@layout/activity_settings"></fragment>
 </navigation>

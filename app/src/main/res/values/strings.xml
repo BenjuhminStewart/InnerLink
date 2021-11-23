@@ -20,6 +20,9 @@
     <string name="hourly_label">24 Hour</string>
     <string name="daily_label">5 day / 3 Hour</string>
 
+    <string name="settings_label">Settings</string>
+
+
     <string name="base_url">https://tcss450-innerlink.herokuapp.com/</string>
 
     <!-- TODO: Remove or change this placeholder text -->
