@@ -12,6 +12,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/mainTextColor</item>
+        <item name="textColorAlertDialogListItem">@color/mainTextColor</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
 
     </style>
 
@@ -26,6 +28,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+
     </style>
 
     <!-- Dark application theme. -->
@@ -38,6 +41,9 @@
         <item name="colorPrimaryDark">@color/DarkThemecolorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/DarkThemeTextColor</item>
+        <item name="textColorAlertDialogListItem">@color/DarkThemeTextColor</item>
+        <item name="android:titleTextColor">@color/DarkThemeTextColor</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
 
     </style>
 

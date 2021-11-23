@@ -15,11 +15,12 @@
     <color name="flame">#D95D39</color>
     <color name="mainTextColor">#000000</color>
     <color name="darkGrey">#222222</color>
+    <color name="colorSecondary">#FFFFFF</color>
     <!-- Dark Theme colors -->
     <color name="DarkThemecolorNavBar">#92FFFFFF</color>
     <color name="DarkThemecolorPrimary">#D7404040</color>
     <color name ="DarkThemecolorPrimaryLight">#000000</color>
-    <color name="DarkThemecolorAccent">#000000</color>
+    <color name="DarkThemecolorAccent">#FFFFFF</color>
     <color name="DarkThemeTextColor">#FFFFFF</color>
     <color name="DarkThemeMessageOutline">#FFFFFF</color>
 

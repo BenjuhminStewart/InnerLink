@@ -100,10 +100,13 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
         } else {
             meridiem = "am";
         }
-        int hourFormatted = ((Integer.parseInt(hours) + 11) % 12) + 1;
+        int hourFormatted = ((Integer.parseInt(hours) % 12));
+        if(hourFormatted == 0) {
+            hourFormatted = 12;
+        }
         String finalTime = hourFormatted + ":" + minutes + meridiem;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        sdf.setTimeZone(TimeZone.getDefault());
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
         String currDate = sdf.format(new Date());
         String[] currDateArr = currDate.split("-");
         String[] textDateArr = date.split("-");
