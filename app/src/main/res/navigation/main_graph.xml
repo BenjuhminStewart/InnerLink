@@ -69,6 +69,6 @@
     <fragment
         android:id="@+id/navigation_contact"
         android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsFragment"
-        android:label="fragment_contacts"
+        android:label="@string/contacts_label"
         tools:layout="@layout/fragment_contacts" />
 </navigation>

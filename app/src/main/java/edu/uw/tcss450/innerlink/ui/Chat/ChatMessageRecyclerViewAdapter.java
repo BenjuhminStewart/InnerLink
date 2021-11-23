@@ -79,7 +79,7 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
                                 res.getColor(R.color.colorPrimary, null),
-                                50));
+                                100));
 //                binding.textMessage.setTextColor(
 //                        res.getColor(R., null));
 
@@ -105,7 +105,7 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
                 card.setCardBackgroundColor(
                         ColorUtils.setAlphaComponent(
                                 res.getColor(R.color.darkGrey, null),
-                                50));
+                                100));
 
                 card.setStrokeWidth(standard / 5);
                 card.setStrokeColor(ColorUtils.setAlphaComponent(
