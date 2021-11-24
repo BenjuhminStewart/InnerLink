@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 import edu.uw.tcss450.innerlink.ui.Chat.ChatMessage;
 
+/**
+ * Encapsulate contact details.
+ */
 public class ContactsModel implements Serializable {
 
     private String mUsername;

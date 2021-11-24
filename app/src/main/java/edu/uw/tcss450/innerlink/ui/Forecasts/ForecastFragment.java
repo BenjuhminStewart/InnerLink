@@ -13,7 +13,6 @@ import edu.uw.tcss450.innerlink.databinding.FragmentForecastBinding;
 
 
 /**
- * A simple {@link Fragment} subclass.
  * Represents the Forecast screen.
  */
 public class ForecastFragment extends Fragment {

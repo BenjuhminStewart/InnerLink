@@ -201,6 +201,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that sets the app theme upon a change in the shared preference menu.
+     */
     public void setAppTheme() {
         final String[] themeValues = getResources().getStringArray(R.array.theme_values);
         // The apps theme is decided depending upon the saved preferences on app startup
@@ -214,6 +217,10 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.DarkAppTheme);
         }
     }
+
+    /**
+     * Getter method to get the current user info view model.
+     */
     public UserInfoViewModel getUserInfoViewModel() {
         return this.getUserInfoViewModel();
     }

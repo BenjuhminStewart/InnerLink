@@ -69,6 +69,9 @@ public class SettingsActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * The sign out functionality for the sign out button.
+     */
     public void signOut() {
         SharedPreferences prefs =
                 getSharedPreferences(
@@ -82,6 +85,10 @@ public class SettingsActivity extends AppCompatActivity
         startActivity(intent);
         // finishAndRemoveTask();
     }
+
+    /**
+     * Method that sets the app theme upon a change in the shared preference menu.
+     */
     public void setAppTheme() {
         final String[] themeValues = getResources().getStringArray(R.array.theme_values);
         // The apps theme is decided depending upon the saved preferences on app startup
@@ -104,11 +111,6 @@ public class SettingsActivity extends AppCompatActivity
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 if (!theme.equals(prefs.getString(getString(R.string.theme), "none"))) {
                     recreate();
-                    // Below replaced with recreate() makes the transition animation seamless, but
-                    // results in bug where the SettingsActivity has multiple without deleting the last Activity.
-                    // finish();
-                    // startActivity(getIntent());
-                    // overridePendingTransition(0, 0);
                     recreate();
                 }
             }

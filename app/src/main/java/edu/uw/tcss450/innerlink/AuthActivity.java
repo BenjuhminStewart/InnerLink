@@ -27,22 +27,10 @@ public class AuthActivity extends AppCompatActivity {
         initiatePushyTokenRequest();
     }
 
+    /**
+     * Method initiates the pushy token request for retrieval.
+     */
     private void initiatePushyTokenRequest() {
         new ViewModelProvider(this).get(PushyTokenViewModel.class).retrieveToken();
     }
-
-    //public void setAppTheme() {
-    //    final String[] themeValues = getResources().getStringArray(R.array.theme_values);
-    //    Start up App Theme
-    //    String pref = PreferenceManager.getDefaultSharedPreferences(this)
-    //            .getString(getString(R.string.theme), getString(R.string.theme_def_value));
-    // Compares values for either Light or Dark
-    //    if (pref.equals(themeValues[0])) {
-    //        setTheme(R.style.AppTheme);
-    //    }
-    //    if (pref.equals(themeValues[1])) {
-    //        setTheme(R.style.DarkAppTheme);
-    //   }
-    //}
-
 }

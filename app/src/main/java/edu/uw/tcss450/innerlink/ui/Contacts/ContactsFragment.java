@@ -18,6 +18,10 @@ import edu.uw.tcss450.innerlink.databinding.FragmentContactsBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactsListBinding;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatMessageRecyclerViewAdapter;
 
+/**
+ * A fragment that displays the contact's information after clicking the specific contact
+ * card on the list selection fragment.
+ */
 public class ContactsFragment extends Fragment {
 
     @Override

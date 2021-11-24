@@ -33,7 +33,8 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatMessage;
 
 /**
- * A {@link ViewModel} subclass.
+ * Retains a list of Contacts and has methods
+ * to send contact requests and generate contacts.
  */
 public class ContactsViewModel extends AndroidViewModel {
     private UserInfoViewModel viewModel;

@@ -22,7 +22,6 @@ import edu.uw.tcss450.innerlink.SettingsActivity;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
 /**
- * A simple {@link Fragment} subclass.
  * Represents the Settings screen which is populated by the preference fragment.
  */
 public class SettingsFragment extends PreferenceFragmentCompat {

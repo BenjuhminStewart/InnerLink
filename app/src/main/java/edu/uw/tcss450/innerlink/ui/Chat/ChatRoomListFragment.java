@@ -22,7 +22,6 @@ import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomListBinding;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
 /**
- * A simple {@link Fragment} subclass.
  * Represents the Chat screen where all of a user's active Chat Rooms are listed and displayed.
  */
 public class ChatRoomListFragment extends Fragment {

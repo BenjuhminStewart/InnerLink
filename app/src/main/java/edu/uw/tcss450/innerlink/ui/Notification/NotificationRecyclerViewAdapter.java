@@ -20,6 +20,10 @@ public class NotificationRecyclerViewAdapter extends RecyclerView.Adapter<Notifi
     //Store all of the notifications to present
     private final List<Notification> mNotifications;
 
+    /**
+     * Constructor for the Notification recycler view adapter.
+     * @param items the notifications in the current list of notifications.
+     */
     public NotificationRecyclerViewAdapter(List<Notification> items) {
         this.mNotifications = items;
     }

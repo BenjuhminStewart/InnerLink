@@ -19,26 +19,27 @@ import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.SettingsActivity;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Represents the fragment hosting the settings preferences and the sign out button.
  */
-                public class SettingsPageFragment extends Fragment {
+    public class SettingsPageFragment extends Fragment {
 
-                    public SettingsPageFragment() {
-                        // Required empty public constructor
-                    }
+    /**
+     * Constructor for Settings Page Fragment.
+      */
+    public SettingsPageFragment() {
+        // Required empty public constructor
+    }
 
-                    @Override
-                    public void onCreate(Bundle savedInstanceState) {
-                        super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-                    }
-
-                    @Override
-                    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                             Bundle savedInstanceState) {
-
-                        View view =  inflater.inflate(R.layout.fragment_settings_page, container, false);
-                        // Inflate the layout for this fragment
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_settings_page, container, false);
+        // Inflate the layout for this fragment
         return view;
     }
 }

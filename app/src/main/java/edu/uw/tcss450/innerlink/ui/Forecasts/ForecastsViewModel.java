@@ -29,6 +29,9 @@ import java.util.Objects;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatRoom;
 
+/**
+ * Retains a list of Forecasts and their hourly, daily, and weekly conditions.
+ */
 public class ForecastsViewModel extends AndroidViewModel {
 
     private MutableLiveData<JSONObject> mResponse;

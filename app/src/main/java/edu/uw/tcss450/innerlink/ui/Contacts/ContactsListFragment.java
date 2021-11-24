@@ -27,7 +27,7 @@ import edu.uw.tcss450.innerlink.ui.Notification.NotificationGenerator;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationRecyclerViewAdapter;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A fragment that displays the list of the users contacts.
  */
 public class ContactsListFragment extends Fragment {
     private ContactsViewModel mContactViewModel;
