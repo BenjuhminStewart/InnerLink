@@ -1,5 +1,6 @@
 package edu.uw.tcss450.innerlink.ui.Contacts;
 
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -15,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.w3c.dom.Text;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactCardBinding;
@@ -30,12 +34,19 @@ import edu.uw.tcss450.innerlink.ui.Notification.NotificationRecyclerViewAdapter;
 public class ContactsRecyclerViewAdapter extends
         RecyclerView.Adapter<edu.uw.tcss450.innerlink.ui.Contacts.ContactsRecyclerViewAdapter.
                 ContactsViewHolder> {
+
     //Store all of the notifications to present
     private final List<ContactsModel> mContactsModel;
 
+    //Store the expanded state for each List item, true -> expanded, false -> not
+    private final Map<ContactsModel, Boolean> mExpandedFlags;
+
     public ContactsRecyclerViewAdapter(List<ContactsModel> items) {
         this.mContactsModel = items;
+        mExpandedFlags = mContactsModel.stream()
+                .collect(Collectors.toMap(Function.identity(), contact -> false));
     }
+
     // TODO: Navigate to a contacts card
     @NonNull
     @Override
@@ -44,15 +55,10 @@ public class ContactsRecyclerViewAdapter extends
                 .from(parent.getContext())
                 .inflate(R.layout.fragment_contact_card, parent, false));
     }
+
     @Override
     public void onBindViewHolder(@NonNull ContactsRecyclerViewAdapter.ContactsViewHolder holder, int position) {
         holder.setContactsModel(mContactsModel.get(position));
-        // Click anywhere on the card to navigate to the notification location
-        holder.itemView.setOnClickListener(v -> {
-            Navigation.findNavController(holder.mView).navigate(
-                    ContactsListFragmentDirections.actionNavigationContactsToNavigationContact(mContactsModel.get(position))
-            );
-        });
     }
 
     @Override
@@ -69,15 +75,54 @@ public class ContactsRecyclerViewAdapter extends
         public FragmentContactCardBinding binding;
         private ContactsModel mContactsModel;
 
+
         public ContactsViewHolder(View view) {
             super(view);
             mView = view;
             binding = FragmentContactCardBinding.bind(view);
+            binding.buittonMore.setOnClickListener(this::handleMoreOrLess);
         }
 
         void setContactsModel(final ContactsModel contactsModel) {
             mContactsModel = contactsModel;
             binding.textUsername.setText(mContactsModel.getmUsername());
+            binding.textEmailCard.setText(mContactsModel.getmEmail());
+            binding.textFirstnameCard.setText(mContactsModel.getmFirstName());
+            binding.textLastnameCard.setText(mContactsModel.getmLastName());
+        }
+
+        /**
+         * When the button is clicked in the more state, expand the card to display
+         * the blog preview and switch the icon to the less state. When the button
+         * is clicked in the less state, shrink the card and switch the icon to the
+         * more state.
+         * @param button the button that was clicked
+         */
+        private void handleMoreOrLess(final View button) {
+            mExpandedFlags.put(mContactsModel, !mExpandedFlags.get(mContactsModel));
+            displayPreview();
+        }
+        /**
+         * Helper used to determine if the preview should be displayed or not.
+         */
+        private void displayPreview() {
+            if (mExpandedFlags.get(mContactsModel)) {
+                binding.textEmailCard.setVisibility(View.VISIBLE);
+                binding.textFirstnameCard.setVisibility(View.VISIBLE);
+                binding.textLastnameCard.setVisibility(View.VISIBLE);
+                binding.buittonMore.setImageIcon(
+                        Icon.createWithResource(
+                                mView.getContext(),
+                                R.drawable.ic_less_grey_24dp));
+            } else {
+                binding.textEmailCard.setVisibility(View.GONE);
+                binding.textFirstnameCard.setVisibility(View.GONE);
+                binding.textLastnameCard.setVisibility(View.GONE);
+                binding.buittonMore.setImageIcon(
+                        Icon.createWithResource(
+                                mView.getContext(),
+                                R.drawable.ic_more_grey_24dp));
+            }
         }
     }
 }
