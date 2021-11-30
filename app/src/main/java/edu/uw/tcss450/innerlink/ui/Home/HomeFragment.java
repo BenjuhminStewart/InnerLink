@@ -39,14 +39,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        FloatingActionButton settingButton = (FloatingActionButton) view.findViewById(R.id.settings_button);
-        settingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
 
         FloatingActionButton notificationButton = (FloatingActionButton) view.findViewById(R.id.notification_button);
         notificationButton.setOnClickListener(new View.OnClickListener() {

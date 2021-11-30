@@ -89,6 +89,7 @@ public class ContactsRecyclerViewAdapter extends
             binding.textEmailCard.setText(mContactsModel.getmEmail());
             binding.textFirstnameCard.setText(mContactsModel.getmFirstName());
             binding.textLastnameCard.setText(mContactsModel.getmLastName());
+            displayPreview();
         }
 
         /**
