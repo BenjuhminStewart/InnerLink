@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +58,15 @@ public class ContactsListFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         binding = FragmentContactsListBinding.inflate(inflater);
+
+        FloatingActionButton addButton = (FloatingActionButton) binding.getRoot().findViewById(R.id.add_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_notification);
+            }
+        });
+
         return binding.getRoot();
     }
 

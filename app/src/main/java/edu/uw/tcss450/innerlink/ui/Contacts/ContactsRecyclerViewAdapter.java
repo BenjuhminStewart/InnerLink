@@ -111,6 +111,7 @@ public class ContactsRecyclerViewAdapter extends
                 binding.textEmailCard.setVisibility(View.VISIBLE);
                 binding.textFirstnameCard.setVisibility(View.VISIBLE);
                 binding.textLastnameCard.setVisibility(View.VISIBLE);
+                binding.buttonRemove.setVisibility(View.VISIBLE);
                 binding.buittonMore.setImageIcon(
                         Icon.createWithResource(
                                 mView.getContext(),
@@ -119,6 +120,7 @@ public class ContactsRecyclerViewAdapter extends
                 binding.textEmailCard.setVisibility(View.GONE);
                 binding.textFirstnameCard.setVisibility(View.GONE);
                 binding.textLastnameCard.setVisibility(View.GONE);
+                binding.buttonRemove.setVisibility(View.GONE);
                 binding.buittonMore.setImageIcon(
                         Icon.createWithResource(
                                 mView.getContext(),
