@@ -27,6 +27,7 @@ import android.util.Log;
 
 import com.google.android.material.badge.BadgeDrawable;
 import android.util.TypedValue;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -149,6 +150,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivity(intent);
+            Log.d("SETTINGS", "Clicked");
+            return true;
+        }
+        if (id == R.id.action_sign_out) {
+            signOut();
+            Log.d("SIGN OUT", "Clicked");
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * The sign out functionality for the sign out button.
+     */
+    public void signOut() {
+        SharedPreferences prefs =
+                getSharedPreferences(
+                        getString(R.string.keys_shared_prefs),
+                        Context.MODE_PRIVATE);
+
+        prefs.edit().remove(getString(R.string.keys_prefs_jwt)).apply();
+        Intent intent = new Intent(this, AuthActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         if (mPushMessageReceiver == null) {
@@ -224,5 +263,6 @@ public class MainActivity extends AppCompatActivity {
     public UserInfoViewModel getUserInfoViewModel() {
         return this.getUserInfoViewModel();
     }
+
 }
 

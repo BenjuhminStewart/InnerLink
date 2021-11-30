@@ -11,14 +11,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_inner"
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/text_email"
         app:layout_constraintTop_toTopOf="@+id/text_email">
 
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="112dp"
-            android:layout_height="56dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="4dp"
             android:contentDescription="@string/description"
             android:paddingLeft="4dp"
@@ -26,27 +26,133 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.492"
+            app:layout_constraintVertical_bias="0.03"
             tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/text_username"
-            android:layout_width="277dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:gravity="left|center_vertical"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingBottom="8dp"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
             android:visibility="visible"
-            android:gravity="left|center_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/image_view"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.339" />
+            app:layout_constraintVertical_bias="0.021" />
+
+        <TextView
+            android:id="@+id/text_email_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_username"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/text_firstname_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_email_card"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/text_lastname_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_firstname_card"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageButton
+            android:id="@+id/buitton_more"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:drawable/screen_background_light_transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.957"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03"
+            app:srcCompat="@drawable/ic_more_grey_24dp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/button_remove"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Remove Contact"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <!--    <Button-->
+        <!--        android:id="@+id/action_sign_out"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginStart="64dp"-->
+        <!--        android:layout_marginTop="32dp"-->
+        <!--        android:layout_marginEnd="64dp"-->
+        <!--        android:background="@drawable/round_corner_logout"-->
+        <!--        android:drawablePadding="4dp"-->
+        <!--        android:text="Sign Out"-->
+        <!--        android:textSize="16sp"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView"-->
+        <!--        app:layout_constraintVertical_bias="1" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

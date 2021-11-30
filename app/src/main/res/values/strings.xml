@@ -21,6 +21,7 @@
     <string name="daily_label">5 day</string>
 
     <string name="settings_label">Settings</string>
+    <string name="sign_out_label">Sign Out</string>
 
 
     <string name="base_url">https://tcss450-innerlink.herokuapp.com/</string>

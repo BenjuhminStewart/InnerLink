@@ -49,13 +49,6 @@ public class SettingsActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_settings);
 
-        Button action_sign_out = (Button) findViewById(R.id.action_sign_out);
-        action_sign_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_settings)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -67,23 +60,6 @@ public class SettingsActivity extends AppCompatActivity
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    /**
-     * The sign out functionality for the sign out button.
-     */
-    public void signOut() {
-        SharedPreferences prefs =
-                getSharedPreferences(
-                        getString(R.string.keys_shared_prefs),
-                        Context.MODE_PRIVATE);
-
-        prefs.edit().remove(getString(R.string.keys_prefs_jwt)).apply();
-        //End the app completely
-        Intent intent = new Intent(this, AuthActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        // finishAndRemoveTask();
     }
 
     /**
