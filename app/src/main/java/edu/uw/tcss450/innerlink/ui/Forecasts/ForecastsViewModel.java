@@ -121,7 +121,6 @@ public class ForecastsViewModel extends AndroidViewModel {
                 null, //no body for this get request
                 this::parseResponse,
                 this::handleError) {
-
         };
         request.setRetryPolicy(new DefaultRetryPolicy(
                 10_000,
