@@ -56,12 +56,12 @@ public class ContactsViewModel extends AndroidViewModel {
     }
 
 
-    public void sendRequest(String receiver) {
+    public void sendRequest(final String email) {
         String url = getApplication().getResources().getString(R.string.base_url)
                 + "contacts";
         JSONObject body = new JSONObject();
         try {
-            body.put("receiver", receiver);
+            body.put("email", email);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,20 @@ public class ContactsViewModel extends AndroidViewModel {
                 body, //push token found in the JSONObject body
                 null, // we get a response but do nothing with it
                 this::handleError) {
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> headers = new HashMap<>();
+                        headers.put("Authorization", viewModel.getmJwt());
+                        return headers;
+                    }
         };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
     }
 
     public void deleteContact(final String email) {
@@ -91,8 +104,6 @@ public class ContactsViewModel extends AndroidViewModel {
                 return headers;
             }
         };
-        System.out.println(email);
-        System.out.println(request);
         request.setRetryPolicy(new DefaultRetryPolicy(
                 10_000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -130,15 +141,6 @@ public class ContactsViewModel extends AndroidViewModel {
         RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
                 .addToRequestQueue(request);
     }
-//
-//    private void handleDeleteError(JSONObject result) {
-//        try {
-//            Log.d("Delete Contact Result", "Result for deletion: " +
-//                    result.getString("success"));
-//        } catch (JSONException e) {
-//            throw new IllegalStateException("Unexpected response in ContactListViewModel: " + result);
-//        }
-//    }
 
     private void generateContacts(final JSONObject response) {
         List<ContactsModel> list;

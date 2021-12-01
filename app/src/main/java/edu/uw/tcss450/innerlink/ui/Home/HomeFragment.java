@@ -40,14 +40,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        FloatingActionButton notificationButton = (FloatingActionButton) view.findViewById(R.id.notification_button);
-        notificationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_notification);
-            }
-        });
-
         return view;
     }
 

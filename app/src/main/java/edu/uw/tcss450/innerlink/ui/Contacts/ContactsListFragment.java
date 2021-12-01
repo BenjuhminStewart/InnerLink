@@ -1,5 +1,6 @@
 package edu.uw.tcss450.innerlink.ui.Contacts;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -60,14 +63,27 @@ public class ContactsListFragment extends Fragment {
 
         binding = FragmentContactsListBinding.inflate(inflater);
 
-        FloatingActionButton addButton = (FloatingActionButton) binding.getRoot().findViewById(R.id.add_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
+//        FloatingActionButton addButton = (FloatingActionButton) binding.getRoot().findViewById(R.id.add_button);
+//        addButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_notification);
+//            }
+//        });
+
+        EditText emailInput = (EditText) binding.getRoot().findViewById(R.id.editTextPersonName);
+        Button addFriendButton = (Button) binding.getRoot().findViewById(R.id.addFriendButton);
+        addFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_notification);
+                view = getActivity().getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+                addContact(emailInput.getText().toString());
             }
         });
-
         return binding.getRoot();
     }
 
@@ -85,5 +101,9 @@ public class ContactsListFragment extends Fragment {
 
     public void deleteContact(final String email) {
         mContactViewModel.deleteContact(email);
+    }
+
+    public void addContact(final String email) {
+        mContactViewModel.sendRequest(email);
     }
 }

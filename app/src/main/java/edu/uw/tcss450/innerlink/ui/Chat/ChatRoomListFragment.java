@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
@@ -13,6 +14,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +43,23 @@ public class ChatRoomListFragment extends Fragment {
         mChatRoomListModel = provider.get(ChatRoomListViewModel.class);
         mChatRoomListModel.connectGet(mUserModel.getmJwt());
 
+
         // TODO: Get first messages for all chat rooms HERE rather than in ChatRoomFragment
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_chat_room_list, container, false);
 
-        return inflater.inflate(R.layout.fragment_chat_room_list, container, false);
+        FloatingActionButton newChatButton = (FloatingActionButton) view.findViewById(R.id.new_chat_button);
+        newChatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+        return view;
 
     }
 
