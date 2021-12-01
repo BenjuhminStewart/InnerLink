@@ -39,15 +39,16 @@ import edu.uw.tcss450.innerlink.ui.Chat.ChatMessage;
 public class ContactsViewModel extends AndroidViewModel {
     private UserInfoViewModel viewModel;
     private MutableLiveData<List<ContactsModel>> mContactsList;
+    private MutableLiveData<List<String>> mRequestFrom;
 
     private MutableLiveData<List<String>> mRequestTo;
-    private MutableLiveData<List<String>> mRequestFrom;
 
     public ContactsViewModel(@NonNull Application application) {
         super(application);
         mContactsList = new MutableLiveData<>();
+        mRequestFrom = new MutableLiveData<>();
+        mRequestFrom.setValue(new ArrayList<>());
         mRequestTo = new MutableLiveData<List<String>>();
-        mRequestFrom = new MutableLiveData<List<String>>();
     }
 
     public void addContactsListObserver(@NonNull LifecycleOwner owner,
@@ -55,6 +56,10 @@ public class ContactsViewModel extends AndroidViewModel {
         mContactsList.observe(owner, observer);
     }
 
+    public void addRequestsListObserver(@NonNull LifecycleOwner owner,
+                                        @NonNull Observer<? super List<String>> observer) {
+        mRequestFrom.observe(owner, observer);
+    }
 
     public void sendRequest(final String email) {
         String url = getApplication().getResources().getString(R.string.base_url)
@@ -143,7 +148,6 @@ public class ContactsViewModel extends AndroidViewModel {
     }
 
     private void generateContacts(final JSONObject response) {
-        List<ContactsModel> list;
         if (!response.has("contacts")) {
             throw new IllegalStateException("Unexpected response in ContactsViewModel: " + response);
         }
@@ -188,6 +192,96 @@ public class ContactsViewModel extends AndroidViewModel {
                             data);
         }
     }
+
+    public void getRequests() {
+        String url = getApplication().getResources().getString(R.string.base_url)
+                + "contacts/requestsFrom";
+
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, // push token found in the JSONObject body
+                this::generateRequests, // we get a response but do nothing with it
+                this::handleError) {
+
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                // add headers <key,value>
+                headers.put("Authorization", viewModel.getmJwt());
+                return headers;
+            }
+        };
+
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
+    }
+
+    private void generateRequests(final JSONObject response) {
+        if (!response.has("requestsFrom")) {
+            throw new IllegalStateException("Unexpected response in ContactsViewModel: " + response);
+        }
+        try {
+            JSONArray contactsArray = response.getJSONArray("requestsFrom");
+            ArrayList<String> listOfRequests = new ArrayList<>();
+            for(int i = 0; i < contactsArray.length(); i++) {
+                JSONObject contact = contactsArray.getJSONObject(i);
+                String email = contact.getString("email");
+                if (!listOfRequests.contains(email)) {
+                    // don't add a duplicate
+                    listOfRequests.add(0, email);
+                } else {
+                    // this shouldn't happen but could with the asynchronous
+                    // nature of the application
+                    Log.wtf("Contact already added",
+                            "Or duplicate contact added:" + email);
+                }
+            }
+            mRequestFrom.setValue(listOfRequests);
+        } catch (JSONException e) {
+            Log.e("JSON PARSE ERROR", "Found in handle Success ContactsViewModel");
+            Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
+        }
+        mRequestFrom.setValue(mRequestFrom.getValue());
+    }
+
+    public void acceptContact(final String email) {
+        String url = getApplication().getResources().getString(R.string.base_url)
+                + "contacts";
+        JSONObject body = new JSONObject();
+        try {
+            body.put("email", email);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Request request = new JsonObjectRequest(
+                Request.Method.PATCH,
+                url,
+                body,
+                null,
+                this::handleError) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", viewModel.getmJwt());
+                return headers;
+            }
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
+    }
+
     public void setUserInfoViewModel(UserInfoViewModel mViewModel) {
         viewModel = mViewModel;
     }

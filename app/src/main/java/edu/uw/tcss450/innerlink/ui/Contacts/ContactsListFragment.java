@@ -63,14 +63,6 @@ public class ContactsListFragment extends Fragment {
 
         binding = FragmentContactsListBinding.inflate(inflater);
 
-//        FloatingActionButton addButton = (FloatingActionButton) binding.getRoot().findViewById(R.id.add_button);
-//        addButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //Navigation.findNavController(view).navigate(R.id.action_navigation_home_to_navigation_notification);
-//            }
-//        });
-
         EditText emailInput = (EditText) binding.getRoot().findViewById(R.id.editTextPersonName);
         Button addFriendButton = (Button) binding.getRoot().findViewById(R.id.addFriendButton);
         addFriendButton.setOnClickListener(new View.OnClickListener() {
