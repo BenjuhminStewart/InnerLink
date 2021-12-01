@@ -50,4 +50,9 @@
     <string name="keys_prefs_jwt">Sharded Prefs JWT</string>
     <string name="action_sign_out">Sign Out</string>
 
+    <string name="dialog_remove_title">Remove existing contact</string>
+    <string name="dialog_remove_message">Are you sure you would like to delete this contact?</string>
+    <string name="dialog_remove_confirm">Confirm</string>
+    <string name="dialog_remove_cancel">Cancel</string>
+
 </resources>

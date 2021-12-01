@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -77,8 +78,12 @@ public class ContactsListFragment extends Fragment {
         mContactViewModel.addContactsListObserver(getViewLifecycleOwner(), contactList -> {
             if (!contactList.isEmpty()) {
                 binding.listRootContacts.setAdapter(
-                        new ContactsRecyclerViewAdapter(contactList));
+                        new ContactsRecyclerViewAdapter(contactList, this));
             }
         });
+    }
+
+    public void deleteContact(final String email) {
+        mContactViewModel.deleteContact(email);
     }
 }
