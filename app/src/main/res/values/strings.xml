@@ -21,4 +21,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="description">Description</string>
+    <string name="hourly_label">hourly</string>
+    <string name="conditions_label">current</string>
+    <string name="daily_label">daily</string>
 </resources>
