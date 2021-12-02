@@ -55,6 +55,7 @@ public class ContactsListFragment extends Fragment {
         UserInfoViewModel mUserModel = new ViewModelProvider(getActivity()).get(UserInfoViewModel.class);
         mContactViewModel.setUserInfoViewModel(mUserModel);
         mContactViewModel.getContacts();
+        mContactViewModel.getOutgoingRequests();
     }
 
     @Override
@@ -65,6 +66,7 @@ public class ContactsListFragment extends Fragment {
 
         EditText emailInput = (EditText) binding.getRoot().findViewById(R.id.editTextPersonName);
         Button addFriendButton = (Button) binding.getRoot().findViewById(R.id.addFriendButton);
+        binding.textViewPending.setVisibility(View.GONE);
         addFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +89,13 @@ public class ContactsListFragment extends Fragment {
             if (!contactList.isEmpty()) {
                 binding.listRootContacts.setAdapter(
                         new ContactsRecyclerViewAdapter(contactList, this));
+            }
+        });
+        mContactViewModel.addOutgoingRequestsListObserver(getViewLifecycleOwner(), contactList -> {
+            if (!contactList.isEmpty()) {
+                binding.textViewPending.setVisibility(View.VISIBLE);
+                binding.listRootContactsOutgoingRequests.setAdapter(
+                        new ContactsOutgoingRequestRecyclerViewAdapter(contactList, this.mContactViewModel));
             }
         });
     }

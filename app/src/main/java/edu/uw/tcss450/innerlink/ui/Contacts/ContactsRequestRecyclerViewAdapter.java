@@ -60,11 +60,19 @@ public class ContactsRequestRecyclerViewAdapter
         void setRequestModel(final String contactsModel) {
             binding.textUsername.setText(contactsModel);
             binding.acceptButton.setOnClickListener(view -> acceptRequest(contactsModel, this));
+            binding.cancelButton.setOnClickListener(view -> declineRequest(contactsModel, this));
         }
     }
 
     public void acceptRequest(final String email, ContactsRequestViewHolder view) {
         mParent.acceptContact(email);
+        mContactsRequests.remove(email);
+        notifyItemRemoved(view.getLayoutPosition());
+    }
+
+
+    private void declineRequest(final String email, ContactsRequestViewHolder view) {
+        mParent.deleteContact(email);
         mContactsRequests.remove(email);
         notifyItemRemoved(view.getLayoutPosition());
     }
