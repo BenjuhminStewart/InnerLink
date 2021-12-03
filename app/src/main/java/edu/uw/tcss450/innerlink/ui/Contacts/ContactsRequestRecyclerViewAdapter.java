@@ -68,7 +68,6 @@ public class ContactsRequestRecyclerViewAdapter
         mContactsRequests.remove(email);
         notifyItemRemoved(view.getLayoutPosition());
         mParent.acceptContact(email);
-        notifyDataSetChanged();
     }
 
 
@@ -76,6 +75,5 @@ public class ContactsRequestRecyclerViewAdapter
         mContactsRequests.remove(email);
         notifyItemRemoved(view.getLayoutPosition());
         mParent.deleteContact(email);
-        notifyDataSetChanged();
     }
 }

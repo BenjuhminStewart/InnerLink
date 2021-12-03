@@ -282,7 +282,7 @@ public class ContactsViewModel extends AndroidViewModel {
             Log.e("JSON PARSE ERROR", "Found in handle Success ContactsViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
-        mRequestTo.setValue(mRequestFrom.getValue());
+        mRequestTo.setValue(mRequestTo.getValue());
 
     }
 

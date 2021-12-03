@@ -65,6 +65,5 @@ public class ContactsOutgoingRequestRecyclerViewAdapter
         mContactsRequests.remove(email);
         notifyItemRemoved(view.getLayoutPosition());
         mParent.deleteContact(email);
-        notifyDataSetChanged();
     }
 }

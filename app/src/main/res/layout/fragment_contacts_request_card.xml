@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_root_from"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     android:layout_margin="5dp"
     app:cardCornerRadius="30dp">
 
@@ -14,6 +14,19 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/text_email"
         app:layout_constraintTop_toTopOf="@+id/text_email">
+
+        <TextView
+            android:id="@+id/text_pending_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="New \nRequest!"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/acceptButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/acceptButton"
@@ -50,7 +63,7 @@
 
         <TextView
             android:id="@+id/text_username"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="6dp"
             android:gravity="left|center_vertical"
@@ -62,7 +75,7 @@
             android:textSize="20sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/acceptButton"
+            app:layout_constraintEnd_toStartOf="@+id/text_pending_request"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/image_view"
             app:layout_constraintTop_toTopOf="parent"
