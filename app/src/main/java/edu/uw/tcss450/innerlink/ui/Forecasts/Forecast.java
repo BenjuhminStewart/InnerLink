@@ -7,32 +7,23 @@ import java.io.Serializable;
 
 public class Forecast implements Serializable{
     private final String mCity;
+    private final String mTime;
     private final String mTemperature;
     private final String mCondition;
 
-    public Forecast(String city, String temperature, String condition) {
+    public Forecast(String city, String time, String temperature, String condition) {
         mCity = city;
+        mTime = time;
         mTemperature = temperature;
         mCondition = condition;
     }
 
-    /**
-     * Static factory method to turn a properly formatted JSON String into a
-     * Forecast object.
-     * @param forecastAsJson the String to be parsed into a Forecast Object.
-     * @return a Forecast Object with the details contained in the JSON String.
-     * @throws JSONException when forecastAsJson cannot be parsed into a Forecast.
-     */
-    public static Forecast createFromJsonString(final String forecastAsJson) throws
-            JSONException {
-        final JSONObject msg = new JSONObject(forecastAsJson);
-        return new Forecast(msg.getString("city"),
-                msg.getString("temp"),
-                msg.getString("main"));
-    }
-
     public String getCity() {
         return mCity;
+    }
+
+    public String getTime() {
+        return mTime;
     }
 
     public String getTemperature() {

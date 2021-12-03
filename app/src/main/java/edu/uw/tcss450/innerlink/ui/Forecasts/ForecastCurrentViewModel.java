@@ -26,10 +26,10 @@ import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 /**
  * Retains a list of Forecasts and their hourly, daily, and weekly conditions.
  */
-public class ForecastsViewModel extends AndroidViewModel {
+public class ForecastCurrentViewModel extends AndroidViewModel {
     private MutableLiveData<Forecast> mForecast;
 
-    public ForecastsViewModel(@NonNull Application application) {
+    public ForecastCurrentViewModel(@NonNull Application application) {
         super(application);
         mForecast = new MutableLiveData<>();
     }
@@ -45,7 +45,7 @@ public class ForecastsViewModel extends AndroidViewModel {
                 Request.Method.GET,
                 url,
                 null, //no body for this get request
-                this::handleSuccess,
+                this::handleCurrentSuccess,
                 this::handleError) {
 
         };
@@ -58,63 +58,22 @@ public class ForecastsViewModel extends AndroidViewModel {
                 .addToRequestQueue(request);
     }
 
-    public void getHourlyConditions(int zipcode) {
-
-        String url = "https://tcss450-innerlink.herokuapp.com/forecast/24hour/" + zipcode;
-        Request request = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null, //no body for this get request
-                this::handleSuccess,
-                this::handleError) {
-
-        };
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
-                .addToRequestQueue(request);
-    }
-    public void getDailyConditions(int zipcode) {
-
-        String url = "https://tcss450-innerlink.herokuapp.com/forecast/5day/" + zipcode;
-        Request request = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null, //no body for this get request
-                this::handleSuccess,
-                this::handleError) {
-
-        };
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
-                .addToRequestQueue(request);
-    }
-
-    private void handleSuccess(final JSONObject response){
+    private void handleCurrentSuccess(final JSONObject response){
         if (!response.has("city")) {
-            throw new IllegalStateException("Unexpected response in ForecastsViewModel: " + response);
+            throw new IllegalStateException("Unexpected response in ForecastCurrentViewModel: " + response);
         }
 
         try {
-            JSONObject responseMain = response.getJSONObject("main");
-            JSONObject condition = response.getJSONArray("conditions").getJSONObject(0);
-
             mForecast.setValue(
                     new Forecast(
                             response.getString("city"),
-                            responseMain.getString("temp"),
-                            condition.getString("main")
+                            response.getString("time"),
+                            response.getString("temp"),
+                            response.getString("conditions")
 
             ));
         } catch (JSONException e){
-            Log.e("JSON PARSE ERROR", "Found in handle Success ForecastsViewModel");
+            Log.e("JSON PARSE ERROR", "Found in handle Success ForecastCurrentViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
     }
@@ -131,9 +90,4 @@ public class ForecastsViewModel extends AndroidViewModel {
                             data);
         }
     }
-
-//    public JSONObject getmResponse(){
-//        return mForecast;
-//    }
-
 }
