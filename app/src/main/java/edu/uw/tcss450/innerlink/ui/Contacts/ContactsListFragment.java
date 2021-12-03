@@ -43,6 +43,8 @@ public class ContactsListFragment extends Fragment {
 
     private FragmentContactsListBinding binding;
 
+    ContactsOutgoingRequestRecyclerViewAdapter adapter;
+
     public ContactsListFragment() {
         // Required empty public constructor
     }
@@ -66,7 +68,6 @@ public class ContactsListFragment extends Fragment {
 
         EditText emailInput = (EditText) binding.getRoot().findViewById(R.id.editTextPersonName);
         Button addFriendButton = (Button) binding.getRoot().findViewById(R.id.addFriendButton);
-        binding.textViewPending.setVisibility(View.GONE);
         addFriendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +77,7 @@ public class ContactsListFragment extends Fragment {
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
                 addContact(emailInput.getText().toString());
+                adapter.notifyDataSetChanged();
             }
         });
         return binding.getRoot();
@@ -93,9 +95,9 @@ public class ContactsListFragment extends Fragment {
         });
         mContactViewModel.addOutgoingRequestsListObserver(getViewLifecycleOwner(), contactList -> {
             if (!contactList.isEmpty()) {
-                binding.textViewPending.setVisibility(View.VISIBLE);
-                binding.listRootContactsOutgoingRequests.setAdapter(
-                        new ContactsOutgoingRequestRecyclerViewAdapter(contactList, this.mContactViewModel));
+                adapter = new ContactsOutgoingRequestRecyclerViewAdapter(contactList, this.mContactViewModel);
+                binding.listRootContactsOutgoingRequests.setAdapter(adapter);
+                //adapter.updateRequestsList(contactList);
             }
         });
     }

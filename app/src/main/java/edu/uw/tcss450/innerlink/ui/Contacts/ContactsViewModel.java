@@ -266,6 +266,7 @@ public class ContactsViewModel extends AndroidViewModel {
             for(int i = 0; i < contactsArray.length(); i++) {
                 JSONObject contact = contactsArray.getJSONObject(i);
                 String email = contact.getString("email");
+
                 if (!listOfRequests.contains(email)) {
                     // don't add a duplicate
                     listOfRequests.add(0, email);
@@ -282,6 +283,7 @@ public class ContactsViewModel extends AndroidViewModel {
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
         mRequestTo.setValue(mRequestFrom.getValue());
+
     }
 
     private void generateRequests(final JSONObject response) {

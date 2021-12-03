@@ -58,7 +58,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater);
-        binding.textViewPending.setVisibility(View.GONE);
         return binding.getRoot();
     }
 
@@ -67,7 +66,6 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mContactViewModel.addRequestsListObserver(getViewLifecycleOwner(), contactList -> {
             if (!contactList.isEmpty()) {
-                binding.textViewPending.setVisibility(View.VISIBLE);
                 binding.listRootContactsRequests.setAdapter(
                         new ContactsRequestRecyclerViewAdapter(contactList, this.mContactViewModel));
             }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Collections;
 import java.util.List;
 
 import edu.uw.tcss450.innerlink.R;
@@ -24,6 +25,7 @@ public class ContactsOutgoingRequestRecyclerViewAdapter
 
     public ContactsOutgoingRequestRecyclerViewAdapter(List<String> contactsRequests, ContactsViewModel parent) {
         this.mContactsRequests = contactsRequests;
+        Collections.sort(mContactsRequests, String.CASE_INSENSITIVE_ORDER);
         this.mParent = parent;
     }
 
@@ -60,8 +62,9 @@ public class ContactsOutgoingRequestRecyclerViewAdapter
     }
 
     private void declineRequest(final String email, ContactsOutgoingRequestViewHolder view) {
-        mParent.deleteContact(email);
         mContactsRequests.remove(email);
         notifyItemRemoved(view.getLayoutPosition());
+        mParent.deleteContact(email);
+        notifyDataSetChanged();
     }
 }

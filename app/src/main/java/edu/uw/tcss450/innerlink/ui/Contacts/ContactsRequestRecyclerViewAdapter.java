@@ -65,15 +65,17 @@ public class ContactsRequestRecyclerViewAdapter
     }
 
     public void acceptRequest(final String email, ContactsRequestViewHolder view) {
-        mParent.acceptContact(email);
         mContactsRequests.remove(email);
         notifyItemRemoved(view.getLayoutPosition());
+        mParent.acceptContact(email);
+        notifyDataSetChanged();
     }
 
 
     private void declineRequest(final String email, ContactsRequestViewHolder view) {
-        mParent.deleteContact(email);
         mContactsRequests.remove(email);
         notifyItemRemoved(view.getLayoutPosition());
+        mParent.deleteContact(email);
+        notifyDataSetChanged();
     }
 }

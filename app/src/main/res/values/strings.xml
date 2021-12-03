@@ -55,4 +55,6 @@
     <string name="dialog_remove_confirm">Confirm</string>
     <string name="dialog_remove_cancel">Cancel</string>
 
+    <string name="settings_change_password">changePassword</string>
+
 </resources>
