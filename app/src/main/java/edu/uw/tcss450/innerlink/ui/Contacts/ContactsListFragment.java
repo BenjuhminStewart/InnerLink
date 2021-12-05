@@ -78,6 +78,7 @@ public class ContactsListFragment extends Fragment {
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
                 addContact(emailInput.getText().toString());
+                emailInput.setText("");
             }
         });
         return binding.getRoot();
