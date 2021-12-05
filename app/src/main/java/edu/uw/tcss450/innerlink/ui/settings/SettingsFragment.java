@@ -56,19 +56,19 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             oldPassText.setTextColor(getResources().getColor(R.color.colorPrimary));
             newPassText.setTextColor(getResources().getColor(R.color.colorPrimary));
             confirmPassText.setTextColor(getResources().getColor(R.color.colorPrimary));
-            LinearLayout ll = new LinearLayout(new ContextThemeWrapper(getContext(), R.style.DarkAppTheme));
-            ll.setOrientation(LinearLayout.VERTICAL);
+            LinearLayout layout = new LinearLayout(new ContextThemeWrapper(getContext(), R.style.DarkAppTheme));
+            layout.setOrientation(LinearLayout.VERTICAL);
             oldPassText.setText("   Old Password");
             newPassText.setText("   New Password");
             confirmPassText.setText("   Confirm Password");
             oldPassText.setSelected(true);
-            ll.addView(oldPassText);
-            ll.addView(oldPass);
-            ll.addView(confirmPassText);
-            ll.addView(confirmPass);
-            ll.addView(newPassText);
-            ll.addView(newPass);
-            builder.setView(ll);
+            layout.addView(oldPassText);
+            layout.addView(oldPass);
+            layout.addView(confirmPassText);
+            layout.addView(confirmPass);
+            layout.addView(newPassText);
+            layout.addView(newPass);
+            builder.setView(layout);
             builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
                 if (!(oldPass.getText().toString().equals(confirmPass.getText().toString()))) {
                     AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());

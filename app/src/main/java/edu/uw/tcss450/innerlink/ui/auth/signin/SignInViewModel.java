@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
 /**
@@ -100,5 +101,28 @@ public class SignInViewModel extends AndroidViewModel {
                 .addToRequestQueue(request);
     }
 
+    public void forgotPassword(final String email) {
+        String url = getApplication().getResources().getString(R.string.base_url) + "forgot-password";
+        JSONObject body = new JSONObject();
+        try {
+            body.put("email", email);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        Request request = new JsonObjectRequest(
+                Request.Method.PATCH,
+                url,
+                body, //push token found in the JSONObject body
+                null, // we get a response but do nothing with it
+                this::handleError) {
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
+    }
 }
