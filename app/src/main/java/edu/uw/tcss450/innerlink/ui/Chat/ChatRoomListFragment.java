@@ -1,5 +1,6 @@
 package edu.uw.tcss450.innerlink.ui.Chat;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -56,6 +61,8 @@ public class ChatRoomListFragment extends Fragment {
         newChatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.action_navigation_chats_to_navigation_chats_add);
+                createRoom();
             }
         });
 
@@ -73,5 +80,32 @@ public class ChatRoomListFragment extends Fragment {
                         new ChatRoomRecyclerViewAdapter(chatRoomList));
 //            }
         });
+    }
+
+    private void createRoom() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Create Chat Room");
+        final EditText oldPass = new EditText(this.getActivity());
+        final TextView oldPassText = new TextView(this.getActivity());
+        oldPassText.setText("       Please name your new chat room:");
+        oldPass.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        oldPassText.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        LinearLayout layout = new LinearLayout(new ContextThemeWrapper(getContext(), R.style.DarkAppTheme));
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.addView(oldPassText);
+        layout.addView(oldPass);
+        builder.setView(layout);
+        builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
+            mChatRoomListModel.createChatRoom(oldPass.getText().toString(), mUserModel.getmJwt());
+            AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
+            builderDecline.setTitle("Success!");
+            builderDecline.setMessage("Chat room created.");
+            builderDecline.setPositiveButton("Confirm", null);
+            AlertDialog alertDialogDecline = builderDecline.create();
+            alertDialogDecline.show();
+        });
+        builder.setNegativeButton(R.string.dialog_remove_cancel, null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
