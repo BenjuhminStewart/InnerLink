@@ -21,6 +21,7 @@ import edu.uw.tcss450.innerlink.MainActivity;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.SettingsActivity;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsViewModel;
 import edu.uw.tcss450.innerlink.ui.auth.signin.SignInViewModel;
 
 /**
@@ -31,6 +32,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
+        mSettingsViewModel = new ViewModelProvider(getActivity()).get(SettingsViewModel.class);
+        UserInfoViewModel mUserModel = new ViewModelProvider(getActivity()).get(UserInfoViewModel.class);
+        mSettingsViewModel.setUserInfoViewModel(mUserModel);
         addPreferencesFromResource(R.xml.root_preferences);
     }
 
@@ -40,12 +44,15 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Change Password");
             builder.setMessage("");
-            final EditText oldPass = new EditText(getContext());
+            final EditText oldPass = new EditText(this.getActivity());
             final EditText newPass = new EditText(this.getActivity());
             final EditText confirmPass = new EditText(this.getActivity());
             final TextView oldPassText = new TextView(this.getActivity());
             final TextView newPassText = new TextView(this.getActivity());
             final TextView confirmPassText = new TextView(this.getActivity());
+            oldPass.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            newPass.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            confirmPass.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             oldPassText.setTextColor(getResources().getColor(R.color.colorPrimary));
             newPassText.setTextColor(getResources().getColor(R.color.colorPrimary));
             confirmPassText.setTextColor(getResources().getColor(R.color.colorPrimary));
@@ -63,9 +70,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             ll.addView(newPass);
             builder.setView(ll);
             builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
-                System.out.println(confirmPass.getText().toString());
-                System.out.println(newPass.getText().toString());
-                mSettingsViewModel.changePassword(confirmPass.getText().toString(), newPass.getText().toString());
+                if (!(oldPass.getText().toString().equals(confirmPass.getText().toString()))) {
+                    AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
+                    builderDecline.setTitle("Failure");
+                    builderDecline.setMessage("Passwords do not match. Please try again.");
+                    builderDecline.setNegativeButton("Cancel", null);
+                    AlertDialog alertDialogDecline = builderDecline.create();
+                    alertDialogDecline.show();
+                } else {
+                    mSettingsViewModel.changePassword(confirmPass.getText().toString(), newPass.getText().toString());
+                }
             });
             builder.setNegativeButton(R.string.dialog_remove_cancel, null);
             AlertDialog alertDialog = builder.create();

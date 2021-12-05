@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private MainPushMessageReceiver mPushMessageReceiver;
     private NewMessageCountViewModel mNewMessageModel;
+    private MainActivityArgs args;
 
     String theme;
 
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        MainActivityArgs args = MainActivityArgs.fromBundle(getIntent().getExtras());
+        args = MainActivityArgs.fromBundle(getIntent().getExtras());
 
         new ViewModelProvider(
                 this,
@@ -160,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+            intent.putExtra("email", args.getEmail());
+            intent.putExtra("jwt", args.getJwt());
             startActivity(intent);
             Log.d("SETTINGS", "Clicked");
             return true;

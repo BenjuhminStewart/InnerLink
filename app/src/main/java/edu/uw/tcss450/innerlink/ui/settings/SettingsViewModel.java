@@ -1,5 +1,6 @@
 package edu.uw.tcss450.innerlink.ui.settings;
 
+import android.app.AlertDialog;
 import android.app.Application;
 import android.util.Log;
 
@@ -21,6 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import edu.uw.tcss450.innerlink.R;
+import edu.uw.tcss450.innerlink.SettingsActivity;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsViewModel;
@@ -33,9 +35,7 @@ public class SettingsViewModel extends AndroidViewModel {
     }
 
     public void changePassword(final String currentPass, final String newPass) {
-        System.out.println(currentPass);
-        System.out.println(newPass);
-        String url = getApplication().getResources().getString(R.string.base_url);
+        String url = getApplication().getResources().getString(R.string.base_url) + "change-password";
         JSONObject body = new JSONObject();
         try {
             body.put("current", currentPass);
