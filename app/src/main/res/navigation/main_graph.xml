@@ -76,4 +76,15 @@
             android:name="ContactsFragment"
             app:argType="edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel" />
     </fragment>
+    <activity
+        android:id="@+id/activity_settings"
+        android:name="edu.uw.tcss450.innerlink.SettingsActivity"
+        android:label="SettingsActivity">
+    <argument
+        android:name="email"
+        app:argType="string" />
+    <argument
+        android:name="jwt"
+        app:argType="string" />
+    </activity>
 </navigation>

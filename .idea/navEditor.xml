@@ -77,6 +77,18 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="activity_settings">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="-312" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="chatRoomFragment">
                     <value>
                       <LayoutPositions>
@@ -130,6 +142,15 @@
                             <option name="x" value="12" />
                             <option name="y" value="696" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_navigation_contacts_to_navigation_contact">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

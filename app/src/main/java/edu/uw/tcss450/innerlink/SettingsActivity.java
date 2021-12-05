@@ -11,6 +11,7 @@ import android.widget.Button;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,6 +19,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceManager;
 
+import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.settings.SettingsFragment;
 
 /**
@@ -43,7 +45,12 @@ public class SettingsActivity extends AppCompatActivity
                 .getString(getString(R.string.theme), getString(R.string.theme_def_value));
 
         super.onCreate(savedInstanceState);
+        SettingsActivityArgs args = SettingsActivityArgs.fromBundle(getIntent().getExtras());
 
+        new ViewModelProvider(
+                this,
+                new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt()))
+                .get(UserInfoViewModel.class);
         PreferenceManager.getDefaultSharedPreferences(this)
                 .registerOnSharedPreferenceChangeListener(this);
 

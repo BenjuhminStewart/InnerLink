@@ -1,5 +1,6 @@
 package edu.uw.tcss450.innerlink.ui.Contacts;
 
+import android.app.AlertDialog;
 import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,8 +43,12 @@ public class ContactsRecyclerViewAdapter extends
     //Store the expanded state for each List item, true -> expanded, false -> not
     private final Map<ContactsModel, Boolean> mExpandedFlags;
 
-    public ContactsRecyclerViewAdapter(List<ContactsModel> items) {
+    // Store the parent fragment
+    private final ContactsListFragment mParent;
+
+    public ContactsRecyclerViewAdapter(List<ContactsModel> items, ContactsListFragment parent) {
         this.mContactsModel = items;
+        this.mParent = parent;
         mExpandedFlags = mContactsModel.stream()
                 .collect(Collectors.toMap(Function.identity(), contact -> false));
     }
@@ -89,6 +95,7 @@ public class ContactsRecyclerViewAdapter extends
             binding.textEmailCard.setText(mContactsModel.getmEmail());
             binding.textFirstnameCard.setText(mContactsModel.getmFirstName());
             binding.textLastnameCard.setText(mContactsModel.getmLastName());
+            binding.buttonRemove.setOnClickListener(view -> removeContact(mContactsModel, this));
             displayPreview();
         }
 
@@ -127,5 +134,20 @@ public class ContactsRecyclerViewAdapter extends
                                 R.drawable.ic_more_grey_24dp));
             }
         }
+    }
+
+    private void removeContact(final ContactsModel contact, ContactsViewHolder view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mParent.getActivity());
+        builder.setTitle(R.string.dialog_remove_title);
+        builder.setMessage(R.string.dialog_remove_message);
+        builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
+            mContactsModel.remove(contact);
+            notifyItemRemoved(view.getLayoutPosition());
+            final String contactEmail = contact.getmEmail();
+            mParent.deleteContact(contactEmail);
+        });
+        builder.setNegativeButton(R.string.dialog_remove_cancel, null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

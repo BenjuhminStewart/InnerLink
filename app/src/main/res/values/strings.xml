@@ -12,6 +12,7 @@
     <string name="forecast_label">Forecast</string>
     <string name="notification_label">Notifications</string>
     <string name="chat_label">Chats</string>
+    <string name="chat_add_label">Chat Creation</string>
     <string name="chat_room_label">Chat Room</string>
     <string name="home_label">Home</string>
     <string name="register_final">Register</string>
@@ -49,5 +50,12 @@
     <string name="keys_shared_prefs">My Auth App Shared Prefs</string>
     <string name="keys_prefs_jwt">Sharded Prefs JWT</string>
     <string name="action_sign_out">Sign Out</string>
+
+    <string name="dialog_remove_title">Remove existing contact</string>
+    <string name="dialog_remove_message">Are you sure you would like to delete this contact?</string>
+    <string name="dialog_remove_confirm">Confirm</string>
+    <string name="dialog_remove_cancel">Cancel</string>
+
+    <string name="settings_change_password">changePassword</string>
 
 </resources>
