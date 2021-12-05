@@ -17,7 +17,7 @@
         android:title="@string/chat_label" />
 
     <item
-        android:id="@+id/navigation_forecast"
+        android:id="@+id/navigation_locations"
         android:icon="@drawable/ic_cloud_black_24dp"
         android:title="@string/forecast_label" />
 </menu>

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentForecastBinding;
+import edu.uw.tcss450.innerlink.ui.Location.LocationListViewModel;
 
 
 /**
@@ -34,9 +35,12 @@ public class ForecastFragment extends Fragment {
         mForecastHourlyModel = provider.get(ForecastHourlyViewModel.class);
         mForecastDailyModel = provider.get(ForecastDailyViewModel.class);
 
-        mForecastCurrentModel.getCurrConditions(98335);
-        mForecastHourlyModel.getHourlyConditions(98335);
-        mForecastDailyModel.getDailyConditions(98335);
+        ForecastFragmentArgs args = ForecastFragmentArgs.fromBundle(getArguments());
+        int zipcode = args.getLocation().getZipcode();
+
+        mForecastCurrentModel.getCurrConditions(zipcode);
+        mForecastHourlyModel.getHourlyConditions(zipcode);
+        mForecastDailyModel.getDailyConditions(zipcode);
     }
 
     @Override

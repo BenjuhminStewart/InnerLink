@@ -25,10 +25,14 @@
             app:destination="@id/chatRoomFragment" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_forecast"
+        android:id="@+id/forecastFragment"
         android:name="edu.uw.tcss450.innerlink.ui.Forecasts.ForecastFragment"
         android:label="@string/forecast_label"
-        tools:layout="@layout/fragment_forecast" />
+        tools:layout="@layout/fragment_forecast" >
+        <argument
+            android:name="location"
+            app:argType="edu.uw.tcss450.innerlink.ui.Location.Location" />
+    </fragment>
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
@@ -37,5 +41,14 @@
         <argument
             android:name="chatRoom"
             app:argType="edu.uw.tcss450.innerlink.ui.Chat.ChatRoom" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_locations"
+        android:name="edu.uw.tcss450.innerlink.ui.Location.LocationListFragment"
+        android:label="@string/forecast_label"
+        tools:layout="@layout/fragment_location_list">
+        <action
+            android:id="@+id/action_navigation_locations_to_forecastFragment"
+            app:destination="@id/forecastFragment" />
     </fragment>
 </navigation>
