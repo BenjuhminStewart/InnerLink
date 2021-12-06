@@ -61,13 +61,10 @@ public class ChatRoomListFragment extends Fragment {
         newChatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.action_navigation_chats_to_navigation_chats_add);
                 createRoom();
             }
         });
-
         return view;
-
     }
 
     @Override
@@ -97,6 +94,7 @@ public class ChatRoomListFragment extends Fragment {
         builder.setView(layout);
         builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
             mChatRoomListModel.createChatRoom(oldPass.getText().toString(), mUserModel.getmJwt());
+
             AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
             builderDecline.setTitle("Success!");
             builderDecline.setMessage("Chat room created.");

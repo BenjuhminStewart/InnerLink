@@ -89,6 +89,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="chatManageFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="504" />
+                            <option name="y" value="692" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="chatRoomFragment">
                     <value>
                       <LayoutPositions>

@@ -23,5 +23,6 @@
     <color name="DarkThemecolorAccent">#FFFFFF</color>
     <color name="DarkThemeTextColor">#FFFFFF</color>
     <color name="DarkThemeMessageOutline">#FFFFFF</color>
-
+    <color name="DarkOpaqueGrey">#8D191919</color>
+    <color name="DarkOpaqueWhite">#80FFFFFF</color>
 </resources>

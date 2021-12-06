@@ -283,7 +283,6 @@ public class ContactsViewModel extends AndroidViewModel {
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
         mRequestTo.setValue(mRequestTo.getValue());
-
     }
 
     private void generateRequests(final JSONObject response) {

@@ -74,19 +74,32 @@
 
         <TextView
             android:id="@+id/text_last_message"
-            android:layout_width="309dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
+            android:layout_marginStart="44dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingBottom="8dp"
             android:textAppearance="?attr/textAppearanceListItem"
             android:textColor="@color/colorPrimaryDark"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.763"
+            app:layout_constraintEnd_toStartOf="@+id/button_manage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_chat_room_name" />
+
+        <Button
+            android:id="@+id/button_manage"
+            android:layout_width="111dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="Manage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.971" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_navigation_chats_to_chatRoomFragment"
             app:destination="@id/chatRoomFragment" />
+        <action
+            android:id="@+id/action_navigation_chats_to_chatManageFragment"
+            app:destination="@id/chatManageFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_forecast"
@@ -87,4 +90,13 @@
         android:name="jwt"
         app:argType="string" />
     </activity>
+    <fragment
+        android:id="@+id/chatManageFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatManageFragment"
+        android:label="@string/chat_manage_label"
+        tools:layout="@layout/fragment_chat_manage" >
+        <argument
+            android:name="chatid"
+            app:argType="integer" />
+    </fragment>
 </navigation>
