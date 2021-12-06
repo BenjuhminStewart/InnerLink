@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import edu.uw.tcss450.innerlink.databinding.FragmentForecastBinding;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentForecastBinding;
@@ -22,6 +23,10 @@ public class ForecastFragment extends Fragment {
     private ForecastHourlyViewModel mForecastHourlyModel;
     private ForecastDailyViewModel mForecastDailyModel;
 
+    private FragmentForecastBinding binding;
+
+    private ForecastsViewModel mForecastModel;
+
     public ForecastFragment() {
         // Required empty public constructor
     }
@@ -29,6 +34,7 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mForecastCurrentModel = provider.get(ForecastCurrentViewModel.class);
         mForecastHourlyModel = provider.get(ForecastHourlyViewModel.class);
@@ -40,13 +46,15 @@ public class ForecastFragment extends Fragment {
         mForecastCurrentModel.getCurrConditions(zipcode);
         mForecastHourlyModel.getHourlyConditions(zipcode);
         mForecastDailyModel.getDailyConditions(zipcode);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forecast, container, false);
+        binding = FragmentForecastBinding.inflate(inflater);
+        return binding.getRoot();
     }
 
     @Override

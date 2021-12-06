@@ -9,7 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="edu.uw.tcss450.innerlink.ui.Home.HomeFragment"
         android:label="@string/home_label"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_settings"
+            app:destination="@id/navigation_settings" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_notification"
         android:name="edu.uw.tcss450.innerlink.ui.Notification.NotificationListFragment"
@@ -42,22 +49,47 @@
             android:name="chatRoom"
             app:argType="edu.uw.tcss450.innerlink.ui.Chat.ChatRoom" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_locations"-->
-<!--        android:name="edu.uw.tcss450.innerlink.ui.Location.LocationFragment"-->
-<!--        android:label="@string/forecast_label"-->
-<!--        tools:layout="@layout/fragment_location_list">-->
-<!--        <action-->
-<!--            android:id="@+id/action_navigation_locations_to_forecastFragment"-->
-<!--            app:destination="@id/forecastFragment" />-->
-<!--    </fragment>-->
+
+        <argument
+            android:name="chatRoom"
+            app:argType="edu.uw.tcss450.innerlink.ui.Chat.ChatRoom" />
     <fragment
-        android:id="@+id/navigation_locations"
-        android:name="edu.uw.tcss450.innerlink.ui.Location.LocationFragment"
-        android:label="@string/forecast_label"
-        tools:layout="@layout/fragment_location">
+        android:id="@+id/navigation_settings"
+        android:name="edu.uw.tcss450.innerlink.ui.settings.SettingsFragment"
+        android:label="@string/settings_label" >
         <action
-            android:id="@+id/action_navigation_locations_to_forecastFragment"
-            app:destination="@id/forecastFragment" />
+            android:id="@+id/action_navigation_settings_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_contacts"
+        android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragment"
+        android:label="@string/contacts_label"
+        tools:layout="@layout/fragment_contacts_list" >
+        <action
+            android:id="@+id/action_navigation_contacts_to_navigation_contact"
+            app:destination="@id/navigation_contact" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_contact"
+        android:name="edu.uw.tcss450.innerlink.ui.Contacts.ContactsFragment"
+        android:label="@string/contacts_label"
+
+        tools:layout="@layout/fragment_contacts">
+        <argument
+            android:name="ContactsFragment"
+            app:argType="edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel" />
+    </fragment>
+    <activity
+        android:id="@+id/activity_settings"
+        android:name="edu.uw.tcss450.innerlink.SettingsActivity"
+        android:label="SettingsActivity">
+    <argument
+        android:name="email"
+        app:argType="string" />
+    <argument
+        android:name="jwt"
+        app:argType="string" />
+    </activity>
 </navigation>

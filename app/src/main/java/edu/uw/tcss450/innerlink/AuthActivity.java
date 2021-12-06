@@ -1,6 +1,7 @@
 package edu.uw.tcss450.innerlink;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -17,6 +18,7 @@ public class AuthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+    //  setAppTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
@@ -25,6 +27,9 @@ public class AuthActivity extends AppCompatActivity {
         initiatePushyTokenRequest();
     }
 
+    /**
+     * Method initiates the pushy token request for retrieval.
+     */
     private void initiatePushyTokenRequest() {
         new ViewModelProvider(this).get(PushyTokenViewModel.class).retrieveToken();
     }

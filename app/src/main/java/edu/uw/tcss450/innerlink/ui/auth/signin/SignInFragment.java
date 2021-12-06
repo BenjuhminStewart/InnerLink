@@ -2,6 +2,9 @@ package edu.uw.tcss450.innerlink.ui.auth.signin;
 
 import static edu.uw.tcss450.innerlink.utils.PasswordValidator.*;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,16 +14,26 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.app.AlertDialog;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.auth0.android.jwt.JWT;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentSignInBinding;
 import edu.uw.tcss450.innerlink.model.PushyTokenViewModel;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsRecyclerViewAdapter;
 import edu.uw.tcss450.innerlink.utils.PasswordValidator;
 
 /**
@@ -74,6 +87,8 @@ public class SignInFragment extends Fragment {
                 Navigation.findNavController(getView()).navigate(
                         SignInFragmentDirections.actionLoginFragmentToRegisterFragment()
                 ));
+
+        binding.buttonToForgotPassword.setOnClickListener(buttonForgot -> forgotPass());
 
         binding.buttonSignIn.setOnClickListener(this::attemptSignIn);
 
@@ -129,10 +144,46 @@ public class SignInFragment extends Fragment {
      * @param jwt   the JSON Web Token supplied by the server
      */
     private void navigateToSuccess(final String email, final String jwt) {
+        if (binding.switchSignin.isChecked()) {
+            SharedPreferences prefs =
+                    getActivity().getSharedPreferences(
+                            getString(R.string.keys_shared_prefs),
+                            Context.MODE_PRIVATE);
+            //Store the credentials in SharedPrefs
+            prefs.edit().putString(getString(R.string.keys_prefs_jwt), jwt).apply();
+        }
+
         Navigation.findNavController(getView())
                 .navigate(SignInFragmentDirections
                         .actionLoginFragmentToMainActivity(email, jwt));
+
+        //Remove THIS activity from the Task list. Pops off the backstack
+        getActivity().finish();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        SharedPreferences prefs =
+                getActivity().getSharedPreferences(
+                        getString(R.string.keys_shared_prefs),
+                        Context.MODE_PRIVATE);
+
+        if (prefs.contains(getString(R.string.keys_prefs_jwt))) {
+            String token = prefs.getString(getString(R.string.keys_prefs_jwt), "");
+            JWT jwt = new JWT(token);
+            // Check to see if the web token is still valid or not. To make a JWT expire after a
+            // longer or shorter time period, change the expiration time when the JWT is
+            // created on the web service.
+            if(!jwt.isExpired(0)) {
+                String email = jwt.getClaim("email").asString();
+                navigateToSuccess(email, token);
+                return;
+            }
+        }
+    }
+
 
     /**
      * An observer on the HTTP Response from the web server. This observer should be
@@ -195,5 +246,33 @@ public class SignInFragment extends Fragment {
                 );
             }
         }
+    }
+
+    private void forgotPass() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Forgot Password");
+        builder.setMessage("");
+        final EditText oldPass = new EditText(this.getActivity());
+        final TextView oldPassText = new TextView(this.getActivity());
+        oldPassText.setText("       Please enter an existing email:");
+        oldPass.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        oldPassText.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        LinearLayout layout = new LinearLayout(new ContextThemeWrapper(getContext(), R.style.DarkAppTheme));
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.addView(oldPassText);
+        layout.addView(oldPass);
+        builder.setView(layout);
+        builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
+            mSignInModel.forgotPassword(oldPass.getText().toString());
+            AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
+            builderDecline.setTitle("Success!");
+            builderDecline.setMessage("Further instructions have been sent to your e-mail address.");
+            builderDecline.setPositiveButton("Confirm", null);
+            AlertDialog alertDialogDecline = builderDecline.create();
+            alertDialogDecline.show();
+        });
+        builder.setNegativeButton(R.string.dialog_remove_cancel, null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

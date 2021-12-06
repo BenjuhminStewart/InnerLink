@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import edu.uw.tcss450.innerlink.R;
 
 /**
- * A simple {@link Fragment} subclass.
  * Represents the Notification screen.
  *
  * NOTE: Class may be modified in future versions. When a user selects a Notification, they are

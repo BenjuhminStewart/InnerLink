@@ -3,12 +3,48 @@
     <!-- This is a MaterialDesignTheme. Required when using Material Components -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
 
+<!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
         <!-- Customize your theme here. -->
         <item name="android:statusBarColor">@color/colorNavBar</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/mainTextColor</item>
+        <item name="textColorAlertDialogListItem">@color/mainTextColor</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="AppThemeAuth" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <!--    &lt;!&ndash; Base application theme. &ndash;&gt;-->
+        <!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/colorNavBar</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+    </style>
+
+    <!-- Dark application theme. -->
+    <style name="DarkAppTheme" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor">@color/colorNavBar</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/DarkThemecolorPrimary</item>
+        <item name="colorPrimary">@color/colorNavBar</item>
+        <item name="colorPrimaryDark">@color/DarkThemecolorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/DarkThemeTextColor</item>
+        <item name="textColorAlertDialogListItem">@color/DarkThemeTextColor</item>
+        <item name="android:titleTextColor">@color/DarkThemeTextColor</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+
     </style>
 
     <style name="Widget.App.Button.OutlinedButton.IconOnly" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -20,5 +56,4 @@
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
     </style>
-
 </resources>

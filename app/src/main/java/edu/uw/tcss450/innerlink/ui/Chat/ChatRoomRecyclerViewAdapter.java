@@ -1,5 +1,6 @@
 package edu.uw.tcss450.innerlink.ui.Chat;
 
+import android.location.LocationRequest;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
@@ -40,7 +48,6 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             Navigation.findNavController(holder.mView).navigate(
                     ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment(holder.mChatRoom)
             );
-
         });
     }
 
@@ -67,8 +74,54 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
         void setChatRoom(final ChatRoom chatRoom) {
             mChatRoom = chatRoom;
             binding.textChatRoomName.setText(chatRoom.getChatRoomName());
-            binding.textLastMessage.setText(chatRoom.getLastMessage());
-            binding.textTimestamp.setText(chatRoom.getTimeStamp());
+            binding.textLastMessage.setText(chatRoom.getLastSender() + ": "+chatRoom.getLastMessage());
+            binding.textTimestamp.setText(getTime(chatRoom.getTimeStamp()));
         }
+
+
     }
-}
+
+    public String getTime(String time) {
+
+        String date = "";
+        String unformattedTime = "";
+        String[] dateTime = time.split("T");
+        date=dateTime[0];
+        unformattedTime=dateTime[1];
+        String[] times= unformattedTime.split(":");
+        String[] mainTime = unformattedTime.split("\\.");
+
+        String hours = times[0];
+        String minutes = times[1];
+
+        String meridiem = "";
+        if (Integer.parseInt(hours) > 11) {
+            meridiem = "pm";
+        } else {
+            meridiem = "am";
+        }
+        int hourFormatted = ((Integer.parseInt(hours) % 12));
+        if(hourFormatted == 0) {
+            hourFormatted = 12;
+        }
+        String finalTime = hourFormatted + ":" + minutes + meridiem;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        String currDate = sdf.format(new Date());
+        String[] currDateArr = currDate.split("-");
+        String[] textDateArr = date.split("-");
+        if(Integer.parseInt(currDateArr[0]) == Integer.parseInt(textDateArr[0])) {
+            if(Integer.parseInt(currDateArr[1]) == Integer.parseInt(textDateArr[1])) {
+                if(Integer.parseInt(currDateArr[2]) == Integer.parseInt(textDateArr[2])){
+                    return finalTime;
+                }
+            }
+        }
+        return date;
+
+    }
+
+
+    }
+
+

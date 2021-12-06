@@ -1,0 +1,29 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/account_header">
+
+        <EditTextPreference
+            app:key="username"
+            app:title="@string/username_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <Preference
+            android:title="Change Password"
+            android:key="@string/settings_change_password"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/theme_header">
+
+        <ListPreference
+            app:defaultValue="@string/theme_def_value"
+            app:entries="@array/theme_entries"
+            app:entryValues="@array/theme_values"
+            app:key="@string/theme"
+            app:title="@string/theme" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

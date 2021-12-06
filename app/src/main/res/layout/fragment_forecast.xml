@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     tools:context=".ui.Forecasts.ForecastFragment">
-
     <ImageView
         android:id="@+id/image_condition"
         android:layout_width="140dp"
@@ -113,6 +112,7 @@
         android:layout_marginBottom="112dp"
         android:orientation="horizontal"
         app:layoutManager="LinearLayoutManager"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -123,5 +123,6 @@
         tools:layout_conversion_absoluteHeight="135dp"
         tools:layout_conversion_absoluteWidth="411dp"
         tools:listitem="@layout/fragment_forecast_card" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
