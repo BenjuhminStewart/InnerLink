@@ -22,10 +22,18 @@
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/menu/bottom_menu.xml" value="0.371875" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/menu/bottom_nav_menu.xml" value="0.371875" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_baseline_exit_to_app_24_white.xml" value="0.23148148148148148" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_chat_black_24dp.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_cloud_black_24dp.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_group_black_24dp.xml" value="0.22777777777777777" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.22777777777777777" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/item_selector.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/round_button.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/round_container.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/round_corner.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/round_corner_current_page.xml" value="0.23148148148148148" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/round_corner_logout.xml" value="0.23148148148148148" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout-land/activity_main.xml" value="0.23721340388007053" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout-land/fragment_register.xml" value="0.22" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout-land/fragment_sign_in.xml" value="0.22864583333333333" />
@@ -33,9 +41,22 @@
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_card.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_list.xml" value="0.20742753623188406" />
-        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_home.xml" value="0.215625" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_manage.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_message.xml" value="0.18591691995947315" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_room_add.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_room_card.xml" value="0.22" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_room_list.xml" value="0.18206521739130435" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_user_card.xml" value="0.18591691995947315" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_contact_card.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_contact_outgoing_request_card.xml" value="0.18840579710144928" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_contacts.xml" value="0.18591691995947315" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_contacts_list.xml" value="0.18591691995947315" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_contacts_request_card.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_register.xml" value="0.20742753623188406" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_settings_page.xml" value="0.18591691995947315" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_sign_in.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/layout_dialog.xml" value="0.18591691995947315" />
         <entry key="..\:/Users/alexp/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/menu/bottom_nav_menu.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/ic_chat_notification.xml" value="0.18796296296296297" />

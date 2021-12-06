@@ -49,6 +49,10 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
                     ChatRoomListFragmentDirections.actionNavigationChatsToChatRoomFragment(holder.mChatRoom)
             );
         });
+        holder.binding.buttonManage.setOnClickListener(v -> {
+            Navigation.findNavController(holder.mView).navigate(
+                    ChatRoomListFragmentDirections.actionNavigationChatsToChatManageFragment(holder.mChatRoom.getChatId()));
+        });
     }
 
     @Override
@@ -73,12 +77,19 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
 
         void setChatRoom(final ChatRoom chatRoom) {
             mChatRoom = chatRoom;
-            binding.textChatRoomName.setText(chatRoom.getChatRoomName());
+            if (chatRoom.getChatRoomName().length() > 15) {
+                String newChatRoomName = "";
+                for (int i = 0; i < 17; i++) {
+                        newChatRoomName += chatRoom.getChatRoomName().charAt(i);
+                }
+                newChatRoomName += " ...";
+                binding.textChatRoomName.setText(newChatRoomName);
+            } else {
+                binding.textChatRoomName.setText(chatRoom.getChatRoomName());
+            }
             binding.textLastMessage.setText(chatRoom.getLastSender() + ": "+chatRoom.getLastMessage());
             binding.textTimestamp.setText(getTime(chatRoom.getTimeStamp()));
         }
-
-
     }
 
     public String getTime(String time) {

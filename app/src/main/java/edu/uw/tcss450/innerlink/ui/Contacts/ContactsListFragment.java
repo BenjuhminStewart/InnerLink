@@ -94,11 +94,9 @@ public class ContactsListFragment extends Fragment {
                         new ContactsRecyclerViewAdapter(contactList, this));
             }
         });
-        mContactViewModel.addOutgoingRequestsListObserver(getViewLifecycleOwner(), contactList -> {
-            if (!contactList.isEmpty()) {
-                adapter = new ContactsOutgoingRequestRecyclerViewAdapter(contactList, this.mContactViewModel);
-                binding.listRootContactsOutgoingRequests.setAdapter(adapter);
-            }
+        mContactViewModel.addOutgoingRequestsListObserver(getViewLifecycleOwner(), contactListOutgoing -> {
+            binding.listRootContactsOutgoingRequests.setAdapter(
+                    new ContactsOutgoingRequestRecyclerViewAdapter(contactListOutgoing, this));
         });
     }
 

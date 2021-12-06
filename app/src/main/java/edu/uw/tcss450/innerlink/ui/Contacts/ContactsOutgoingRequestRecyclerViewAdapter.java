@@ -21,9 +21,9 @@ public class ContactsOutgoingRequestRecyclerViewAdapter
     private final List<String> mContactsRequests;
 
     // Store the parent fragment
-    private final ContactsViewModel mParent;
+    private final ContactsListFragment mParent;
 
-    public ContactsOutgoingRequestRecyclerViewAdapter(List<String> contactsRequests, ContactsViewModel parent) {
+    public ContactsOutgoingRequestRecyclerViewAdapter(List<String> contactsRequests, ContactsListFragment parent) {
         this.mContactsRequests = contactsRequests;
         Collections.sort(mContactsRequests, String.CASE_INSENSITIVE_ORDER);
         this.mParent = parent;

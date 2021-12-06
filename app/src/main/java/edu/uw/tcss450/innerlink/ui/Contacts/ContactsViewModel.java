@@ -191,6 +191,8 @@ public class ContactsViewModel extends AndroidViewModel {
         }
         else {
             String data = new String(error.networkResponse.data, Charset.defaultCharset());
+            mRequestTo.setValue(new ArrayList<>());
+            mContactsList.setValue(new ArrayList<>());
             Log.e("CLIENT ERROR",
                     error.networkResponse.statusCode +
                             " " +
@@ -283,7 +285,6 @@ public class ContactsViewModel extends AndroidViewModel {
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
         mRequestTo.setValue(mRequestTo.getValue());
-
     }
 
     private void generateRequests(final JSONObject response) {
@@ -312,6 +313,10 @@ public class ContactsViewModel extends AndroidViewModel {
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
         }
         mRequestFrom.setValue(mRequestFrom.getValue());
+    }
+
+    public List<String> getRequestFrom() {
+        return mRequestFrom.getValue();
     }
 
     public void acceptContact(final String email) {

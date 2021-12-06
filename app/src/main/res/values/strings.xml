@@ -13,6 +13,7 @@
     <string name="notification_label">Notifications</string>
     <string name="chat_label">Chats</string>
     <string name="chat_add_label">Chat Creation</string>
+    <string name="chat_manage_label">Chat Room Management</string>
     <string name="chat_room_label">Chat Room</string>
     <string name="home_label">Home</string>
     <string name="register_final">Register</string>

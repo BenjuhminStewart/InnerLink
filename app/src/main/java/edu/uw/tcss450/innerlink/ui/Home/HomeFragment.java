@@ -58,6 +58,13 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater);
+        if (mContactViewModel.getRequestFrom().size() == 0) {
+            binding.textView2.setText("No Incoming Friend Requests");
+        } else if (mContactViewModel.getRequestFrom().size() == 1) {
+            binding.textView2.setText(mContactViewModel.getRequestFrom().size() + " Incoming Friend Request");
+        } else {
+            binding.textView2.setText(mContactViewModel.getRequestFrom().size() + " Incoming Friend Requests");
+        }
         return binding.getRoot();
     }
 
