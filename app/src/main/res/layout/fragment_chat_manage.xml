@@ -7,6 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.Chat.ChatManageFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/leave_chat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView5"
+        app:layout_constraintEnd_toEndOf="@+id/scrollView5"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="@+id/scrollView5"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.95"
+        app:srcCompat="@drawable/ic_baseline_exit_to_app_24_white"
+        tools:ignore="SpeakableTextPresentCheck"
+        app:backgroundTint="@color/colorImportant"
+        android:tint="@color/colorWhite"
+        android:foregroundTint="@color/colorWhite" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -52,19 +68,23 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_root_users"
-        android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatManageFragment"
+    <ScrollView
+        android:id="@+id/scrollView5"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layoutManager="LinearLayoutManager"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.0"
-        tools:context="edu.uw.tcss450.innerlink.ui.Chat.ChatManageFragment"
-        tools:listitem="@layout/fragment_chat_user_card"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_root_users"
+            android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatManageFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="LinearLayoutManager"
+            tools:context="edu.uw.tcss450.innerlink.ui.Chat.ChatManageFragment"
+            tools:listitem="@layout/fragment_chat_user_card"></androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

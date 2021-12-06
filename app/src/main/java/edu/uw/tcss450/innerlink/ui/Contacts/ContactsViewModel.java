@@ -315,6 +315,10 @@ public class ContactsViewModel extends AndroidViewModel {
         mRequestFrom.setValue(mRequestFrom.getValue());
     }
 
+    public List<String> getRequestFrom() {
+        return mRequestFrom.getValue();
+    }
+
     public void acceptContact(final String email) {
         String url = getApplication().getResources().getString(R.string.base_url)
                 + "contacts";

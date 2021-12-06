@@ -16,6 +16,7 @@
     <color name="mainTextColor">#000000</color>
     <color name="darkGrey">#222222</color>
     <color name="colorSecondary">#FFFFFF</color>
+    <color name="colorImportant">#E32323</color>
     <!-- Dark Theme colors -->
     <color name="DarkThemecolorNavBar">#92FFFFFF</color>
     <color name="DarkThemecolorPrimary">#D7404040</color>
