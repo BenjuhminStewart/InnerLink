@@ -42,11 +42,20 @@
             android:name="chatRoom"
             app:argType="edu.uw.tcss450.innerlink.ui.Chat.ChatRoom" />
     </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_locations"-->
+<!--        android:name="edu.uw.tcss450.innerlink.ui.Location.LocationFragment"-->
+<!--        android:label="@string/forecast_label"-->
+<!--        tools:layout="@layout/fragment_location_list">-->
+<!--        <action-->
+<!--            android:id="@+id/action_navigation_locations_to_forecastFragment"-->
+<!--            app:destination="@id/forecastFragment" />-->
+<!--    </fragment>-->
     <fragment
         android:id="@+id/navigation_locations"
-        android:name="edu.uw.tcss450.innerlink.ui.Location.LocationListFragment"
+        android:name="edu.uw.tcss450.innerlink.ui.Location.LocationFragment"
         android:label="@string/forecast_label"
-        tools:layout="@layout/fragment_location_list">
+        tools:layout="@layout/fragment_location">
         <action
             android:id="@+id/action_navigation_locations_to_forecastFragment"
             app:destination="@id/forecastFragment" />

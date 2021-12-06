@@ -25,6 +25,9 @@ import java.util.Objects;
 
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
+/**
+ * Retains a list of hourly forecasts for a location.
+ */
 public class ForecastHourlyViewModel extends AndroidViewModel {
     private MutableLiveData<List<Forecast>> mForecastList;
 

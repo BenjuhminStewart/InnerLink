@@ -25,6 +25,9 @@ import java.util.Objects;
 
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
+/**
+ * Retains a list of daily forecasts for a specified location.
+ */
 public class ForecastDailyViewModel extends AndroidViewModel {
     private MutableLiveData<List<Forecast>> mForecastList;
 

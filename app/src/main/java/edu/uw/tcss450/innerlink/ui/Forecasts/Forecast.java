@@ -1,10 +1,10 @@
 package edu.uw.tcss450.innerlink.ui.Forecasts;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.Serializable;
 
+/**
+ * Encapsulates forecast details.
+ */
 public class Forecast implements Serializable{
     private final String mCity;
     private final String mTime;

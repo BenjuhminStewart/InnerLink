@@ -25,6 +25,9 @@ import java.util.Objects;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
+/**
+ * Adds a location specified by zipcode to the list of locations.
+ */
 public class LocationListAddViewModel extends AndroidViewModel {
     private final MutableLiveData<JSONObject> mResponse;
 
@@ -87,5 +90,4 @@ public class LocationListAddViewModel extends AndroidViewModel {
                             data);
         }
     }
-
 }

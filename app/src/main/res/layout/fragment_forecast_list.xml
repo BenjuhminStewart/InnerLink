@@ -8,5 +8,4 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     app:layoutManager="LinearLayoutManager"
-    tools:context="edu.uw.tcss450.innerlink.ui.Forecast.ForecastListFragment"
     tools:listitem="@layout/fragment_forecast_card" />

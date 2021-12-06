@@ -12,6 +12,9 @@ import java.util.List;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentForecastCardBinding;
 
+/**
+ * Allows the user to scroll through the list of daily forecasts.
+ */
 public class ForecastDailyRecyclerViewAdapter extends RecyclerView.Adapter<ForecastDailyRecyclerViewAdapter.ForecastDailyViewHolder> {
     //Store all of the Forecasts to present
     private final List<Forecast> mForecasts;

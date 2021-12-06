@@ -24,7 +24,7 @@ import java.util.Objects;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
 /**
- * Retains a list of Forecasts and their hourly, daily, and weekly conditions.
+ * Retains information on the current forecast for a location.
  */
 public class ForecastCurrentViewModel extends AndroidViewModel {
     private MutableLiveData<Forecast> mForecast;

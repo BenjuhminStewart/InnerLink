@@ -13,7 +13,6 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +28,9 @@ import java.util.Objects;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 
+/**
+ * Retains a list of locations that the user would like forecasts for.
+ */
 public class LocationListViewModel extends AndroidViewModel {
     private MutableLiveData<List<Location>> mLocationList;
 

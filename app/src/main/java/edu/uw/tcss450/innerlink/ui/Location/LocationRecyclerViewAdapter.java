@@ -14,9 +14,10 @@ import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentLocationCardBinding;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastCurrentViewModel;
 
+/**
+ * Allows the user to scroll through the list of locations.
+ */
 public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRecyclerViewAdapter.LocationViewHolder>{
-    private ForecastCurrentViewModel mForecastCurrentModel;
-
     //Store all of the Locations to present
     private final List<edu.uw.tcss450.innerlink.ui.Location.Location> mLocationList;
 
@@ -38,7 +39,7 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
 
         holder.itemView.setOnClickListener(v -> {
             Navigation.findNavController(holder.mView).navigate(
-                    LocationListFragmentDirections.actionNavigationLocationsToForecastFragment(holder.mLocation)
+                    LocationFragmentDirections.actionNavigationLocationsToForecastFragment(holder.mLocation)
             );
 
         });

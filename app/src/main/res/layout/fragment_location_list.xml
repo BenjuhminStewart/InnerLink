@@ -8,5 +8,4 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layoutManager="LinearLayoutManager"
-    tools:context="edu.uw.tcss450.innerlink.ui.Location.LocationListFragment"
     tools:listitem="@layout/fragment_location_card" />

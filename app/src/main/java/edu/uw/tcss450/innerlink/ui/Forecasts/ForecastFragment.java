@@ -12,11 +12,10 @@ import android.view.ViewGroup;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentForecastBinding;
-import edu.uw.tcss450.innerlink.ui.Location.LocationListViewModel;
 
 
 /**
- * Represents the Forecast screen.
+ * Represents the Forecast screen, displaying the current, hourly, and daily forecasts for a location.
  */
 public class ForecastFragment extends Fragment {
     private ForecastCurrentViewModel mForecastCurrentModel;
