@@ -191,6 +191,8 @@ public class ContactsViewModel extends AndroidViewModel {
         }
         else {
             String data = new String(error.networkResponse.data, Charset.defaultCharset());
+            mRequestTo.setValue(new ArrayList<>());
+            mContactsList.setValue(new ArrayList<>());
             Log.e("CLIENT ERROR",
                     error.networkResponse.statusCode +
                             " " +
