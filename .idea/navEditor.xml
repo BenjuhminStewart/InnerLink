@@ -101,6 +101,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="forecastFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="256" />
+                            <option name="y" value="724" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="navigation_chats">
                     <value>
                       <LayoutPositions>
@@ -122,6 +134,9 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+
+                  <entry key="navigation_home">
+
                   <entry key="navigation_contact">
                     <value>
                       <LayoutPositions>
@@ -156,18 +171,7 @@
                     </value>
                   </entry>
                   <entry key="navigation_forecast">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="500" />
-                            <option name="y" value="12" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
-                  <entry key="navigation_home">
+
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -176,14 +180,30 @@
                             <option name="y" value="12" />
                           </Point>
                         </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="navigation_locations">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="724" />
+                          </Point>
+                        </option>
                         <option name="myPositions">
                           <map>
+
+                            <entry key="action_navigation_locations_to_forecastFragment">
+
                             <entry key="action_navigation_home_to_navigation_notification">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                             <entry key="action_navigation_home_to_navigation_settings">
+
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -255,6 +275,18 @@
                           <Point>
                             <option name="x" value="216" />
                             <option name="y" value="10" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="placeholder">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-173" />
+                            <option name="y" value="525" />
                           </Point>
                         </option>
                       </LayoutPositions>

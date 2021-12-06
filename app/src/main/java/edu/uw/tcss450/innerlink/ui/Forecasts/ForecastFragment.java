@@ -11,11 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import edu.uw.tcss450.innerlink.databinding.FragmentForecastBinding;
 
+import edu.uw.tcss450.innerlink.R;
+import edu.uw.tcss450.innerlink.databinding.FragmentForecastBinding;
+
 
 /**
- * Represents the Forecast screen.
+ * Represents the Forecast screen, displaying the current, hourly, and daily forecasts for a location.
  */
 public class ForecastFragment extends Fragment {
+    private ForecastCurrentViewModel mForecastCurrentModel;
+    private ForecastHourlyViewModel mForecastHourlyModel;
+    private ForecastDailyViewModel mForecastDailyModel;
 
     private FragmentForecastBinding binding;
 
@@ -28,8 +34,18 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mForecastModel = new ViewModelProvider(getActivity())
-                .get(ForecastsViewModel.class);
+
+        ViewModelProvider provider = new ViewModelProvider(getActivity());
+        mForecastCurrentModel = provider.get(ForecastCurrentViewModel.class);
+        mForecastHourlyModel = provider.get(ForecastHourlyViewModel.class);
+        mForecastDailyModel = provider.get(ForecastDailyViewModel.class);
+
+        ForecastFragmentArgs args = ForecastFragmentArgs.fromBundle(getArguments());
+        int zipcode = args.getLocation().getZipcode();
+
+        mForecastCurrentModel.getCurrConditions(zipcode);
+        mForecastHourlyModel.getHourlyConditions(zipcode);
+        mForecastDailyModel.getDailyConditions(zipcode);
 
     }
 
@@ -45,23 +61,34 @@ public class ForecastFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.hourly.setOnClickListener(button -> {
-            mForecastModel.getHourlyConditions(98335);
-            displayText();
+        FragmentForecastBinding binding = FragmentForecastBinding.bind(getView());
+
+        // current forecast
+        mForecastCurrentModel.addForecastObserver(getViewLifecycleOwner(), forecast -> {
+            binding.textCity.setText(forecast.getCity());
+            binding.textTemperature.setText(forecast.getTemperature());
+            binding.textCondition.setText(forecast.getCondition());
+
+            String condition = forecast.getCondition();
+            if (condition.equalsIgnoreCase("Clouds")) {
+                binding.imageCondition.setImageResource(R.drawable.ic_cloud_24dp);
+            } else if (condition.equalsIgnoreCase("Rain")) {
+                binding.imageCondition.setImageResource(R.drawable.ic_rain_24dp);
+            } else if (condition.equalsIgnoreCase("Snow")) {
+                binding.imageCondition.setImageResource(R.drawable.ic_snow_24dp);
+            } else {
+                binding.imageCondition.setImageResource(R.drawable.ic_sunny_24dp);
+            }
         });
 
-        binding.currentConditions.setOnClickListener(button -> {mForecastModel.getCurrConditions(98335);
-            displayText();
+        // hourly forecast
+        mForecastHourlyModel.addForecastObserver(getViewLifecycleOwner(), forecastList -> {
+            binding.listForecastHourly.setAdapter(new ForecastHourlyRecyclerViewAdapter(forecastList));
         });
 
-        binding.fiveDay.setOnClickListener(button -> {mForecastModel.getDailyConditions(98335);
-            displayText();
+        // daily forecast
+        mForecastDailyModel.addForecastObserver(getViewLifecycleOwner(), forecastList -> {
+            binding.listForecastDaily.setAdapter(new ForecastDailyRecyclerViewAdapter(forecastList));
         });
-
     }
-
-    private void displayText() {
-        binding.forecastResponse.setText(mForecastModel.getmResponse().toString());
-    }
-
 }
