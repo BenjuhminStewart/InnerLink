@@ -7,74 +7,122 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     tools:context=".ui.Forecasts.ForecastFragment">
-
-    <Button
-        android:id="@+id/current_conditions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="@string/conditions_label"
-        android:focusable="false"
-        app:layout_constraintBottom_toTopOf="@+id/five_day"
+    <ImageView
+        android:id="@+id/image_condition"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="36dp"
+        android:alpha="0.7"
+        android:contentDescription="@string/description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/hourly"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/text_city"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="36dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_temperature"/>
+
+    <TextView
+        android:id="@+id/text_temperature"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_city" />
+
+    <TextView
+        android:id="@+id/text_condition"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="20sp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_temperature" />
+
+    <TextView
+        android:id="@+id/text_forecast_hourly_header"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="@string/hourly_label"
-        android:focusable="false"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/five_day" />
+        app:layout_constraintTop_toBottomOf="@+id/text_condition"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="500dp" />
 
-    <Button
-        android:id="@+id/five_day"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_forecast_hourly"
+        android:name="edu.uw.tcss450.innerlink.ui.Forecast."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/daily_label"
-        android:focusable="false"
-        app:layout_constraintBottom_toTopOf="@+id/hourly"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/current_conditions" />
-
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="409dp"
-        android:layout_height="563dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hourly">
+        app:layout_constraintTop_toBottomOf="@+id/text_forecast_hourly_header"
+        app:layout_constraintVertical_bias="0.0"
+        tools:context="edu.uw.tcss450.innerlink.ui.Forecast.ForecastListFragment"
+        tools:layout_conversion_absoluteHeight="135dp"
+        tools:layout_conversion_absoluteWidth="411dp"
+        tools:listitem="@layout/fragment_forecast_card" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/text_forecast_daily_header"
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/daily_label"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_forecast_hourly"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="500dp" />
 
-            <TextView
-                android:id="@+id/forecast_response"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:padding="12dp"
-                android:scrollbars="vertical"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_forecast_daily"
+        android:name="edu.uw.tcss450.innerlink.ui.Forecast."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="112dp"
+        android:orientation="horizontal"
+        app:layoutManager="LinearLayoutManager"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_forecast_daily_header"
+        app:layout_constraintVertical_bias="0.0"
+        tools:context="edu.uw.tcss450.innerlink.ui.Forecast.ForecastListFragment"
+        tools:layout_conversion_absoluteHeight="135dp"
+        tools:layout_conversion_absoluteWidth="411dp"
+        tools:listitem="@layout/fragment_forecast_card" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
