@@ -236,8 +236,8 @@ public class ChatRoomListViewModel extends AndroidViewModel {
         }
         try {
             chatId = response.getInt("chatID");
-            addInitialUser(chatId, mJwt);
-            addInitialMessage(chatId, mJwt);
+//            addInitialUser(chatId, mJwt);
+//            addInitialMessage(chatId, mJwt);
         } catch (JSONException e) {
             Log.e("JSON PARSE ERROR", "Found in handle Success ChatRoomViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());
