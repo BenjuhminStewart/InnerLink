@@ -94,7 +94,8 @@ public class LocationListViewModel extends AndroidViewModel {
                     locationList.add(
                             new Location(
                                     location.getString("nickname"),
-                                    location.getInt("zip")
+                                    location.getInt("zip"),
+                                    location.getInt("primarykey")
                             )
                     );
                 } else {
@@ -102,7 +103,8 @@ public class LocationListViewModel extends AndroidViewModel {
                             new Location(
                                     location.getString("nickname"),
                                     Float.parseFloat(location.getString("lat")),
-                                    Float.parseFloat(location.getString("long"))
+                                    Float.parseFloat(location.getString("long")),
+                                    location.getInt("primarykey")
                             )
                     );
                 }

@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -18,11 +19,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
+import edu.uw.tcss450.innerlink.ui.Maps.LocationMaps;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentLocationBinding;
 import edu.uw.tcss450.innerlink.model.LocationViewModel;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomListFragmentDirections;
+import edu.uw.tcss450.innerlink.ui.Maps.LocationMapsViewModel;
 
 /**
  * Represents the list of locations that the user would like to have forecasts for.
@@ -31,6 +34,7 @@ public class LocationFragment extends Fragment {
     private UserInfoViewModel mUserModel;
     private LocationListViewModel mLocationListModel;
     private LocationListAddViewModel mAddLocationModel;
+    private LocationMapsViewModel mLocationMapViewModel;
 
 
     public LocationFragment() {
@@ -45,6 +49,7 @@ public class LocationFragment extends Fragment {
         mUserModel = provider.get(UserInfoViewModel.class);
         mLocationListModel = provider.get(LocationListViewModel.class);
         mAddLocationModel = provider.get(LocationListAddViewModel.class);
+        mLocationMapViewModel = provider.get(LocationMapsViewModel.class);
         mLocationListModel.connectGet(mUserModel.getmJwt());
     }
 
@@ -61,7 +66,7 @@ public class LocationFragment extends Fragment {
 
         mLocationListModel.addLocationListObserver(getViewLifecycleOwner(), locationList -> {
             System.out.println("Made it to onViewCreated");
-            binding.listRoot.setAdapter(new LocationRecyclerViewAdapter(locationList));
+            binding.listRoot.setAdapter(new LocationRecyclerViewAdapter(locationList, this));
             System.out.println("Made it past SetAdapter");
             System.out.println(locationList.toString());
         });
@@ -98,9 +103,19 @@ public class LocationFragment extends Fragment {
                         try {
                             int zipcode = Integer.parseInt(input.getText().toString());
                             mAddLocationModel.addLocation(zipcode, mUserModel.getmJwt());
+                            AlertDialog.Builder builderLeft = new AlertDialog.Builder(getActivity());
+                            builderLeft.setTitle("Success!");
+                            builderLeft.setMessage("You have Deleted the Location.");
+                            builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Navigation.findNavController(getView()).navigate(
+                                            LocationFragmentDirections.actionNavigationLocationsSelf());
+                                }
+                            });
+                            AlertDialog alertDialogLeft = builderLeft.create();
+                            alertDialogLeft.show();
                         }
                         catch (NumberFormatException e){
-                            System.out.println("ERROR THROWN");
                             AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
                             builderDecline.setTitle("Failure");
                             builderDecline.setMessage("Entry is not a zipcode. Please try again.");
@@ -116,7 +131,6 @@ public class LocationFragment extends Fragment {
                 .setNegativeButton("Cancel", null)
                 .show().setCanceledOnTouchOutside(true);
 
-            System.out.println("Made it past dialog");
         });
 
         binding.buttonAddLocation.setOnClickListener(button -> {
@@ -145,15 +159,36 @@ public class LocationFragment extends Fragment {
 
             dialog
                     .setTitle("Add a location?")
-                    .setMessage("Please type in the Zipcode OR Latitude and Longitude")
+                    .setMessage("Please type in the Latitude and Longitude")
                     .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                String lat = input.getText().toString();
+                                String lon = input2.getText().toString();
+                                float latFloat = Float.parseFloat(lat);
+                                float lonFloat = Float.parseFloat(lon);
+                                mAddLocationModel.addLocationCoords(latFloat, lonFloat, mUserModel.getmJwt());
+                                AlertDialog.Builder builderLeft = new AlertDialog.Builder(getActivity());
+                                builderLeft.setTitle("Success!");
+                                builderLeft.setMessage("You have Deleted the Location.");
+                                builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        Navigation.findNavController(getView()).navigate(
+                                                LocationFragmentDirections.actionNavigationLocationsSelf());
+                                    }
+                                });
+                                AlertDialog alertDialogLeft = builderLeft.create();
+                                alertDialogLeft.show();
+                            }
+                            catch (NumberFormatException e) {
+                                AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
+                                builderDecline.setTitle("Failure");
+                                builderDecline.setMessage("Invalid Coordinates. Please try again.");
+                                builderDecline.setNegativeButton("Cancel", null);
+                                AlertDialog alertDialogDecline = builderDecline.create();
+                                alertDialogDecline.show();
+                            }
 
-                            String lat = input.getText().toString();
-                            String lon = input2.getText().toString();
-                            float latFloat = Float.parseFloat(lat);
-                            float lonFloat = Float.parseFloat(lon);
-                            mAddLocationModel.addLocationCoords(latFloat, lonFloat, mUserModel.getmJwt());
 
 
                         }
@@ -165,5 +200,11 @@ public class LocationFragment extends Fragment {
 
             System.out.println("Made it past dialog");
         });
+
+        binding.buttonAddLocationMap.setOnClickListener(button -> {
+                Navigation.findNavController(getView()).navigate(LocationFragmentDirections.actionNavigationLocationsToLocationMaps());
+        });
+
+
     }
 }

@@ -1,17 +1,27 @@
 package edu.uw.tcss450.innerlink.ui.Location;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.security.Provider;
 import java.util.List;
 
+import edu.uw.tcss450.innerlink.MainActivity;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentLocationCardBinding;
+import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsRecyclerViewAdapter;
 import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastCurrentViewModel;
 
 /**
@@ -20,9 +30,16 @@ import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastCurrentViewModel;
 public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRecyclerViewAdapter.LocationViewHolder>{
     //Store all of the Locations to present
     private final List<edu.uw.tcss450.innerlink.ui.Location.Location> mLocationList;
+    private final LocationFragment mLocationFragment;
+    private final UserInfoViewModel mUserModel;
+    private final LocationListRemoveViewModel mRemoveLocation;
 
-    public LocationRecyclerViewAdapter(List<edu.uw.tcss450.innerlink.ui.Location.Location> locationList) {
+    public LocationRecyclerViewAdapter(List<edu.uw.tcss450.innerlink.ui.Location.Location> locationList, LocationFragment parent) {
         mLocationList = locationList;
+        mLocationFragment = parent;
+        ViewModelProvider provider = new ViewModelProvider(mLocationFragment.getActivity());
+        mUserModel = provider.get(UserInfoViewModel.class);
+        mRemoveLocation = provider.get(LocationListRemoveViewModel.class);
     }
 
     @NonNull
@@ -43,6 +60,7 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
             );
 
         });
+
     }
 
     @Override
@@ -69,8 +87,37 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
             mLocation = location;
             binding.textCity.setText(location.getCity());
 
+            binding.buittonMore2.setOnClickListener( v -> {
+                int key = location.getKey();
+                removeLocation(location, this, key);
+            });
+
         }
 
 
+    }
+
+    private void removeLocation(final Location location, LocationRecyclerViewAdapter.LocationViewHolder view, int key) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mLocationFragment.getActivity());
+        builder.setTitle(R.string.dialog_remove_title);
+        builder.setMessage(R.string.dialog_remove_message);
+        builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
+            mRemoveLocation.removeLocation(key, mUserModel.getmJwt());
+            AlertDialog.Builder builderLeft = new AlertDialog.Builder(mLocationFragment.getActivity());
+            builderLeft.setTitle("Success!");
+            builderLeft.setMessage("You have Deleted the Location.");
+            builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Navigation.findNavController(mLocationFragment.getView()).navigate(
+                            LocationFragmentDirections.actionNavigationLocationsSelf());
+                }
+            });
+            AlertDialog alertDialogLeft = builderLeft.create();
+            alertDialogLeft.show();
+
+        });
+        builder.setNegativeButton(R.string.dialog_remove_cancel, null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

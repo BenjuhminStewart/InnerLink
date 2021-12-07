@@ -18,7 +18,7 @@
     <string name="home_label">Home</string>
     <string name="register_final">Register</string>
     <string name="contacts_label">Contacts</string>
-
+    <string name="map_label">Add Location By Map</string>
     <string name="settings_label">Settings</string>
     <string name="sign_out_label">Sign Out</string>
 
@@ -60,5 +60,6 @@
     <string name="dialog_remove_cancel">Cancel</string>
 
     <string name="settings_change_password">changePassword</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>
