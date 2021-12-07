@@ -85,18 +85,31 @@ public class LocationListViewModel extends AndroidViewModel {
      */
     private void handleSuccess(final JSONArray response) {
         List<Location> locationList = new ArrayList<>();
-
+        System.out.println(response.toString());
         try {
             for(int i = 0; i < response.length(); i++) {
                 JSONObject location = response.getJSONObject(i);
+                String zip = "zip";
+                if (location.has("zip") && !location.isNull("zip")) {
+                    locationList.add(
+                            new Location(
+                                    location.getString("nickname"),
+                                    location.getInt("zip")
+                            )
+                    );
+                } else {
+                    locationList.add(
+                            new Location(
+                                    location.getString("nickname"),
+                                    Float.parseFloat(location.getString("lat")),
+                                    Float.parseFloat(location.getString("long"))
+                            )
+                    );
+                }
 
-                locationList.add(
-                        new Location(
-                                location.getString("nickname"),
-                                location.getInt("zip")
-                        )
-                );
+
             }
+            System.out.println(locationList.toString());
 
             mLocationList.setValue(locationList);
 

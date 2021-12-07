@@ -5,19 +5,40 @@
       <map>
         <entry key="../../../layout/custom_preview.xml" value="0.30205128205128207" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.225" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_chat_black_24dp.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_clear_night_24dp.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_cloud_24dp.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_cloud_black_24dp.xml" value="0.3880208333333333" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_cloudy.xml" value="0.22" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_group.xml" value="0.23703703703703705" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_group_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_launcher_background.xml" value="0.225" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_misty.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_rainy.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_sunny.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_sunny_24dp.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_thunderstorm.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_thunderstorm_custom_24.xml" value="0.23703703703703705" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/ic_user_24_black.xml" value="0.18177083333333333" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/item_selector.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/drawable/round_corner.xml" value="0.3880208333333333" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/activity_main.xml" value="0.26268115942028986" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_manage.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_message.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_room_card.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_chat_room_list.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_forecast.xml" value="0.26268115942028986" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_home.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_location.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_location_card.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_notification.xml" value="0.26268115942028986" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/fragment_settings_page.xml" value="0.21784420289855072" />
+        <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/layout_dialog.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/layout/notification_view_model_fragment.xml" value="0.26268115942028986" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/menu/bottom_menu.xml" value="0.371875" />
         <entry key="..\:/Users/Benjamin/Documents/GitHub/Team-3-TCSS-450-Client/app/src/main/res/menu/bottom_nav_menu.xml" value="0.371875" />
@@ -65,7 +86,6 @@
         <entry key="app/src/main/res/drawable/ic_email_24.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/drawable/ic_email_24dp_black.xml" value="0.32760416666666664" />
         <entry key="app/src/main/res/drawable/ic_less_grey_24dp.xml" value="0.48333333333333334" />
-        <entry key="app/src/main/res/drawable/ic_location_24dp.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/drawable/ic_mark_chat_unread_24.xml" value="0.3296296296296296" />
         <entry key="app/src/main/res/drawable/ic_more_grey_24dp.xml" value="0.48333333333333334" />
         <entry key="app/src/main/res/drawable/ic_person_24dp.xml" value="0.3148148148148148" />
@@ -90,15 +110,11 @@
         <entry key="app/src/main/res/layout/fragment_forecast_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_forecast_list.xml" value="0.3302083333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22010869565217392" />
-        <entry key="app/src/main/res/layout/fragment_location.xml" value="0.31476449275362317" />
-        <entry key="app/src/main/res/layout/fragment_location_card.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_location_list.xml" value="0.31476449275362317" />
         <entry key="app/src/main/res/layout/fragment_notification.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/fragment_notification_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_notification_list.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.22010869565217392" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.31354166666666666" />
-        <entry key="app/src/main/res/layout/location_fragment.xml" value="0.1514690982776089" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.48518518518518516" />
       </map>
     </option>

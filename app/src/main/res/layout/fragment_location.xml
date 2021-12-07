@@ -8,6 +8,20 @@
     android:scrollbars="vertical"
     tools:context=".ui.Location.LocationFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_add_location_zip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/description"
+        android:src="@drawable/ic_baseline_numbers_24"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_add_location"
+        app:layout_constraintHorizontal_bias="0.936"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.931" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_root"
         android:name="edu.uw.tcss450.innerlink.ui.Location."
@@ -16,6 +30,8 @@
         android:orientation="vertical"
         app:layoutManager="LinearLayoutManager"
         tools:context="edu.uw.tcss450.innerlink.ui.Location.LocationFragment"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
         tools:listitem="@layout/fragment_location_card" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -7,60 +7,51 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     tools:context=".ui.Forecasts.ForecastFragment">
+
     <ImageView
         android:id="@+id/image_condition"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="36dp"
-        android:alpha="0.7"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_city"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/text_temperature"/>
-
-    <TextView
-        android:id="@+id/text_temperature"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_city" />
 
     <TextView
-        android:id="@+id/text_condition"
+        android:id="@+id/text_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="20sp"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_temperature" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_condition"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="106dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_condition" />
 
     <TextView
         android:id="@+id/text_forecast_hourly_header"
         android:layout_width="322dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:text="@string/hourly_label"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -78,7 +69,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text_forecast_daily_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +84,7 @@
         android:id="@+id/text_forecast_daily_header"
         android:layout_width="322dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="8dp"
         android:text="@string/daily_label"
         android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
@@ -109,7 +100,7 @@
         android:name="edu.uw.tcss450.innerlink.ui.Forecast."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="64dp"
         android:orientation="horizontal"
         app:layoutManager="LinearLayoutManager"
 

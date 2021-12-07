@@ -61,6 +61,26 @@ public class ForecastHourlyViewModel extends AndroidViewModel {
                 .addToRequestQueue(request);
     }
 
+    public void getHourlyConditions(float lat, float lon) {
+
+        String url = "https://tcss450-innerlink.herokuapp.com/forecast/24hour/byCoords/" + lat + "/" + lon;
+        Request request = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null, //no body for this get request
+                this::handleSuccess,
+                this::handleError) {
+
+        };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                10_000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        //Instantiate the RequestQueue and add the request to the queue
+        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
+                .addToRequestQueue(request);
+    }
+
     private void handleSuccess(final JSONObject response){
         List<Forecast> forecastList = new ArrayList<>();
 

@@ -2,6 +2,8 @@ package edu.uw.tcss450.innerlink;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import androidx.navigation.NavController;
@@ -28,6 +30,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         PreferenceManager.getDefaultSharedPreferences(this);
         setAppTheme();
 
+
         theme = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.theme), getString(R.string.theme_def_value));
 
@@ -86,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 this,
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt()))
                 .get(UserInfoViewModel.class);
-
+        
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -114,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 //When the user navigates to the chats page, reset the new message count.
                 //This will need some extra logic for your project as it should have
                 //multiple chat rooms.
+
+
                 mNewMessageModel.reset();
             }
         });
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 badge.setVisible(false);
             }
         });
+
     }
 
     @Override

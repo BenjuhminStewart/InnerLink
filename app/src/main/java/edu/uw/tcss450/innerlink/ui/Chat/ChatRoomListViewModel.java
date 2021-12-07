@@ -105,7 +105,7 @@ public class ChatRoomListViewModel extends AndroidViewModel {
                         chatRoom.getInt("chatid"),
                         chatRoom.getString("user"),
                         chatRoom.getString("message"),
-                        chatRoom.getString("timestamp")
+                        chatRoom.getString("timestamp"), chatRoom.getString("users")
                     )
                 );
             }
@@ -152,70 +152,6 @@ public class ChatRoomListViewModel extends AndroidViewModel {
                 .addToRequestQueue(request);
     }
 
-    public void addInitialUser(final int chatId, final String jwt) {
-        String url = getApplication().getResources().getString(R.string.base_url) +
-                "chats/" + chatId;
-
-        Request request = new JsonObjectRequest(
-                Request.Method.PUT,
-                url,
-                null, //no body for this get request
-                null,
-                this::handleError) {
-
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String, String> headers = new HashMap<>();
-                // add headers <key,value>
-                headers.put("Authorization", jwt);
-                return headers;
-            }
-        };
-
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
-                .addToRequestQueue(request);
-    }
-
-    public void addInitialMessage(final int chatId, final String jwt) {
-        String url = getApplication().getResources().getString(R.string.base_url) +
-                "messages";
-        JSONObject body = new JSONObject();
-        try {
-            body.put("chatId", chatId);
-            body.put("message", "Welcome to chat!");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Request request = new JsonObjectRequest(
-                Request.Method.POST,
-                url,
-                body, //no body for this get request
-                null,
-                this::handleError) {
-
-            @Override
-            public Map<String, String> getHeaders() {
-                Map<String, String> headers = new HashMap<>();
-                // add headers <key,value>
-                headers.put("Authorization", jwt);
-                return headers;
-            }
-        };
-
-        request.setRetryPolicy(new DefaultRetryPolicy(
-                10_000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        //Instantiate the RequestQueue and add the request to the queue
-        RequestQueueSingleton.getInstance(getApplication().getApplicationContext())
-                .addToRequestQueue(request);
-    }
-
     private void handleError(final VolleyError error) {
         if (Objects.isNull(error.networkResponse)) {
             Log.e("NETWORK ERROR", error.getMessage());
@@ -236,8 +172,7 @@ public class ChatRoomListViewModel extends AndroidViewModel {
         }
         try {
             chatId = response.getInt("chatID");
-//            addInitialUser(chatId, mJwt);
-//            addInitialMessage(chatId, mJwt);
+
         } catch (JSONException e) {
             Log.e("JSON PARSE ERROR", "Found in handle Success ChatRoomViewModel");
             Log.e("JSON PARSE ERROR", "Error: " + e.getMessage());

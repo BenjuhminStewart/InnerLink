@@ -29,7 +29,8 @@
         tools:layout="@layout/fragment_chat_room_list">
         <action
             android:id="@+id/action_navigation_chats_to_chatRoomFragment"
-            app:destination="@id/chatRoomFragment" />
+            app:destination="@id/chatRoomFragment"
+            />
         <action
             android:id="@+id/action_navigation_chats_to_chatManageFragment"
             app:destination="@id/chatManageFragment" />
@@ -46,8 +47,8 @@
     <fragment
         android:id="@+id/chatRoomFragment"
         android:name="edu.uw.tcss450.innerlink.ui.Chat.ChatRoomFragment"
-        android:label="@string/chat_room_label"
-        tools:layout="@layout/fragment_chat_room" >
+        tools:layout="@layout/fragment_chat_room"
+        >
         <argument
             android:name="chatRoom"
             app:argType="edu.uw.tcss450.innerlink.ui.Chat.ChatRoom" />
@@ -103,5 +104,14 @@
         <argument
             android:name="chatid"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_locations"
+        android:name="edu.uw.tcss450.innerlink.ui.Location.LocationFragment"
+        android:label="@string/forecast_label"
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_navigation_locations_to_forecastFragment"
+            app:destination="@id/forecastFragment" />
     </fragment>
 </navigation>

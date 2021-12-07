@@ -29,6 +29,7 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsRecyclerViewAdapter;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsRequestRecyclerViewAdapter;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsViewModel;
+import edu.uw.tcss450.innerlink.ui.Forecasts.ForecastCurrentViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +37,7 @@ import edu.uw.tcss450.innerlink.ui.Contacts.ContactsViewModel;
  */
 public class HomeFragment extends Fragment {
     private ContactsViewModel mContactViewModel;
+    private ForecastCurrentViewModel mForecastCurrentViewModel;
     private UserInfoViewModel mUserModel;
     private FragmentHomeBinding binding;
 
@@ -51,6 +53,8 @@ public class HomeFragment extends Fragment {
         UserInfoViewModel mUserModel = new ViewModelProvider(getActivity()).get(UserInfoViewModel.class);
         mContactViewModel.setUserInfoViewModel(mUserModel);
         mContactViewModel.getRequests();
+        mForecastCurrentViewModel = new ViewModelProvider(getActivity()).get(ForecastCurrentViewModel.class);
+         //mForecastCurrentViewModel.getCurrConditions();
     }
 
     @Override

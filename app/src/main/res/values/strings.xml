@@ -18,9 +18,6 @@
     <string name="home_label">Home</string>
     <string name="register_final">Register</string>
     <string name="contacts_label">Contacts</string>
-    <string name="conditions_label">Current Conditions</string>
-    <string name="hourly_label">24 Hour</string>
-    <string name="daily_label">5 day</string>
 
     <string name="settings_label">Settings</string>
     <string name="sign_out_label">Sign Out</string>
@@ -35,7 +32,7 @@
     <string name="hourly_label">Hourly Forecast</string>
     <string name="conditions_label">Current Forecast</string>
     <string name="daily_label">Daily Forecast</string>
-
+    <string name="chatRoomLabel">Chat Room</string>
     <string name="go_to">Go To</string>
 
     <!-- Preference Titles -->
