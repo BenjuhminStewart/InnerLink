@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentLocationBinding;
+import edu.uw.tcss450.innerlink.model.LocationViewModel;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 
 /**
@@ -30,6 +31,7 @@ public class LocationFragment extends Fragment {
     private UserInfoViewModel mUserModel;
     private LocationListViewModel mLocationListModel;
     private LocationListAddViewModel mAddLocationModel;
+
 
     public LocationFragment() {
         // Required empty public constructor
@@ -63,6 +65,8 @@ public class LocationFragment extends Fragment {
             System.out.println("Made it past SetAdapter");
             System.out.println(locationList.toString());
         });
+
+
 
         // Add location button was clicked. Add the location via the LocationListAddViewModel
         binding.buttonAddLocationZip.setOnClickListener(button -> {

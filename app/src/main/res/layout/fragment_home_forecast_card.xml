@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/fragment_home_forecast_card_test"
-    android:layout_width="100dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="30dp"
@@ -11,14 +11,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_inner"
-        android:layout_width="100dp"
-        android:layout_height="125dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/text_forecast_header"
         app:layout_constraintTop_toTopOf="@+id/text_forecast_header">
 
         <TextView
             android:id="@+id/text_time"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textAlignment="center"
@@ -30,8 +30,8 @@
 
         <ImageView
             android:id="@+id/image_condition"
-            android:layout_width="80dp"
-            android:layout_height="50dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginTop="4dp"
             android:contentDescription="@string/description"
             android:textAlignment="center"
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/text_temperature"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
