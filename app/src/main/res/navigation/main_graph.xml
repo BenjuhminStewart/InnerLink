@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_navigation_chats_to_chatManageFragment"
             app:destination="@id/chatManageFragment" />
+        <action
+            android:id="@+id/action_navigation_chats_self2"
+            app:destination="@id/navigation_chats" />
     </fragment>
     <fragment
         android:id="@+id/forecastFragment"
@@ -104,6 +107,12 @@
         <argument
             android:name="chatid"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_chatManageFragment_to_navigation_chats"
+            app:destination="@id/navigation_chats" />
+        <action
+            android:id="@+id/action_chatManageFragment_self"
+            app:destination="@id/chatManageFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_locations"

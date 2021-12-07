@@ -1,12 +1,16 @@
 package edu.uw.tcss450.innerlink.ui.Chat;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +19,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatManageBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomListBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatUserCardBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactsListBinding;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsRecyclerViewAdapter;
+import edu.uw.tcss450.innerlink.ui.auth.signin.SignInFragmentDirections;
 
 /**
  * A fragment that allows the user to manage a chat room. The user can add a new user to the chat room,
@@ -73,6 +81,33 @@ public class ChatManageFragment extends Fragment {
                 emailInput.setText("");
             }
         });
+
+        FloatingActionButton leaveButton = (FloatingActionButton) binding.getRoot().findViewById(R.id.leave_chat_button);
+        leaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Leave Chat");
+                    builder.setMessage("Are you sure you want to leave this chat room?");
+                    builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
+                        mChatManageViewModel.leaveChat(args.getChatid(), mUserModel.getmJwt());
+                        AlertDialog.Builder builderLeft = new AlertDialog.Builder(getContext());
+                        builderLeft.setTitle("Success!");
+                        builderLeft.setMessage("You have left the chat room.");
+                        builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Navigation.findNavController(getView()).navigate(
+                                        ChatManageFragmentDirections.actionChatManageFragmentToNavigationChats());
+                            }
+                        });
+                        AlertDialog alertDialogLeft = builderLeft.create();
+                        alertDialogLeft.show();
+                    });
+                    builder.setNegativeButton(R.string.dialog_remove_cancel, null);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+            }
+        });
     }
 
     @Override
@@ -82,4 +117,5 @@ public class ChatManageFragment extends Fragment {
         binding = FragmentChatManageBinding.inflate(inflater);
         return binding.getRoot();
     }
+
 }
