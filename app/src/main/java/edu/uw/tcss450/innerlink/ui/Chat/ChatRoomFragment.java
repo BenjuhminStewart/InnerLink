@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Toolbar;
+
+import java.util.Objects;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomBinding;
@@ -21,32 +26,45 @@ import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
  * Displays the list of messages.
  */
 public class ChatRoomFragment extends Fragment {
+    private ChatRoomListViewModel mChatRoomListModel;
     private ChatSendViewModel mSendModel;
     private ChatRoomViewModel mChatModel;
     private UserInfoViewModel mUserModel;
+    Toolbar mActionBarToolbar;
+
+
 
     public ChatRoomFragment() {
         // Required empty public constructor
+
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         ViewModelProvider provider = new ViewModelProvider(getActivity());
         mUserModel = provider.get(UserInfoViewModel.class);
         mChatModel = provider.get(ChatRoomViewModel.class);
         mSendModel = provider.get(ChatSendViewModel.class);
-
+        mChatRoomListModel = provider.get(ChatRoomListViewModel.class);
+        mChatRoomListModel.connectGet(mUserModel.getmJwt());
         ChatRoomFragmentArgs args = ChatRoomFragmentArgs.fromBundle(getArguments());
         int chatId = args.getChatRoom().getChatId();
         mChatModel.getFirstMessages(chatId, mUserModel.getmJwt());
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_chat_room, container, false);
+
     }
 
     @Override
@@ -60,6 +78,14 @@ public class ChatRoomFragment extends Fragment {
 
         //SetRefreshing shows the internal Swiper view progress bar. Show this until messages load
         binding.swipeContainer.setRefreshing(true);
+
+
+        String title = args.getChatRoom().getChatRoomName();
+        Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).setTitle(title);
+
+
+
+
 
         final RecyclerView rv = binding.recyclerMessages;
         //Set the Adapter to hold a reference to the list FOR THIS chat ID that the ViewModel

@@ -17,30 +17,15 @@ public class ChatRoom implements Serializable {
     private final String mLastSender;
     private final String mLastMessage;
     private final String mTimeStamp;
+    private final String mUserCount;
 
-    public ChatRoom(String chatRoomName, int chatId, String lastSender, String lastMessage, String timeStamp) {
+    public ChatRoom(String chatRoomName, int chatId, String lastSender, String lastMessage, String timeStamp, String userCount) {
         mChatRoomName = chatRoomName;
         mChatId = chatId;
         mLastSender = lastSender;
         mLastMessage = lastMessage;
         mTimeStamp = timeStamp;
-    }
-
-    /**
-     * Static factory method to turn a properly formatted JSON String into a
-     * ChatMessage object.
-     * @param chatRoomAsJson the String to be parsed into a ChatRoom Object.
-     * @return a ChatRoom Object with the details contained in the JSON String.
-     * @throws JSONException when chatRoomAsJson cannot be parsed into a ChatRoom.
-     */
-    public static ChatRoom createFromJsonString(final String chatRoomAsJson) throws JSONException {
-        final JSONObject msg = new JSONObject(chatRoomAsJson);
-        return new ChatRoom(
-                msg.getString("name"),
-                msg.getInt("chatid"),
-                msg.getString("user"),
-                msg.getString("message"),
-                msg.getString("timestamp"));
+        mUserCount = userCount;
     }
 
     public String getChatRoomName() {
@@ -61,6 +46,10 @@ public class ChatRoom implements Serializable {
 
     public String getTimeStamp() {
         return mTimeStamp;
+    }
+
+    public String getUserCount(){
+        return mUserCount;
     }
 
     /**

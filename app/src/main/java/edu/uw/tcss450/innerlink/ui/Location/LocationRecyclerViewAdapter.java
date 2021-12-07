@@ -68,6 +68,9 @@ public class LocationRecyclerViewAdapter extends RecyclerView.Adapter<LocationRe
         void setLocation(final Location location) {
             mLocation = location;
             binding.textCity.setText(location.getCity());
+
         }
+
+
     }
 }

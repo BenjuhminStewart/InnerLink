@@ -73,13 +73,19 @@ public class ChatRoomRecyclerViewAdapter extends RecyclerView.Adapter<ChatRoomRe
             super(view);
             mView = view;
             binding = FragmentChatRoomCardBinding.bind(view);
+
         }
 
         void setChatRoom(final ChatRoom chatRoom) {
             mChatRoom = chatRoom;
+            if(Integer.parseInt(chatRoom.getUserCount()) < 3) {
+                binding.imageView.setImageResource(R.drawable.ic_user_24_black);
+            } else {
+                binding.imageView.setImageResource(R.drawable.ic_group);
+            }
             if (chatRoom.getChatRoomName().length() > 15) {
                 String newChatRoomName = "";
-                for (int i = 0; i < 17; i++) {
+                for (int i = 0; i < 15; i++) {
                         newChatRoomName += chatRoom.getChatRoomName().charAt(i);
                 }
                 newChatRoomName += " ...";

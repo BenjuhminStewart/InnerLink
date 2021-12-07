@@ -63,13 +63,19 @@ public class ForecastDailyRecyclerViewAdapter extends RecyclerView.Adapter<Forec
 
             String condition = forecast.getCondition();
             if (condition.equalsIgnoreCase("Clouds")) {
-                binding.imageCondition.setImageResource(R.drawable.ic_cloud_24dp);
+                binding.imageCondition.setImageResource(R.drawable.ic_cloudy);
             } else if (condition.equalsIgnoreCase("Rain")) {
-                binding.imageCondition.setImageResource(R.drawable.ic_rain_24dp);
+                binding.imageCondition.setImageResource(R.drawable.ic_rainy);
             } else if (condition.equalsIgnoreCase("Snow")) {
-                binding.imageCondition.setImageResource(R.drawable.ic_snow_24dp);
+                binding.imageCondition.setImageResource(R.drawable.ic_snowy);
+            } else if (condition.equalsIgnoreCase("Clear")) {
+                binding.imageCondition.setImageResource(R.drawable.ic_sunny);
+            } else if (condition.equalsIgnoreCase("Thunderstorm")) {
+                binding.imageCondition.setImageResource(R.drawable.ic_thunder);
+            } else if (condition.equalsIgnoreCase("Drizzle")) {
+                binding.imageCondition.setImageResource(R.drawable.ic_drizzle);
             } else {
-                binding.imageCondition.setImageResource(R.drawable.ic_sunny_24dp);
+                binding.imageCondition.setImageResource(R.drawable.ic_misty);
             }
 
             binding.textTemperature.setText(forecast.getTemperature());

@@ -60,7 +60,7 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
 
         void setMessage(final ChatMessage message) {
             final Resources res = mView.getContext().getResources();
-            final MaterialCardView card = binding.cardRoot;
+            final MaterialCardView card = binding.fragmentHomeForecastCardTest;
 
             int standard = (int) res.getDimension(R.dimen.chat_margin);
             int extended = (int) res.getDimension(R.dimen.chat_margin_sided);

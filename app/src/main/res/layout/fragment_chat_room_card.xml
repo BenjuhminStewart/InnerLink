@@ -23,7 +23,6 @@
             android:layout_marginBottom="13dp"
             android:contentDescription="@string/description"
             android:paddingLeft="2dp"
-            android:src="@drawable/ic_user_icon_24dp"
             app:layout_constraintBottom_toTopOf="@+id/text_last_message"
             app:layout_constraintEnd_toStartOf="@+id/text_chat_room_name"
             app:layout_constraintHorizontal_bias="1.0"
