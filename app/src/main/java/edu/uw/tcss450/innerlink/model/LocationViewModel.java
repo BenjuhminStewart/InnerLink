@@ -9,6 +9,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
+/**
+ * View model for setting the location and adding a location observer.
+ */
 public class LocationViewModel extends ViewModel {
     private MutableLiveData<Location> mLocation;
 
@@ -30,5 +33,4 @@ public class LocationViewModel extends ViewModel {
     public Location getCurrentLocation() {
         return new Location(mLocation.getValue());
     }
-
 }

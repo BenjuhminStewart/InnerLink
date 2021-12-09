@@ -15,6 +15,9 @@ import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomCardBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatUserCardBinding;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsOutgoingRequestRecyclerViewAdapter;
 
+/**
+ * Chat Users Recycler View Adapter that displays the the chat rooms current userw
+ */
 public class ChatUsersRecyclerViewAdapter extends RecyclerView.Adapter<ChatUsersRecyclerViewAdapter.ChatUsersViewHolder> {
     //Store all of the Chat Rooms to present
     private final List<String> mUsers;

@@ -1,6 +1,8 @@
 package edu.uw.tcss450.innerlink.ui.Contacts;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,11 +26,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomListBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactsListBinding;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Chat.ChatManageFragmentDirections;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomRecyclerViewAdapter;
 import edu.uw.tcss450.innerlink.ui.Chat.ChatRoomViewModel;
 import edu.uw.tcss450.innerlink.ui.Notification.NotificationGenerator;
@@ -79,6 +83,17 @@ public class ContactsListFragment extends Fragment {
                 }
                 addContact(emailInput.getText().toString());
                 emailInput.setText("");
+                AlertDialog.Builder builderLeft = new AlertDialog.Builder(getContext());
+                builderLeft.setTitle("Success!");
+                builderLeft.setMessage("Your friend request has been sent.");
+                builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Navigation.findNavController(getView()).navigate(
+                                ContactsListFragmentDirections.actionNavigationContactsSelf());
+                    }
+                });
+                AlertDialog alertDialogLeft = builderLeft.create();
+                alertDialogLeft.show();
             }
         });
         return binding.getRoot();

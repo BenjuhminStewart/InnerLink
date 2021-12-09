@@ -1,6 +1,7 @@
 package edu.uw.tcss450.innerlink.ui.Chat;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -79,6 +80,10 @@ public class ChatRoomListFragment extends Fragment {
         });
     }
 
+    /**
+     * Method that creates a chat room by calling the create chat room function in the
+     * chat manage view model.
+     */
     private void createRoom() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Create Chat Room");
@@ -94,11 +99,15 @@ public class ChatRoomListFragment extends Fragment {
         builder.setView(layout);
         builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
             mChatRoomListModel.createChatRoom(oldPass.getText().toString(), mUserModel.getmJwt());
-
             AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
             builderDecline.setTitle("Success!");
             builderDecline.setMessage("Chat room created.");
-            builderDecline.setPositiveButton("Confirm", null);
+            builderDecline.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Navigation.findNavController(getView()).navigate(
+                            ChatRoomListFragmentDirections.actionNavigationChatsSelf2());
+                }
+            });
             AlertDialog alertDialogDecline = builderDecline.create();
             alertDialogDecline.show();
         });
