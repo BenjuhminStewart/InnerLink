@@ -30,6 +30,10 @@ import edu.uw.tcss450.innerlink.io.RequestQueueSingleton;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel;
 
+/**
+ * View model for chat management endpoints that include getting the users in a chat room,
+ * adding a user to a chat room, leaving a chat room and editing a chat rooms name.
+ */
 public class ChatManageViewModel extends AndroidViewModel {
     private MutableLiveData<List<String>> mUserEmails;
 

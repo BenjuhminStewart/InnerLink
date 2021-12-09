@@ -132,6 +132,10 @@ public class ChatManageFragment extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * Method that edits the name of the chat room by calling the change chat name function in the
+     * chat manage view model.
+     */
     private void editName() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Edit Chat Room Name");

@@ -6,6 +6,9 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
+/**
+ * View model for notifications on the toolbar when getting a new message.
+ */
 public class NewMessageCountViewModel extends ViewModel {
     private MutableLiveData<Integer> mNewMessageCount;
 

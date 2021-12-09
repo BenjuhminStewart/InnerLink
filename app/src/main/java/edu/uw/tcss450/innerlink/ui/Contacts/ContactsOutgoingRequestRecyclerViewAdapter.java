@@ -14,6 +14,9 @@ import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactOutgoingRequestCardBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactsRequestCardBinding;
 
+/**
+ * Allows the user to scroll through a list of pending outgoing contact requests.
+ */
 public class ContactsOutgoingRequestRecyclerViewAdapter
         extends RecyclerView.Adapter<ContactsOutgoingRequestRecyclerViewAdapter.ContactsOutgoingRequestViewHolder> {
 

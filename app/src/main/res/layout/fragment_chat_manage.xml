@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="13dp"
         android:foregroundTint="@color/colorWhite"
+        app:backgroundTint="@color/colorAccent"
         android:tint="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView5"
         app:layout_constraintEnd_toStartOf="@+id/leave_chat_button"

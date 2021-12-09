@@ -80,6 +80,10 @@ public class ChatRoomListFragment extends Fragment {
         });
     }
 
+    /**
+     * Method that creates a chat room by calling the create chat room function in the
+     * chat manage view model.
+     */
     private void createRoom() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Create Chat Room");
