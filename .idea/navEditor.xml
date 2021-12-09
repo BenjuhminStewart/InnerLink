@@ -25,9 +25,23 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="988" />
-                            <option name="y" value="724" />
+                            <option name="x" value="1050" />
+                            <option name="y" value="578" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_chatManageFragment_self">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_chatManageFragment_to_navigation_chats">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>
@@ -67,6 +81,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_navigation_chats_self2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_navigation_chats_to_chatManageFragment">
                               <value>
                                 <LayoutPositions />
@@ -152,7 +171,7 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_locationFragment_to_forecastFragment">
+                            <entry key="action_navigation_locations_to_forecastFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

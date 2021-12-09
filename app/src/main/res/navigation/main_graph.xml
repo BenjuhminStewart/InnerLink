@@ -76,6 +76,9 @@
         <action
             android:id="@+id/action_navigation_contacts_to_navigation_contact"
             app:destination="@id/navigation_contact" />
+        <action
+            android:id="@+id/action_navigation_contacts_self"
+            app:destination="@id/navigation_contacts" />
     </fragment>
 
     <fragment

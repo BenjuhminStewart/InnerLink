@@ -12,12 +12,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -79,8 +82,19 @@ public class ChatManageFragment extends Fragment {
                 }
                 mChatManageViewModel.addUser(args.getChatid(), emailInput.getText().toString(), mUserModel.getmJwt());
                 emailInput.setText("");
+                Navigation.findNavController(getView()).navigate(
+                        ChatManageFragmentDirections.actionChatManageFragmentSelf(args.getChatid()));
             }
         });
+
+        FloatingActionButton editChatName = (FloatingActionButton) view.findViewById(R.id.edit_chat_name_button);
+        editChatName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editName();
+            }
+        });
+
 
         FloatingActionButton leaveButton = (FloatingActionButton) binding.getRoot().findViewById(R.id.leave_chat_button);
         leaveButton.setOnClickListener(new View.OnClickListener() {
@@ -118,4 +132,24 @@ public class ChatManageFragment extends Fragment {
         return binding.getRoot();
     }
 
+    private void editName() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Edit Chat Room Name");
+        final EditText oldPass = new EditText(this.getActivity());
+        final TextView oldPassText = new TextView(this.getActivity());
+        oldPassText.setText("       Please name your new chat room:");
+        oldPass.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        oldPassText.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        LinearLayout layout = new LinearLayout(new ContextThemeWrapper(getContext(), R.style.DarkAppTheme));
+        layout.setOrientation(LinearLayout.VERTICAL);
+        layout.addView(oldPassText);
+        layout.addView(oldPass);
+        builder.setView(layout);
+        builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
+            mChatManageViewModel.changeChatName(args.getChatid(), oldPass.getText().toString(), mUserModel.getmJwt());
+        });
+        builder.setNegativeButton(R.string.dialog_remove_cancel, null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
 }
