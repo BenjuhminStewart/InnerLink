@@ -125,5 +125,16 @@
         <action
             android:id="@+id/action_navigation_locations_to_forecastFragment"
             app:destination="@id/forecastFragment" />
+        <action
+            android:id="@+id/action_navigation_locations_to_locationMaps"
+            app:destination="@id/locationMaps" />
+        <action
+            android:id="@+id/action_navigation_locations_self"
+            app:destination="@id/navigation_locations" />
     </fragment>
+    <fragment
+        android:id="@+id/locationMaps"
+        android:name="edu.uw.tcss450.innerlink.ui.Maps.LocationMaps"
+        android:label="@string/map_label"
+        tools:layout="@layout/fragment_location_maps" />
 </navigation>
