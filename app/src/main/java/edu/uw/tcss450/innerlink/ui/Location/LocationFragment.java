@@ -105,7 +105,7 @@ public class LocationFragment extends Fragment {
                             mAddLocationModel.addLocation(zipcode, mUserModel.getmJwt());
                             AlertDialog.Builder builderLeft = new AlertDialog.Builder(getActivity());
                             builderLeft.setTitle("Success!");
-                            builderLeft.setMessage("You have Deleted the Location.");
+                            builderLeft.setMessage("You have added a location.");
                             builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     Navigation.findNavController(getView()).navigate(
@@ -170,7 +170,7 @@ public class LocationFragment extends Fragment {
                                 mAddLocationModel.addLocationCoords(latFloat, lonFloat, mUserModel.getmJwt());
                                 AlertDialog.Builder builderLeft = new AlertDialog.Builder(getActivity());
                                 builderLeft.setTitle("Success!");
-                                builderLeft.setMessage("You have Deleted the Location.");
+                                builderLeft.setMessage("You have added a location.");
                                 builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         Navigation.findNavController(getView()).navigate(
