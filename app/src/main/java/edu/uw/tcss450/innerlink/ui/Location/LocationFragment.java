@@ -61,11 +61,6 @@ public class LocationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // return inflater.inflate(R.layout.fragment_location, container, false);
         binding = FragmentLocationBinding.inflate(inflater);
-        if (mLocationListModel.getLocationLIst().size() == 0) {
-            binding.textEmptyLocations.setText("No Locations Added. Please add a location.");
-        } else {
-            binding.textEmptyLocations.setText(null);
-        }
         return binding.getRoot();
     }
 
@@ -177,7 +172,8 @@ public class LocationFragment extends Fragment {
                                 String lon = input2.getText().toString();
                                 float latFloat = Float.parseFloat(lat);
                                 float lonFloat = Float.parseFloat(lon);
-                                mAddLocationModel.addLocationCoords(latFloat, lonFloat, mUserModel.getmJwt()); 
+
+                                mAddLocationModel.addLocationCoords(latFloat, lonFloat, mUserModel.getmJwt());
                                 AlertDialog.Builder builderLeft = new AlertDialog.Builder(getActivity());
                                 builderLeft.setTitle("Success!");
                                 builderLeft.setMessage("You have added a location.");
