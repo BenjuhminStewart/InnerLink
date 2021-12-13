@@ -30,6 +30,7 @@ import edu.uw.tcss450.innerlink.databinding.FragmentChatRoomListBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentChatUserCardBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentContactsListBinding;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragmentDirections;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsModel;
 import edu.uw.tcss450.innerlink.ui.Contacts.ContactsRecyclerViewAdapter;
 import edu.uw.tcss450.innerlink.ui.auth.signin.SignInFragmentDirections;
@@ -82,8 +83,17 @@ public class ChatManageFragment extends Fragment {
                 }
                 mChatManageViewModel.addUser(args.getChatid(), emailInput.getText().toString(), mUserModel.getmJwt());
                 emailInput.setText("");
-                Navigation.findNavController(getView()).navigate(
-                        ChatManageFragmentDirections.actionChatManageFragmentSelf(args.getChatid()));
+                AlertDialog.Builder builderLeft = new AlertDialog.Builder(getContext());
+                builderLeft.setTitle("Success!");
+                builderLeft.setMessage("You have added a user to the chat room.");
+                builderLeft.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Navigation.findNavController(getView()).navigate(
+                                ChatManageFragmentDirections.actionChatManageFragmentSelf(args.getChatid()));
+                    }
+                });
+                AlertDialog alertDialogLeft = builderLeft.create();
+                alertDialogLeft.show();
             }
         });
 

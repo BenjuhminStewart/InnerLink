@@ -136,5 +136,9 @@
         android:id="@+id/locationMaps"
         android:name="edu.uw.tcss450.innerlink.ui.Maps.LocationMaps"
         android:label="@string/map_label"
-        tools:layout="@layout/fragment_location_maps" />
+        tools:layout="@layout/fragment_location_maps" >
+        <action
+            android:id="@+id/action_locationMaps_to_navigation_locations"
+            app:destination="@id/navigation_locations" />
+    </fragment>
 </navigation>

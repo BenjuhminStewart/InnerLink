@@ -19,6 +19,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import edu.uw.tcss450.innerlink.databinding.FragmentHomeBinding;
 import edu.uw.tcss450.innerlink.ui.Maps.LocationMaps;
 import edu.uw.tcss450.innerlink.R;
 import edu.uw.tcss450.innerlink.databinding.FragmentLocationBinding;
@@ -35,6 +37,7 @@ public class LocationFragment extends Fragment {
     private LocationListViewModel mLocationListModel;
     private LocationListAddViewModel mAddLocationModel;
     private LocationMapsViewModel mLocationMapViewModel;
+    private FragmentLocationBinding binding;
 
 
     public LocationFragment() {
@@ -56,7 +59,14 @@ public class LocationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_location, container, false);
+        // return inflater.inflate(R.layout.fragment_location, container, false);
+        binding = FragmentLocationBinding.inflate(inflater);
+        if (mLocationListModel.getLocationLIst().size() == 0) {
+            binding.textEmptyLocations.setText("No Locations Added. Please add a location.");
+        } else {
+            binding.textEmptyLocations.setText(null);
+        }
+        return binding.getRoot();
     }
 
     @Override
@@ -167,7 +177,7 @@ public class LocationFragment extends Fragment {
                                 String lon = input2.getText().toString();
                                 float latFloat = Float.parseFloat(lat);
                                 float lonFloat = Float.parseFloat(lon);
-                                mAddLocationModel.addLocationCoords(latFloat, lonFloat, mUserModel.getmJwt());
+                                mAddLocationModel.addLocationCoords(latFloat, lonFloat, mUserModel.getmJwt()); 
                                 AlertDialog.Builder builderLeft = new AlertDialog.Builder(getActivity());
                                 builderLeft.setTitle("Success!");
                                 builderLeft.setMessage("You have added a location.");
