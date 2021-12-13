@@ -67,6 +67,7 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
 
             if (mEmail.equals(message.getSender())) {
                 //This message is from the user. Format it as such
+                //binding.textSender.setText(null);
                 binding.textMessage.setText(message.getMessage());
                 ViewGroup.MarginLayoutParams layoutParams =
                         (ViewGroup.MarginLayoutParams) card.getLayoutParams();
@@ -92,7 +93,8 @@ public class ChatMessageRecyclerViewAdapter extends RecyclerView.Adapter<ChatMes
             } else {
                 //This message is from another user. Format it as such
                 // TODO: Display sender in group chat
-                binding.textMessage.setText(message.getMessage());
+                binding.textMessage.setText(message.getSender() + ": " + message.getMessage());
+                //binding.textSender.setText(null);
                 ViewGroup.MarginLayoutParams layoutParams =
                         (ViewGroup.MarginLayoutParams) card.getLayoutParams();
 

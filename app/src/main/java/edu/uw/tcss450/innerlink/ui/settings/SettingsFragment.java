@@ -60,17 +60,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             layout.setOrientation(LinearLayout.VERTICAL);
             oldPassText.setText("   Old Password");
             newPassText.setText("   New Password");
-            confirmPassText.setText("   Confirm Password");
+            confirmPassText.setText("   Confirm New Password");
             oldPassText.setSelected(true);
             layout.addView(oldPassText);
             layout.addView(oldPass);
-            layout.addView(confirmPassText);
-            layout.addView(confirmPass);
             layout.addView(newPassText);
             layout.addView(newPass);
+            layout.addView(confirmPassText);
+            layout.addView(confirmPass);
             builder.setView(layout);
             builder.setPositiveButton(R.string.dialog_remove_confirm, (dialog, which) -> {
-                if (!(oldPass.getText().toString().equals(confirmPass.getText().toString()))) {
+                if (!(newPass.getText().toString().equals(confirmPass.getText().toString()))) {
                     AlertDialog.Builder builderDecline = new AlertDialog.Builder(getContext());
                     builderDecline.setTitle("Failure");
                     builderDecline.setMessage("Passwords do not match. Please try again.");
@@ -78,7 +78,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     AlertDialog alertDialogDecline = builderDecline.create();
                     alertDialogDecline.show();
                 } else {
-                    mSettingsViewModel.changePassword(confirmPass.getText().toString(), newPass.getText().toString());
+                    mSettingsViewModel.changePassword(oldPass.getText().toString(), newPass.getText().toString());
                 }
             });
             builder.setNegativeButton(R.string.dialog_remove_cancel, null);

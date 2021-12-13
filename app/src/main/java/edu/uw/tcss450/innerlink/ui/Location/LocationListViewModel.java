@@ -133,4 +133,8 @@ public class LocationListViewModel extends AndroidViewModel {
                             data);
         }
     }
+
+    public List<Location> getLocationLIst() {
+        return mLocationList.getValue();
+    }
 }

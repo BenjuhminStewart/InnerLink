@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -33,6 +34,7 @@ import edu.uw.tcss450.innerlink.databinding.FragmentLocationBinding;
 import edu.uw.tcss450.innerlink.databinding.FragmentLocationMapsBinding;
 import edu.uw.tcss450.innerlink.model.LocationViewModel;
 import edu.uw.tcss450.innerlink.model.UserInfoViewModel;
+import edu.uw.tcss450.innerlink.ui.Contacts.ContactsListFragmentDirections;
 import edu.uw.tcss450.innerlink.ui.Location.LocationListAddViewModel;
 
 /**
@@ -111,19 +113,27 @@ public class LocationMaps extends Fragment implements OnMapReadyCallback, Google
 
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-
-
         dialog
                 .setTitle("Are you sure you want to add this location?")
                 .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         mAddLocation.addLocationCoords(coords.get(0), coords.get(1), mUserModel.getmJwt());
+                        AlertDialog.Builder dialogAfter = new AlertDialog.Builder(getContext());
+                        dialogAfter
+                                .setTitle("Do you want to continue adding locations?")
+                                .setPositiveButton("Confirm", null)
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Navigation.findNavController(getView()).navigate(
+                                                LocationMapsDirections.actionLocationMapsToNavigationLocations());
+                                    }
+                                })
+                                .show().setCanceledOnTouchOutside(true);
                     }
-
                 })
                 .setNegativeButton("Cancel", null)
                 .show().setCanceledOnTouchOutside(true);
-        System.out.println("Made it past dialog");
+        //System.out.println("Made it past dialog");
 
         Marker marker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
