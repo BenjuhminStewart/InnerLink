@@ -75,7 +75,7 @@ import edu.uw.tcss450.innerlink.ui.settings.SettingsFragment;
  *
  * @version 1 (Sprint 1R)
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     /**
      * The desired interval for location updates. Inexact. Updates may be more or less frequent.
      */
@@ -107,9 +107,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         PreferenceManager.getDefaultSharedPreferences(this);
         setAppTheme();
-
-
-        theme = PreferenceManager.getDefaultSharedPreferences(this)
+        theme = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.theme), getString(R.string.theme_def_value));
 
         super.onCreate(savedInstanceState);
@@ -120,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
                 this,
                 new UserInfoViewModel.UserInfoViewModelFactory(args.getEmail(), args.getJwt()))
                 .get(UserInfoViewModel.class);
-        
+        androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
+                .registerOnSharedPreferenceChangeListener(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -337,12 +336,6 @@ public class MainActivity extends AppCompatActivity {
         }
         IntentFilter iFilter = new IntentFilter(PushReceiver.RECEIVED_NEW_MESSAGE);
         registerReceiver(mPushMessageReceiver, iFilter);
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!theme.equals(prefs.getString(getString(R.string.theme), "none"))) {
-            finish();
-            startActivity(getIntent());
-            overridePendingTransition(0, 0);
-        }
     }
 
     @Override
@@ -351,6 +344,18 @@ public class MainActivity extends AppCompatActivity {
         if (mPushMessageReceiver != null){
             unregisterReceiver(mPushMessageReceiver);
         }
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        String themeString = getString(R.string.theme);
+        if (key != null && sharedPreferences != null)
+            if (key.equals(themeString)) {
+                SharedPreferences prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this);
+                if (!theme.equals(prefs.getString(getString(R.string.theme), "none"))) {
+                    recreate();
+                }
+            }
     }
 
      /**

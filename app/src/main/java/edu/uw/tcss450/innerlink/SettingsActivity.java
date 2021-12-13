@@ -94,7 +94,6 @@ public class SettingsActivity extends AppCompatActivity
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 if (!theme.equals(prefs.getString(getString(R.string.theme), "none"))) {
                     recreate();
-                    recreate();
                 }
             }
     }
